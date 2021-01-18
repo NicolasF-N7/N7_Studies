@@ -1,0 +1,54 @@
+[comment encoding = UTF-8 /]
+[module toTina('http://petrinet')]
+
+
+[template public petriNetToTina(aPetriNet : PetriNet)]
+[comment @main/]
+[file (aPetriNet.name+'.net', false, 'UTF-8')]
+net [aPetriNet.name/]
+[let places : OrderedSet(Place) = aPetriNet.getPlaces() ] 
+	[if (places->size() > 0)]
+		[for (pl : Place | places)]
+pl [pl.name/] ([pl.nbJetons/])
+		[/for]
+	[else]
+	[/if]
+[/let]
+[let trs : OrderedSet(Transition) = aPetriNet.getTransitions() ] 
+	[if (trs->size() > 0)]
+		[for (tr : Transition | trs)]
+[tr.printTransition()/]
+		[/for]
+	[else]
+	[/if]
+[/let]
+[/file]
+[/template]
+
+[query public getPrecedingArcs(tr: Transition) : OrderedSet(Arc) = 
+	tr.linksToPredecessors->select( e | e.oclIsTypeOf(Arc) )
+		->collect( e | e.oclAsType(Arc) )
+		->asOrderedSet()
+/]
+
+[query public getSuccessingArcs(tr: Transition) : OrderedSet(Arc) = 
+	tr.linksToSuccessors->select( e | e.oclIsTypeOf(Arc) )
+		->collect( e | e.oclAsType(Arc) )
+		->asOrderedSet()
+/]
+
+[query public getTransitions(p: PetriNet) : OrderedSet(Transition) = 
+	p.petriNetElements->select( e | e.oclIsTypeOf(Transition) )
+		->collect( e | e.oclAsType(Transition) )
+		->asOrderedSet()
+/]
+
+[query public getPlaces(p: PetriNet) : OrderedSet(Place) = 
+	p.petriNetElements->select( e | e.oclIsTypeOf(Place) )
+		->collect( e | e.oclAsType(Place) )
+		->asOrderedSet()
+/]
+
+[template public printTransition(tr : Transition) post(trim())]
+tr [tr.name/] [for (arc: Arc | tr.getPrecedingArcs()) separator (' ') after(' -> ')][arc.predecessor.name/][if (arc.poids >= 1)]*[else]?[/if][arc.poids/][/for][for (arc: Arc | tr.getSuccessingArcs()) separator (' ')][arc.successor.name/][if (arc.poids >= 1)]*[else]?[/if][arc.poids/][/for]
+[/template]

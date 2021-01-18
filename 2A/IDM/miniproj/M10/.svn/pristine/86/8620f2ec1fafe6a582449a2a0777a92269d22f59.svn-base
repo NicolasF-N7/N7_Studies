@@ -1,0 +1,25 @@
+[comment encoding = UTF-8 /]
+[module toLTL('http://simplepdl')]
+
+
+[template public processToLTL(aProcess : Process)]
+[comment @main/]
+[file (aProcess.name + '.ltl', false, 'UTF-8')]
+[let wds : OrderedSet(WorkDefinition) = aProcess.getWDs() ] 
+	[if (wds->size() > 0)]
+[for (wd : WorkDefinition | wds) before ('op finished = ') separator (' /\\ ') after(' ;')][wd.name/]_Finished[/for]
+	[else]
+	[/if]
+[/let]
+['[]'/] (finished => dead) ;
+['[]'/] <> dead ;
+['[]'/] (dead => finished) ;
+- <> finished ;
+[/file]
+[/template]
+
+[query public getWDs(p: Process) : OrderedSet(WorkDefinition) = 
+	p.processElements->select( e | e.oclIsTypeOf(WorkDefinition) )
+		->collect( e | e.oclAsType(WorkDefinition) )
+		->asOrderedSet()
+/]

@@ -1,0 +1,9 @@
+Joueur nico {
+		
+}
+
+Jeu {
+	joueur : nico
+}
+
+

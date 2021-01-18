@@ -1,0 +1,25 @@
+Jeu {
+	joueur : Joueur {
+		inventaire : Inventaire {
+			taille_inventaire : 2
+			connaissances : Connaissance {
+				nom : PelerBanane
+				description : "Savoir réaliser la tache très avancé de peler une banane."
+			}
+			objets: StackObjet {
+				 quantite : 2
+				 objet : banane
+			}
+		}
+	}
+	monde : md
+	objets : obj
+	connaisances : cnsc1 cnsc2
+}
+
+Objet {
+	nom : banane
+	taille : 12
+	description : "C est bien pour se nourrir"
+}
+

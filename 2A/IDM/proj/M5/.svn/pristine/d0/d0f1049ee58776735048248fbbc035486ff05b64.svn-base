@@ -1,0 +1,29 @@
+1) Création du projet Xtext:
+    -new project -> xtext -> xtext project
+    choisir le project name, le nom du langage (e.g. Jeu) et l'extensions des fichiers qui seront vérifiés par la grammaire (e.g. superjeu)
+    -Next + finish
+2) Importation du xText de svn dans le projet: 
+    -Ouvrir le projet qu'on viens de créer
+    -aller dans src -> le premier package (qui a le nom le plus court) -> ouvrir le fichier .xtext
+    -Copie coller le contenu du fichier xtext sur svn, mais seulement à partir de Jeu : ... Car il faut que vous gardiez les 2 premières lignes grammar et generate qui sont propres à votre environnement.
+3) Génerer le modele et le vérificateur de la grammaire
+    -Toujours dans src -> premier package :
+    Clic droit sur le GenerateJeu.mwe2 -> run as -> mweé workflow
+    Quand c'est terminé un "done" s'affiche à la fin dans la console
+4) Créer un projet de test
+    -New project -> general -> project
+5) Deployer les plugins
+    -Clic droit sur le projet xtext -> run as eclipse application 
+    Il va afficher des popup mais faire ok, continue...
+6) Tester
+    -dans l'eclipse de déployement importer les 2 projets créer juste avant
+    -Clic droit sur le projet de test -> new file -> choisir un nom et l'extension que vous avez choisis à la création du projet xtext (.superjeu par exemple)
+    -Ecrire du code qui respecte la grammaire définie dans xtext. Si rien n'est souligné en rouge c'est que tout est OK :D
+7) Modifier la grammaire puis tester une modif
+    -Fermer l'eclipse de déployement
+    -Modifier le xText dans l'ecplise de base (pas celui de déployement, de toute façon il est fermé)
+    -Re générer le modèle et le verificateur de grammaire c.f. 3)
+    -Re déployer les plugins
+    -Modifier un caractère du fichier test en .superjeu et le sauvegardez pour actualiser les erreurs.
+
+Have fun mdr

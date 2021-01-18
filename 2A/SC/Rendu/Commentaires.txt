@@ -1,0 +1,3 @@
+Cette archive contient 5 versions répondant au problème des lecteurs rédacteurs.
+La dernière implantant la stratégie fifo n'a pas pu être testé car je ne suis pas arrivé à la compiler.
+Pour ne pas passer un temps déraisonnable sur ce TP je n'ai pas fait la partie de construction d'un automate non fifo et sans famine. 

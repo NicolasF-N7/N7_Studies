@@ -1,0 +1,9 @@
+Réseau de Petri :
+	Chaque lieu correspond à une place du réseau. Pour chaque place, il y a une place par objet et connaissance possible. Il y a aussi une place par objet et connaissance pour l'inventaire du joueur.
+	Chaque lieu propose 2 transitions par objet, une pour prendre et une pour déposer l'objet.
+	Il faut pour chaque case d'inventaire un inventaire "inversé" où l'on enlève des éléments quand on en rajoute dans l'autre et vice-versa. Ainsi, on peut tester les contraintes de supériorité, d'infériorité, et d'égalité en testant les deux.
+	Pour les connaissances, il faut une place qui commence vide, et une qui commence pleine. Pour pouvoir remplir la vide, il faut vider la pleine. L'une représente la connaissance, l'autre l'absence de connaissance. Néanmoins, il faut aussi laisser la possibilité de prendre une connaissance en effectuant une lecture seule sur le jeton qui implique de déjà connaître la connaissance.
+	Les dialogues se construisent de manière analogue (sans pouvoir déposer des objets) et branchent sur le lieu dont ils partent.
+	Il faut aussi une place qui représente le volume de l'inventaire. Pour prendre un objet de taille n, on doit pouvoir prendre n jetons de place.
+
+

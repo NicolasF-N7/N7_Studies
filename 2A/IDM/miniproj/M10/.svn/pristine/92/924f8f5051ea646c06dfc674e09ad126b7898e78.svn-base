@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdl:Process
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:simplepdl="http://simplepdl"
+    xsi:schemaLocation="http://simplepdl SimplePDL.ecore"
+    name="Repas">
+  <processElements
+      xsi:type="simplepdl:WorkDefinition"
+      name="Manger"
+      requiredResources="//@processElements.1 //@processElements.3"/>
+  <processElements
+      xsi:type="simplepdl:RequiredResources"
+      workDefinition="//@processElements.0"
+      resource="//@processElements.4"
+      name="nourriture"
+      qtyReq="2"/>
+  <processElements
+      xsi:type="simplepdl:Resource"
+      name="Assiette"
+      availableQuantity="3"/>
+  <processElements
+      xsi:type="simplepdl:RequiredResources"
+      workDefinition="//@processElements.0"
+      resource="//@processElements.2"
+      name="assiette"
+      qtyReq="1"/>
+  <processElements
+      xsi:type="simplepdl:Resource"
+      name="Nourriture"
+      availableQuantity="1"/>
+</simplepdl:Process>

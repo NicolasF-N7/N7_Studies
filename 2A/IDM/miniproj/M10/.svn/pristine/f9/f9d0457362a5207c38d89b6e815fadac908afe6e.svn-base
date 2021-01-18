@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simplepdlres:Process xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:simplepdlres="http://simplepdlres" name="Developpement">
+  <processElements xsi:type="simplepdlres:WorkDefinition" linksToSuccessors="//@processElements.4 //@processElements.5 //@processElements.8" name="Concevoir"/>
+  <processElements xsi:type="simplepdlres:WorkDefinition" linksToPredecessors="//@processElements.6 //@processElements.7" name="Documenter"/>
+  <processElements xsi:type="simplepdlres:WorkDefinition" linksToPredecessors="//@processElements.4" linksToSuccessors="//@processElements.6 //@processElements.7" name="Programmer" requiredResources="//@processElements.10"/>
+  <processElements xsi:type="simplepdlres:WorkDefinition" linksToPredecessors="//@processElements.5 //@processElements.8" name="Tester"/>
+  <processElements xsi:type="simplepdlres:WorkSequence" linkType="finishToStart" predecessor="//@processElements.0" successor="//@processElements.2"/>
+  <processElements xsi:type="simplepdlres:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.3"/>
+  <processElements xsi:type="simplepdlres:WorkSequence" predecessor="//@processElements.2" successor="//@processElements.1"/>
+  <processElements xsi:type="simplepdlres:WorkSequence" linkType="finishToFinish" predecessor="//@processElements.2" successor="//@processElements.1"/>
+  <processElements xsi:type="simplepdlres:WorkSequence" predecessor="//@processElements.0" successor="//@processElements.3"/>
+  <processElements xsi:type="simplepdlres:Resource" name="Programmeur" availableQuantity="5"/>
+  <processElements xsi:type="simplepdlres:RequiredResources" workDefinition="//@processElements.2" resource="//@processElements.9" name="Programmeurs pour Programmer" qtyReq="3"/>
+</simplepdlres:Process>

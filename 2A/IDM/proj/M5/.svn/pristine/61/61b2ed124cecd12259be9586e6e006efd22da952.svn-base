@@ -1,0 +1,110 @@
+grammar fr.n7.Turbopiste with org.eclipse.xtext.common.Terminals
+generate turbopiste "fr.n7.turbopiste"
+
+Jeu : 'Jeu {'
+'joueur :' joueur=Joueur
+'monde :'
+lieux+=Lieu*
+'objets :'
+objets+=Objet*
+'connaissances :'
+connaissances+=Connaissance*
+'}'
+
+Joueur :'Joueur {' 
+    'inventaire :' inventaire = Inventaire
+    'depart :' position = [Lieu]
+    '}'
+
+Inventaire : 'Inventaire {'
+'taille inventaire :' tailleInventaire = INT
+'connaissances :' 
+connaissance+=Connaissance*
+'objets:' 
+stacksobjets+=StackObjet*
+'}'
+Loot : 'Loot {'
+'conditions :' 
+conditions+=Condition*
+'gain:' 
+stacks+=Stack*
+'}'
+
+Stack : StackCollectable | Dialogue
+
+StackCollectable : StackObjet | Connaissance
+
+Dialogue : 'Dialogue {'
+'titre :' titre = ID
+'texte question :' texteQuestion = STRING
+'options :'
+optionsDialogue += OptionDialogue*
+'}'
+
+Coffre :'Coffre {'
+'loots :'
+loots += Loot*
+'}'
+
+StackObjet : 'StackObjet {'
+'quantite :' quantite = INT
+'objet :' objet = [Objet]
+'}'
+
+Objet : 'Objet {'
+'nom :' nom=ID
+'taille :' taille = INT
+'description :' desription = STRING
+'}'
+
+OptionDialogue :'OptionDialogue {'
+'conditions :' 
+conditions+=Condition*
+'texte :' texte = STRING
+'gains :' 
+stacks+=StackCollectable*
+'suite :' suite = (Dialogue | [Dialogue])?
+'}'
+Lieu : 'Lieu {'
+'nom :' nom = ID
+'possibilites :' coffre = Coffre
+'transitions : '
+transitions+=Transition*
+'type :' typeLieu = TypeLieu
+'}'
+
+Transition : 'Transition {'
+'nom :' nom=ID
+'visibilite :' condition = Condition
+'arrivee :' arrivee = [Lieu]
+'gains :' 
+stacks+=StackCollectable*
+'}'
+
+Condition = ConditionConnaissance | ConditionItem
+
+ConditionConnaissance : 'DoitSavoir {'
+'connaissance :' connaissance = [Connaissance]
+'type :' typeConditionConnaissance = TypeConditionConnaissance
+'}'
+
+ConditionItem : 'DoitAvoir {'
+'item :' item = [Objet]
+'quantite :' quantite = INT
+'type :' typeConditionItem = TypeConditionItem
+'}'
+Connaissance : 'Connaissance {'
+'nom :' nom = ID
+'description :' description = STRING
+'}'
+
+enum TypeConditionItem : sup = 'SUP'
+| inf = 'INF'
+| eq = 'EGAL'
+
+enum TypeConditionConnaissance: sait= 'PRESENT'
+| neSaitPas= 'ABSENT'
+
+enum TypeLieu: depart= 'DEPART'
+| arrivee= 'FIN'
+| neutre= 'NEUTRE'

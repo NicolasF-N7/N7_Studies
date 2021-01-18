@@ -1,0 +1,25 @@
+[MAPPING FILE]
+/tmp/GNAT-TEMP-000004.TMP
+[TOOLCHAIN VERSION]
+ada
+GNAT 7
+[SHARED LIBS]
+[MAIN BASE NAME]
+lr-main
+[COMPILER PATH]
+/usr/bin/gnatgcc
+[COMPILER LEADING SWITCHES]
+-c
+-x
+ada
+-gnatA
+[MAIN DEPENDENCY FILE]
+/home/nfoin/2A/SC/TP-Ada-LR/lr-main.ali
+[DEPENDENCY FILES]
+[BINDING OPTIONS]
+gnatbind_prefix=
+[PROJECT FILES]
+/home/nfoin/2A/SC/TP-Ada-LR/build.gpr
+20191107103406
+/usr/share/gpr/gtkada.gpr
+20170810082357

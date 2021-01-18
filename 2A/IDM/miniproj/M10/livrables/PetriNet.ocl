@@ -1,0 +1,35 @@
+import 'PetriNet.ecore'
+
+package simplepdl
+
+
+context PetriNet
+inv validName('Invalid name: ' + self.name):
+	self.name.matches('[A-Za-z_][A-Za-z0-9_]*')
+
+
+context Arc
+/*
+ * Un arc relie soit une place à une tr soit l'inverse.
+ */
+inv NoArcBtwSameNode('Make sure every arcs links a place to a transition or vice-versa. 
+	No place->place or transition->transition allowed'):
+	not self.predecessor.oclIsTypeOf(self.successor.oclType())
+
+/*
+ * Le poids d'un arc est >= 0
+ */
+inv PositiveWeight('Make sur the weight on every arcs are positive.'):
+	self.poids >= 0
+
+
+context Transition
+/*
+ * une transition doit avoir un arc entrant ET sortant
+ */
+inv inArc('The transition ' + self.name + ' have no arc in. A transition must have at least one arc in.'):
+	self.linksToPredecessors->size() >= 1
+inv outArc('The transition ' + self.name + ' have no in or no arc out. A transition must have at least one arc out.'):
+	self.linksToSuccessors->size() >= 1
+
+endpackage

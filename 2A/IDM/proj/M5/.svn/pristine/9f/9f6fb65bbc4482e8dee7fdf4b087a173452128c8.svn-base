@@ -1,0 +1,119 @@
+grammar fr.n7.jeu.meta.Jeu with org.eclipse.xtext.common.Terminals
+
+generate jeu "http://www.n7.fr/jeu/meta/Jeu"
+
+Jeu : 'Jeu' '{'
+	'objets' ':'
+	objets+=Objet*
+	'connaissances' ':'
+	connaissances+=Connaissance*
+	'joueur' ':' joueur=Joueur
+	/*'monde' ':'
+	lieux+=Lieu*
+	
+	*/
+'}';
+
+Joueur :'Joueur' name=ID '{' 
+    'inventaire' ':' inventaire = Inventaire
+    'depart' ':' position = Lieu
+'}';
+
+Inventaire : 'Inventaire' name=ID '{'
+'taille_inventaire' ':' tailleInventaire = INT
+'connaissances' ':' 
+connaissance+=[Connaissance]*
+'objets' ':' 
+stacksobjets+=StackObjet*
+'}';
+
+Loot : 'Loot' '{'
+'conditions' ':' 
+conditions+=Condition*
+'gain' ':' 
+stacks+=Stack*
+'}';
+
+Stack : StackCollectable | Dialogue;
+
+StackCollectable : StackObjet | Connaissance;
+
+Dialogue : 'Dialogue' name=ID '{'
+	'texte_question' ':' texteQuestion = STRING
+	'options' ':' optionsDialogue += OptionDialogue*
+'}';
+
+Coffre :'Coffre' name=ID '{'
+'loots' ':'
+loots += Loot*
+'}';
+
+StackObjet : 'StackObjet' '{'
+'quantite' ':' quantite = INT
+'objet' ':' objet = [Objet]
+'}';
+
+
+
+OptionDialogue :'OptionDialogue' '{'
+'conditions' ':' 
+conditions+=Condition*
+'texte' ':' texte = STRING
+'gains' ':' 
+stacks+=StackCollectable*
+'suite' ':' suite = (/*Dialogue |*/ [Dialogue])
+'}';
+
+Lieu : 'Lieu' '{'
+'nom' ':' name = ID
+'possibilites' ':' coffre = Coffre
+/*'transitions' ':'
+transitions+=Transition**/
+'type' ':' typeLieu = TypeLieu
+'}';
+
+
+Transition : 'Transition' '{'
+'nom' ':' name=ID
+'visibilite' ':' condition = Condition
+'arrivee' ':' arrivee = Lieu
+'gains' ':' 
+stacks+=StackCollectable*
+'}';
+
+
+Condition : ConditionConnaissance | ConditionItem;
+
+ConditionConnaissance : 'DoitSavoir' name=ID '{'
+'connaissance' ':' connaissance = [Connaissance]
+'type' ':' typeConditionConnaissance = TypeConditionConnaissance
+'}';
+
+ConditionItem : 'DoitAvoir' name=ID '{'
+'item' ':' item = [Objet]
+'quantite' ':' quantite = INT
+'type' ':' typeConditionItem = TypeConditionItem
+'}';
+
+Objet : 'Objet' '{'
+'nom' ':' name=ID
+'taille' ':' taille = INT
+'description' ':' desription = STRING
+'}';
+
+Connaissance : 'Connaissance' name=ID '{'
+'description' ':' description = STRING
+'}';
+
+
+
+enum TypeConditionItem : sup = 'SUP'
+| inf = 'INF'
+| eq = 'EGAL';
+
+enum TypeConditionConnaissance: sait= 'PRESENT'
+| neSaitPas= 'ABSENT';
+
+enum TypeLieu: depart= 'DEPART'
+| arrivee= 'FIN'
+| neutre= 'NEUTRE';

@@ -1,0 +1,29 @@
+import 'SimplePDL.ecore'
+
+package simplepdl
+
+/*
+	 * Les activités ne peuvent pas demander plus de ressources que le nombre de ressources existante
+	 * pour un type de ressources donné
+	 */
+
+/*
+	 * Les activités ne peuvent pas demander plus de ressources que le nombre de ressources existante
+	 * pour un type de ressources donné
+	 */
+context RequiredResources
+inv requireLessThanExisting('There are not enough resources "' + self.resource.name + '" existing for the activity ' + self.workDefinition.name):
+	self.qtyReq <= self.resource.availableQuantity
+
+/*
+	 * Le nombre d'une ressource est toujours >=0
+	 */
+
+/*
+	 * Le nombre d'une ressource est toujours >=0
+	 */
+context Resource
+inv atLeast0Resource('Resource quantity can\'t be negative. Check "' + self.name ):
+	self.availableQuantity >= 0
+
+endpackage

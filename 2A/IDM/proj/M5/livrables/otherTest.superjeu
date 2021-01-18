@@ -1,0 +1,53 @@
+Jeu {
+	objets://Definition des objets qui seront utilisés dans le jeu
+		Objet {
+			nom: banane
+			taille: 90
+			description: "Rien de plus qu'une banane"
+		}
+		Objet {
+			nom: couteau
+			taille: 50
+			description: "un couteau pour ouvrir la banane"
+		}
+	connaissances://Definition des connaissances utilisés dans le jeu
+		Connaissance peler_banane {
+			description : "Enlever la peau d'une banane"
+		}
+		Connaissance manger_banane {
+			description : "manger une banane"
+		}
+	joueur : Joueur nico {
+		inventaire : Inventaire invNico {
+			taille_inventaire:1
+			connaissances: peler_banane manger_banane
+				
+			objets:
+				StackObjet {
+					quantite : 2
+					objet : banane
+				}
+				StackObjet {
+					quantite : 1
+					objet : couteau
+				}
+		}//inventaire
+		depart : Lieu {
+			nom : laMaiz
+			possibilites : Coffre coffreDepart{
+				loots: Loot {
+					conditions : DoitAvoir faim {
+						item : banane
+						quantite: 5
+						type: INF
+					}
+					gain: StackObjet{
+						quantite : 2
+						objet: banane
+					}
+				}//loot
+			}//coffre
+			type: DEPART
+		}//Lieu
+	}//Joueur
+}//Jeu

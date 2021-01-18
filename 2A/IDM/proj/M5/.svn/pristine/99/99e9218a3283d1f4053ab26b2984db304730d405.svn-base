@@ -1,0 +1,21 @@
+Jeu {
+	objets : Objet {
+		nom : Tentative
+		taille : 1
+		description : "Une tentative de réponse à l'enigme"
+	}
+	connaissances : 
+	monde: 
+	//------Joueur-----
+	joueur : Joueur moi {
+		inventaire : Inventaire inv {
+			taille_inventaire : 0
+			connaissances : 
+			objets : StackObjet {
+				quantite: 3
+				objet: Tentative 
+			}//StackObjet
+		}//inventaire
+		depart: 
+	}//Joueur
+}
