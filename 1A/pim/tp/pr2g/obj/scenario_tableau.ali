@@ -1,0 +1,79 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U test_ensembles_sujet_tableau%b  scenario_tableau.adb  fe285e9c NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_deallocation%s
+W ensembles_chainage%s	ensembles_chainage.adb	ensembles_chainage.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-inteio.ads		20190518041256 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20190518041255 eff36322 ada.unchecked_deallocation%s
+D ensembles_chainage.ads  20191112171916 8276b8ef ensembles_chainage%s
+D ensembles_chainage.adb  20191113121452 a429908b ensembles_chainage%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+D scenario_tableau.adb	20191113123138 24e1baba test_ensembles_sujet_tableau%b
+G a e
+G c Z b b [test_ensembles_sujet_tableau standard 5 11 none]
+G r i none [test_ensembles_sujet_tableau standard 5 11 none] [ensembles_chainage standard 4 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 28|2r6 2r23 3r6 3r31
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 28|3w10 3r35
+X 7 a-textio.ads
+57K13*Text_IO 727e16 28|2w10 2r27
+264U14*New_Line 28|22s9 36s9 42s9 48s9 54s9 60s9 69s9
+X 8 a-tiinio.ads
+80U14*Put 28|21s9[3|18]
+X 11 ensembles_chainage.ads
+4k9*Ensembles_Chainage 89e23 28|1w6 11r17
+6P10 T_Ensemble 28|29r12[10]
+72u15 Appliquer_Sur_Tous 28|26r50[10]
+X 28 scenario_tableau.adb
+5U11*Test_Ensembles_Sujet_Tableau 5b11 74l5 74t33
+10K13 T_Ensemble_Integer[11|4] 12r9 26r31
+19U15 Affiche_Elemt 19b15 19>29 23l9 23t22 26r69
+19i29 X{integer} 21r13
+26U15 Afficher[11|72] 35s9 41s9 47s9 53s9 59s9 68s9
+29p5 Ens1{11|6P10[10]} 35r19 41r19 47r19 53r19 59r19 68r19
+

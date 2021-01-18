@@ -1,0 +1,169 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ACCESS_SUBPROGRAMS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U test_vecteurs_creux%b	test_vecteurs_creux.adb	19e65432 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system.assertions%s	s-assert.adb		s-assert.ali
+W vecteurs_creux%s	vecteurs_creux.adb	vecteurs_creux.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-flteio.ads		20190518041255 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiflio.ads		20190518041254 bf196650 ada.text_io.float_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-assert.ads		20190518041255 cd8d2c94 system.assertions%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+D test_vecteurs_creux.adb  20191111110018 aed912a0 test_vecteurs_creux%b
+D vecteurs_creux.ads	20191108153505 f841d45f vecteurs_creux%s
+G a e
+G c Z b b [test_vecteurs_creux standard 6 11 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [initialiser vecteurs_creux 12 19 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [modifier vecteurs_creux 35 19 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [afficher vecteurs_creux 63 19 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [composante_recursif vecteurs_creux 25 18 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [est_nul vecteurs_creux 21 18 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [detruire vecteurs_creux 17 19 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [nombre_composantes_non_nulles vecteurs_creux 71 18 none]
+G r c none [test_vecteurs_creux standard 6 11 none] [sont_egaux_recursif vecteurs_creux 42 18 none]
+X 1 ada.ads
+16K9*Ada 20e8 26|1r6 1r29 2r6 2r35
+X 3 a-flteio.ads
+20K13*Float_Text_IO[8|46] 26|2w10 2r39
+X 7 a-textio.ads
+57K13*Text_IO 727e16 26|1w10 1r33
+264U14*New_Line 26|18s49 19s73 28s49 29s49 30s49
+465U14*Put 26|18s17 19s17 28s17 29s17 30s17
+X 8 a-tiflio.ads
+82U14*Put 26|19s38[3|20]
+X 26 test_vecteurs_creux.adb
+6U11*Test_Vecteurs_Creux 6b11 312l5 312t24
+9U19 Initialiser 9b19 9=32 9=37 9=42 32t12 46s17 59s17 85s17 103s17 178s17
+. 219s17 278s17
+9p32 VC0{27|8P14} 12m30 28r43
+9p37 VC1{27|8P14} 15m30 16m27 17m27 18r43 19r63 29r43
+9p42 VC2{27|8P14} 22m30 23m27 24m27 25m27 30r43
+35U19 Detruire 35b19 35=29 35=34 35=39 40t12 52s17 64s17 96s17 166s17 200s17
+. 242s17 297s17
+35p29 VC0{27|8P14} 37m27
+35p34 VC1{27|8P14} 38m27
+35p39 VC2{27|8P14} 39m27
+43U19 Tester_Nul 43b19 53l13 53t23 302s9
+44p17 VC0{27|8P14} 46m30 46r30 48r41 52m27 52r27
+44p22 VC1{27|8P14} 46m35 46r35 49r45 52m32 52r32
+44p27 VC2{27|8P14} 46m40 46r40 50r45 52m37 52r37
+56U19 Tester_Norme2 56b19 65l13 65t26
+57p17 VC0{27|8P14} 59m30 59r30 61r46 64m27 64r27
+57p22 VC1{27|8P14} 59m35 59r35 62r47 64m32 64r32
+57p27 VC2{27|8P14} 59m40 59r40 64m37 64r37
+68P14 T_Fonction_Composante(float) 69>34 69>60 73r31 78r53
+69p34 VC{27|8P14}
+69i60 Indice{integer}
+73p9 Composante{68P14} 111r38 116r39 121r38 126r38 131r38 137r38 142r38 147r38
+. 267r40 268r39 283r39 284r39 288r38 289r38 290r38 291r38
+78U19 Tester_Composante 78b19 78>37 97l13 97t30
+78p37 La_Composante{68P14} 87r39 89r39 90r39 91r39 92r39 93r39 94r39
+83p17 VC0{27|8P14} 85m30 85r30 87r54 96m27 96r27
+83p22 VC1{27|8P14} 85m35 85r35 89r54 90r54 91r54 92r54 93r54 94r54 96m32
+. 96r32
+83p27 VC2{27|8P14} 85m40 85r40 96m37 96r37
+100U19 Tester_Modifier 100b19 167l13 167t28 306s9
+101p17 VC0{27|8P14} 103m30 103r30 166m27 166r27
+101p22 VC1{27|8P14} 103m35 103r35 105r67 109m27 109r27 110r26 111r50 112r67
+. 115m27 115r27 116r51 117r67 120m27 120r27 121r50 122r67 125m27 125r27 126r50
+. 127r67 130m27 130r27 131r50 132r67 136m27 136r27 137r50 138r67 141m27 141r27
+. 142r50 143r67 146m27 146r27 147r50 148r67 152m27 152r27 153r67 154m27 154r27
+. 155r67 156m27 156r27 157r67 160m27 160r27 161r67 162m27 162r27 163r67 164r41
+. 166m32 166r32
+101p27 VC2{27|8P14} 103m40 103r40 166m37 166r37
+171V31 Egaux{boolean} 171>38 171>48 180s32 181s32 182s32 184s36 185s36 186s36
+. 188s36 189s36 190s36 197s32 198s32
+171p38 Vecteur1{27|8P14}
+171p48 Vecteur2{27|8P14}
+172u19 Tester_Sont_Egaux 175b19 202l13 202t30 209r21 213r21
+176p17 VC0{27|8P14} 178m30 178r30 180r39 180r44 184r43 185r43 188r48 189r48
+. 200m27 200r27
+176p22 VC1{27|8P14} 178m35 178r35 181r39 181r44 184r48 186r43 188r43 190r48
+. 197r39 198r44 200m32 200r32
+176p27 VC2{27|8P14} 178m40 178r40 182r39 182r44 185r48 186r48 189r43 190r43
+. 200m37 200r37
+176p32 VC3{27|8P14} 193m30 193r30 194m27 194r27 195m27 195r27 197r44 198r39
+. 201m27 201r27
+208U19 Tester_Sont_Egaux_Iteratif[172] 175b19
+212U19 Tester_Sont_Egaux_Recursif[172] 175b19 307s9
+216U19 Tester_Produit_Scalaire 216b19 244l13 244t36
+217p17 VC0{27|8P14} 219m30 219r30 221r56 222r56 223r61 242m27 242r27
+217p22 VC1{27|8P14} 219m35 219r35 221r61 223r56 225r57 227r57 227r62 239r56
+. 240r61 242m32 242r32
+217p27 VC2{27|8P14} 219m40 219r40 222r61 225r62 236r57 237r62 242m37 242r37
+217p32 VC3{27|8P14} 229m30 229r30 230m27 230r27 231m27 231r27 232m27 232r27
+. 233m27 233r27 234m27 234r27 236r62 237r57 239r61 240r56 243m27 243r27
+247U19 Tester_Additionner_Partage 247b19 272l13 272t39
+248p17 VC0{27|8P14} 251m30 251r30 253m35 253r35 263m30 263r30 268r51 270m27
+. 270r27
+248p22 VC1{27|8P14} 257m30 257r30 259m35 259r35 263r35 266m27 266r27 267r52
+. 271m27 271r27
+252i21 I{integer} 253r40 253r49
+258i21 I{integer} 259r40 259r49
+275U19 Tester_Additionner 275b19 298l13 298t31
+276p17 VC0{27|8P14} 278m30 278r30 280m30 280r30 281r53 282r67 283r51 284r51
+. 286m30 286r30 287r67 288r50 289r50 290r50 291r50 295r53 297m27 297r27
+276p22 VC1{27|8P14} 278m35 278r35 280r35 281r58 293r35 297m32 297r32
+276p27 VC2{27|8P14} 278m40 278r40 286r35 293m30 293r30 295r58 297m37 297r37
+X 27 vecteurs_creux.ads
+6K9*Vecteurs_Creux 26|3w6 3r29 27|92e19
+8P14*T_Vecteur_Creux 26|9r55 35r52 44r32 57r32 69r42 83r32 101r32 171r62
+. 176r37 217r37 248r27 276r32
+12U19*Initialiser 26|12s17 15s17 22s17 193s17 229s17 251s17 257s17
+17U19*Detruire 26|37s17 38s17 39s17 201s17 243s17 270s17 271s17
+21V18*Est_Nul{boolean} 26|48s32 49s36 50s36 164s32
+25V18*Composante_Recursif{float} 26|19s42 73r56
+35U19*Modifier 26|16s17 17s17 23s17 24s17 25s17 109s17 115s17 120s17 125s17
+. 130s17 136s17 141s17 146s17 152s17 154s17 156s17 160s17 162s17 194s17 195s17
+. 230s17 231s17 232s17 233s17 234s17 253s25 259s25 266s17
+42V18*Sont_Egaux_Recursif{boolean} 26|213r40 281s32 295s32
+46V18*Sont_Egaux_Iteratif{boolean} 26|209r40
+51U19*Additionner 26|263s17 280s17 286s17 293s17
+55V18*Norme2{float} 26|61s38 62s39
+59V18*Produit_Scalaire{float} 26|221s38 222s38 223s38 225s39 227s39 236s39
+. 237s39 239s38 240s38
+63U19*Afficher 26|18s33 28s33 29s33 30s33 110s17
+71V18*Nombre_Composantes_Non_Nulles{integer} 26|105s36 112s36 117s36 122s36
+. 127s36 132s36 138s36 143s36 148s36 153s36 155s36 157s36 161s36 163s36 282s36
+. 287s36
+

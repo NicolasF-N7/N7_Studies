@@ -1,0 +1,20 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+/home/nfoin/1A/pim/tp/pr2gps/pr2gps.gpr
+20191112150130
+[BOUND OBJECT FILES]
+/home/nfoin/1A/pim/tp/pr2gps/obj/ensembles_tableau.o
+/home/nfoin/1A/pim/tp/pr2gps/obj/main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-L/home/nfoin/1A/pim/tp/pr2gps/obj/
+-L/home/nfoin/1A/pim/tp/pr2gps/obj/
+-L/applications/gnat/lib/gcc/x86_64-pc-linux-gnu/8.3.1/adalib/
+-static
+-static-libgcc
+/applications/gnat/lib/gcc/x86_64-pc-linux-gnu/8.3.1/adalib/libgnat.a
+-ldl

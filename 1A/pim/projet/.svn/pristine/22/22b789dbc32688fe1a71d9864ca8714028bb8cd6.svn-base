@@ -1,0 +1,15 @@
+Raffinage
+
+Raffinage R0 : Comment "afficher le menu à l'utilisateur?"
+	Répéter
+		Demander à l'utilisateur quelle action effectuer 
+	Jusqu'a Choix utilisateur est quitter
+
+R1: Comment Demander à l'utilisateur quelle action effectuer ?
+	Saisir choix utilisateur
+	Selon choix réaliser l'opération
+
+R2: Comment réaliser l'opération ?
+	Cas choix est "créer un arbre minimal avec un seul noeud" => Initialiser Arbre Genealogique
+	Cas choix est "Ajouter un parent
+	

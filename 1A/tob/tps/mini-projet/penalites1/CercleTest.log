@@ -1,0 +1,26 @@
+JUnit version 4.5
+.E
+There was 1 failure:
+1) initializationError(CercleTest)
+java.lang.Exception: No runnable methods
+	at org.junit.runners.BlockJUnit4ClassRunner.validateInstanceMethods(BlockJUnit4ClassRunner.java:154)
+	at org.junit.runners.BlockJUnit4ClassRunner.collectInitializationErrors(BlockJUnit4ClassRunner.java:112)
+	at org.junit.runners.ParentRunner.validate(ParentRunner.java:253)
+	at org.junit.runners.ParentRunner.<init>(ParentRunner.java:55)
+	at org.junit.runners.BlockJUnit4ClassRunner.<init>(BlockJUnit4ClassRunner.java:56)
+	at org.junit.internal.builders.JUnit4Builder.runnerForClass(JUnit4Builder.java:13)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.runners.model.RunnerBuilder.runners(RunnerBuilder.java:93)
+	at org.junit.runners.model.RunnerBuilder.runners(RunnerBuilder.java:84)
+	at org.junit.runners.Suite.<init>(Suite.java:66)
+	at org.junit.runner.Request.classes(Request.java:68)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:107)
+	at org.junit.runner.JUnitCore.runMain(JUnitCore.java:88)
+	at org.junit.runner.JUnitCore.runMainAndExit(JUnitCore.java:54)
+	at org.junit.runner.JUnitCore.main(JUnitCore.java:46)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+

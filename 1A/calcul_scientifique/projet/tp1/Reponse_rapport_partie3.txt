@@ -1,0 +1,21 @@
+---QUESTION 5 RAPPORT---
+% COMBIEN DE CLASSES EST-ON CAPABLE DE DETECTER AVEC LA PREMIERE 
+% COMPOSANTE, LA DEUXIEME, LA TROISIEME, PUIS LES TROIS ENSEMBLES ?
+
+Sur chaque composante on ne peut détecter que 2 classes différentes. 
+Mais quand on prend les 3 composantes ensemble alors on observe qu'il 
+y a au moins 4 classes différents.
+
+%COMPARER CETTE FIGURE AVEC LA MEME FIGURE OBTENUE POUR LA CLASSIFICATION
+% EN DEUX GROUPES.
+%
+% QUESTION 5 RAPPORT :
+% COMMENTER.
+
+On observe pour la classification en deux groupes que seul la première Comp. comporte une grande proportion d'information. Et lorsqu'on classifie 4 groupes, se sont les 3 premières. On peut donc extrapoler et dire que le nombre de classes distinctes est le nombre de composantes ayant le plus d'information +1.
+
+---QUESTION 6 RAPPORT---
+On observe 6 classes en observant la proportion d'information.
+
+---QESTION 7---
+on identifie 5 variables

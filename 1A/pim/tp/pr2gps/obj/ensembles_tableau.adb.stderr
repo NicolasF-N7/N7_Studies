@@ -1,0 +1,4 @@
+ensembles_tableau.adb:1:09: warning: no entities of "Ada.Text_IO" are referenced
+ensembles_tableau.adb:1:19: warning: use clause for package "Text_IO" has no effect
+ensembles_tableau.adb:2:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+ensembles_tableau.adb:2:27: warning: use clause for package "Integer_Text_IO" has no effect

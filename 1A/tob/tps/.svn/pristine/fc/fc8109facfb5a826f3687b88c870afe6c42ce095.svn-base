@@ -1,0 +1,21 @@
+package allumettes;
+import java.util.Random;
+
+public class StrategieNaive implements Strategie {
+	Random rand;
+	/**
+	 * Construire une strategie naive
+	 */
+	public StrategieNaive() {
+		rand = new Random();
+	}
+	
+	/**
+	 * Obtenir le nombre d'allumettes à retirer selon la strategie naive
+	 */
+	public int nbAllumettesARetirer(Jeu jeu) {
+		//Renvoie un entier entre 1 et 3 inclus
+		return rand.nextInt(3)+1;
+	}
+
+}

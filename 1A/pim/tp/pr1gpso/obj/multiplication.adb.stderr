@@ -1,0 +1,12 @@
+multiplication.adb:11:11: warning: file name does not match unit name, should be "multiplications.adb"
+multiplication.adb:75:09: missing case values: -16#8000_0000# .. -1
+multiplication.adb:75:09: missing case values: 11 .. 16#7FFF_FFFF#
+multiplication.adb:83:53: invalid operand types for operator "+"
+multiplication.adb:83:53: left operand has type "Standard.Duration"
+multiplication.adb:83:53: right operand has type universal integer
+multiplication.adb:90:16: invalid operand types for operator "="
+multiplication.adb:90:16: left operand has type "Standard.Integer"
+multiplication.adb:90:16: right operand has a character type
+multiplication.adb:90:29: invalid operand types for operator "="
+multiplication.adb:90:29: left operand has type "Standard.Integer"
+multiplication.adb:90:29: right operand has a character type

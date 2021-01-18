@@ -1,0 +1,173 @@
+with Ada.Text_IO;                 use Ada.Text_IO;
+with Ada.Integer_Text_IO;         use Ada.Integer_Text_IO;
+with Ada.Float_Text_IO;           use Ada.Float_Text_IO;
+with Ada.Unchecked_Deallocation;
+
+package body Vecteurs_Creux is
+
+
+	procedure Free is
+		new Ada.Unchecked_Deallocation (T_Cellule, T_Vecteur_Creux);
+
+
+        procedure Initialiser (V : out T_Vecteur_Creux) is
+        begin
+                V := Null;
+        end Initialiser;
+
+
+	procedure Detruire (V: in out T_Vecteur_Creux) is
+        begin
+                if V = Null then
+                        Null;
+                else
+                        --Liberation de l'espace memoire
+                        Detruire(V.all.Suivant);
+                        Free(V);
+                end if;
+	end Detruire;
+
+
+	function Est_Nul (V : in T_Vecteur_Creux) return Boolean is
+	begin
+		return (V=Null);
+	end Est_Nul;
+
+
+	function Composante_Recursif (V : in T_Vecteur_Creux ; Indice : in Integer) return Float is
+        begin
+                if V=Null or else V.all.Indice > Indice then-- ou alors
+                        return 0.0;
+                elsif V.all.Indice = Indice then
+                        return V.all.Valeur;
+                else
+                        return Composante_Recursif(V.all.Suivant, Indice);
+                end if;
+        end Composante_Recursif;
+
+
+        function Composante_Iteratif (V : in T_Vecteur_Creux ; Indice : in Integer) return Float is
+                Vecteur_Restant: T_Vecteur_Creux;
+	begin
+                Vecteur_Restant := V;
+
+                --On parcourt la liste jusqu'a ce qu'on ait dépassé l'indice cherché ou jusq'au bout
+                while Vecteur_Restant /= Null loop
+                        --Si on a trouvé la cellule cherchée: on retourne la valeur de cette cellule
+                        if Vecteur_Restant.all.Indice = Indice then
+                                return V.all.Valeur;
+                        end if;--sinon on s'occupe du reste de la liste (de la queue)
+                        Vecteur_Restant := Vecteur_Restant.all.Suivant;
+                end loop;
+                return 0.0;
+
+	end Composante_Iteratif;
+
+
+        procedure Modifier (V : in out T_Vecteur_Creux ;
+                     Indice : in Integer ;
+                     Valeur : in Float ) is
+                Vecteur_Restant: T_Vecteur_Creux;
+                Vecteur_Restant_Precedent: T_Vecteur_Creux;
+        begin
+                Put_Line("Modification du vecteur: ");
+                Afficher(V);
+
+                if V=Null and Valeur=0.0 then
+                        Null;
+                elsif V = Null then--Donc Valeur /=0.0
+                        V := new T_Cellule'(Indice, Valeur, Null);
+                else--Sinon V contient au moins 1 cellule
+                        Vecteur_Restant_Precedent := V;
+                        Vecteur_Restant := V.all.Suivant;
+
+                        --Parcourt
+                        while (Vecteur_Restant /= Null ) loop
+                                Vecteur_Restant_Precedent := Vecteur_Restant;
+                                Vecteur_Restant := Vecteur_Restant.all.Suivant;
+                        end loop;
+
+                        --si Cellule dejà existante et Valeur/= 0.0: on modifie la valeur
+                        if Vecteur_Restant = Null and Valeur /= 0.0 then
+                                --Choix 1: créer nvll cellule, puis supprimer l'ancienne ---------------MARCHE PAS--------------------
+                                --Vecteur_Restant_Precedent := new T_Cellule'(Indice, Valeur, Null);
+
+                                --choix2: modifier valeur MARCHE
+                                Vecteur_Restant_Precedent.all.Valeur := Valeur;
+                        --Si Cellule d'incide Indice existe et V=0.0: on supprime cette cellule
+                        elsif Vecteur_Restant.all.Indice = Indice and Valeur = 0.0 then
+                                Vecteur_Restant_Precedent := Vecteur_Restant.all.Suivant;--on saute la cellule à supprimer
+                                Free(Vecteur_Restant);
+                        --On est arrivé à la FIN de a liste: ajout de nouvelle cellule après la dernier cellule de V
+                        elsif Vecteur_Restant.all.Indice = Indice and Valeur /= 0.0 then
+                                Vecteur_Restant.all.Valeur := Valeur;
+                        -- si il n'existe pas de cellule d'indice Indice et valeur non nulle: on insère la nvll cellule
+                        elsif Vecteur_Restant.all.Indice > Indice and Valeur /= 0.0 then
+                                Vecteur_Restant_Precedent := new T_Cellule'(Indice, Valeur, Vecteur_Restant);
+                        else
+                                Null;
+                        end if;
+                end if;
+                Put_Line("Vecteur modifie: ");
+                Afficher(V);
+
+	end Modifier;
+
+
+	function Sont_Egaux_Recursif (V1, V2 : in T_Vecteur_Creux) return Boolean is
+	begin
+		return False;	-- TODO : à changer
+	end Sont_Egaux_Recursif;
+
+
+	function Sont_Egaux_Iteratif (V1, V2 : in T_Vecteur_Creux) return Boolean is
+	begin
+		return False;	-- TODO : à changer
+	end Sont_Egaux_Iteratif;
+
+
+	procedure Additionner (V1 : in out T_Vecteur_Creux; V2 : in T_Vecteur_Creux) is
+	begin
+		Null;	-- TODO : à changer
+	end Additionner;
+
+
+	function Norme2 (V : in T_Vecteur_Creux) return Float is
+	begin
+		return 0.0;	-- TODO : à changer
+	end Norme2;
+
+
+	Function Produit_Scalaire (V1, V2: in T_Vecteur_Creux) return Float is
+	begin
+		return 0.0;	-- TODO : à changer
+	end Produit_Scalaire;
+
+
+	procedure Afficher (V : T_Vecteur_Creux) is
+	begin
+		if V = Null then
+                        Put ("--E");
+                        New_Line;
+		else
+			Put ("-->[ ");
+			Put (V.all.Indice, 0);
+			Put (" | ");
+			Put (V.all.Valeur, Fore => 0, Aft => 1, Exp => 0);
+			Put (" ]");
+			Afficher (V.all.Suivant);
+		end if;
+	end Afficher;
+
+
+	function Nombre_Composantes_Non_Nulles (V: in T_Vecteur_Creux) return Integer is
+	begin
+		if V = Null then
+			return 0;
+		else
+			return 1 + Nombre_Composantes_Non_Nulles (V.all.Suivant);
+		end if;
+	end Nombre_Composantes_Non_Nulles;
+
+
+end Vecteurs_Creux;

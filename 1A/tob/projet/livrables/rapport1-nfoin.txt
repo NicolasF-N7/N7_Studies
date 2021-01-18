@@ -1,0 +1,3 @@
+#Participation à l'élaboration du diamgramme UML.#
+#Création des classes (vides) nécessaires au patron MVC.#
+#Debut de création de la classe Attaque.#

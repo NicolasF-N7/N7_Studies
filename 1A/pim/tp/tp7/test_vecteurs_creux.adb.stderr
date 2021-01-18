@@ -1,0 +1,6 @@
+test_vecteurs_creux.adb:56:19: warning: procedure "Tester_Norme2" is not referenced
+test_vecteurs_creux.adb:78:19: warning: procedure "Tester_Composante" is not referenced
+test_vecteurs_creux.adb:208:19: warning: procedure "Tester_Sont_Egaux_Iteratif" is not referenced
+test_vecteurs_creux.adb:216:19: warning: procedure "Tester_Produit_Scalaire" is not referenced
+test_vecteurs_creux.adb:247:19: warning: procedure "Tester_Additionner_Partage" is not referenced
+test_vecteurs_creux.adb:275:19: warning: procedure "Tester_Additionner" is not referenced

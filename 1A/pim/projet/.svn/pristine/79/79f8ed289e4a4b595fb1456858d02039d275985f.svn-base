@@ -1,0 +1,61 @@
+-- Test du module arbre_genealogique.
+with Arbre_Genealogique; use Arbre_Genealogique;
+with Calendar; use Calendar;
+procedure test_arbre_genealogique is
+    
+    package Arbre_Test is 
+            new Arbre_Genealogique;
+    use Arbre_Test;
+    
+    Ab: T_Arbre_Genealogique;
+    NicolasJames: T_Donnee;
+    JuliaDenam: T_Donnee;
+    ChrisJames: T_Donnee;
+begin
+    --Initialisation des 3 individus:
+    --Ab.Registre.Compteur + 1
+    ChrisJames = T_Donnee'(1,"christopher","James",Time_Of(1998,12,5,0.0),Homme);
+    NicolasJames = T_Donnee'(2, "Nicolas", "James", Time_Of(1960,4,14,0.0),Homme);
+    JuliaDenam = T_Donnee'(3, "Julia", "Denam", Time_Of(1965,8,9,0.0),Femme);
+    
+    -- On initialise un arbre généalogique avec comme seul noeud celui de Christopher.
+    Initialiser_Arbre_Genealogique(Ab, ChrisJames);
+    
+    -- On vérifie que l'arbre ne contient qu'un seul noeud.
+    pragma assert (Est_Vide(Ab));
+    put_line("L'arbre est bien vide à cette étape.");
+    
+    -- On vérifie que la donnée associée à Christopher est bien présente.
+    pragma assert (Est_Present_Registre(Ab.Registre, ChrisJames));
+    put_line("Christopher est bien présent dans l'arbre.");
+    
+    -- On affiche l'arbre.               
+    Afficher(Ab);
+    
+    -- On ajoute deux parents au noeud de Christopher.
+    Ajouter(Ab, NicolasJames,ChrisJames);
+    Ajouter(Ab,JuliaDenam,ChrisJames);
+    -- On vérifie que le père Nicolas et la mère Julia sont bien présentes dans le registre.
+    pragma assert (Est_Present_Registre(Ab.Registre,Ab,NicolasJames));
+    pragma assert (Est_Present_Registre(Ab.Registre,Ab,JuliaDenam));
+    put_line("Nicolas et Julia, les parents de Christopher sont bien présents.");
+    
+    -- On vérifie que Christopher a bien 2 ancêtres et 2 parents.
+    pragma assert (Nombres_Ancetres(Ab,ChrisJames) = 2);
+    pragma assert (Nombre_Parents(Ab,ChrisJames) = 2);
+    put_line("Le nombre d'ancêtres de Christopher est de 2 et il a 2 parents.");
+    
+    -- On affiche l'arbre.
+    Afficher(Ab);
+    -- On supprime le noeud associé à Christopher et tous ces ancêtres.
+    Supprimer(Ab, ChrisJames);
+    -- On vérifie que ses parents et lui ne sont plus présent.
+    pragma assert (not(Est_Present_Registre(Ab.Registre,ChrisJames)));          
+    pragma assert (not(Est_Present_Registre(Ab.Registre,NicolasJames)));
+    pragma assert (not(Est_Present_Registre(Ab.Registre,JuliaDenam)));
+    put_line("Christopher et ses parents ne sont plus présents dans l'arbre.");
+    --On détruit l'arbre.
+    Detruire(Ab);
+    put_line("L'arbre est détruit.");                
+   
+end test_arbre_genealogique;

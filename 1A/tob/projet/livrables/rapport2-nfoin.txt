@@ -1,0 +1,3 @@
+#Restructuration des unités: Une interface, une classe abstraite et des classes filles#
+#Réorganisation du gestionnaire de troupes, adapté à la nouvelle structure des unités#
+#Création de la classe Attaque pour gérer les attaques entre planètes.#

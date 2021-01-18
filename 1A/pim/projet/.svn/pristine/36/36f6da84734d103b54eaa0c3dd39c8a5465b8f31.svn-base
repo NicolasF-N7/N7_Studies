@@ -1,0 +1,63 @@
+--Specification du module registre.
+
+generic
+    type T_Element is limited private;
+
+package Registre is
+
+    type T_Registre is limited private; --Type registre.
+    
+    --Initialiser un arbre binaire.
+    procedure Initialiser (Arbre : out T_Registre) with
+            Post => Est_Vide(Arbre);
+    
+    --Savoir si un arbre ne contient aucun élément.
+    function Est_Vide (Arbre : in T_Registre) return Boolean;
+    
+    --Ajouter le noeud de clé Cle dans un arbre.
+    procedure Ajouter (Arbre : in out T_Registre; Cle : in T_Element; Donnee : in Character) with
+    
+    -- Connaitre la donnée a partir d'une cle. Rajouter l'exception.
+    function La_Donnee (Arbre : in T_Registre; Cle : in T_Element);
+    
+    -- Modifier un element dans l'arbre.
+    procedure Modifier (Arbre : in out T_AB; Cle : in T_Element; Donnee : in Character) with 
+    
+    -- Connaitre la taille (le nombre d'individus) d'un arbre donné.
+    function Taille (Arbre : in T_AB) return Integer with
+    post => Taille'result >=0 and (Taille'result=0) = Est_Vide(Arbre);
+    
+    -- Supprimer un individu et tout ses ancêtres.
+    procedure Supprimer(Arbre : in out T_AB; Cle : in T_Element; Donnee : in Character) with
+            pre => Est_Present(Arbre, Cle),
+            post => not Est_Present(Arbre, Cle);
+    
+    --Detruire un arbre.
+    procedure Detruire (Arbre : in out T_AB) with
+            post => Est_Vide(Arbre);
+     
+    --Afficher un arbre binaire dans le sens croissant des indices.
+    procedure Afficher (Arbre : in T_AB);
+        
+    Type T_Sexe is (Femme, Homme);
+    
+    Type T_Parents is
+        record
+            Pere: Integer;
+            Mere: Integer;
+        end record;
+    
+    private 
+    	type T_Noeud;
+	type T_Registre is access T_Noeud;
+	type T_Noeud is
+        record
+            Donnee : Character;
+	    Cle : T_Element;
+	    Sous_Arbre_Gauche : T_AB;
+            Sous_Arbre_Droit : T_AB;
+        end record;
+end Arbre_Binaire;
+    
+
+end Registre;

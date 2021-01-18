@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------
+--  Auteur   : 
+--  Objectif : 
+--------------------------------------------------------------------------------
+
+with Ada.Text_IO;           use Ada.Text_IO;
+with Ada.Integer_Text_IO;   use Ada.Integer_Text_IO;
+with Ada.Calendar;          use Ada.Calendar;
+With Alea;
+
+procedure Multiplications is
+Continuer: Boolean;
+Table: Integer;
+Erreur: Integer;
+begin
+    loop-- R1 boucle principale
+	--Demander quelle table réviser
+	Put("Table à réviser?");
+	Get(Table);
+	while Table < 1 or Table > 10 loop
+		Put("Table à réviser (Comprise entre 1 et 10)?");
+		Get Table;
+	end loop;
+
+	--Faire réviser la table choisie
+	Erreur := 0;
+	for i in 1..10 loop
+		
+	end loop;
+
+    end loop;
+    null;
+end Multiplications;

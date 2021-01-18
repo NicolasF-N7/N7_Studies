@@ -1,0 +1,57 @@
+-- Specification du module arbre_binaire (on ne garde que la cle et pas les données).
+generic
+    type T_Element is private;
+
+package Arbre_Binaire is
+    
+    type T_AB is limited private;--type arbre binaire
+    
+    --Initialiser un arbre binaire.
+    procedure Initialiser (Arbre : out T_AB) with
+            Post => Est_Vide(Arbre);
+    
+    --Savoir si un arbre ne contient aucun élément.
+    function Est_Vide (Arbre : in T_AB) return Boolean;
+    
+    --Ajouter le noeud de clé Cle dans un arbre.
+    procedure Ajouter (Arbre : in out T_AB; Donnee : in T_Element) with
+            Post => Est_Present(Arbre, Donnee);
+    
+    -- Savoir si un individu (Donnee) est présent dans un arbre donné.
+    function Est_Present (Arbre : in T_AB; Donnee : in T_Element) return Boolean;
+    
+    -- Modifier un element dans l'arbre.
+    procedure Modifier (Arbre : in out T_AB; Donnee : in T_Element) with 
+            post => Est_Present(Arbre,Donnee);
+    
+    -- Connaitre la taille (le nombre d'individus) d'un arbre donné.
+    function Taille (Arbre : in T_AB) return Integer with
+    post => Taille'result >=0 and (Taille'result=0) = Est_Vide(Arbre);
+    
+    -- Supprimer un individu et tout ses ancêtres.
+    procedure Supprimer(Arbre : in out T_AB; Donnee : in T_Element) with
+            pre => Est_Present(Arbre, Donnee),
+            post => not Est_Present(Arbre, Donnee);
+    
+    --Detruire un arbboure.
+    procedure Detruire (Arbre : in out T_AB) with
+            post => Est_Vide(Arbre);
+     
+    --Afficher un arbre binaire dans le sens croissant des indices.
+    procedure Afficher (Arbre : in T_AB);
+    
+private 
+    	type T_Noeud;
+	type T_AB is access T_Noeud;
+	type T_Noeud is
+                record
+			Donnee : T_Element;
+			Sous_Arbre_Gauche : T_AB;
+			Sous_Arbre_Droit : T_AB;
+		end record;
+end Arbre_Binaire;
+
+
+
+
+

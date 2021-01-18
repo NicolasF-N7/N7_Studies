@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 50" line=" 153" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr1/LISEZ-MOI.txt</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 163" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr1/LISEZ-MOI.txt</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp5/piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp5/afficher_un_entier.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp5/piles.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 163" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr1/LISEZ-MOI.txt</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/dates.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/dates.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/exemple_dates_erreurs.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 47" line=" 12" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/dates.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/stocks_materiel.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/stocks_materiel.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 61" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/stocks_materiel.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/tp4/scenario_stock.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

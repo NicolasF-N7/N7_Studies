@@ -1,0 +1,74 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import java.awt.Color;
+
+public class CercleTest{
+	// précision pour les comparaisons réelle
+	public final static double EPSILON = 0.001;
+	
+	private static void assertEqualsPoints(String s, Point a, Point b) {
+		assertEquals(s, a.getX(), b.getX(), EPSILON);
+		assertEquals(s, a.getY(), b.getY(), EPSILON);
+	}
+	
+	//public static void main(String[] args) {
+	@Test
+	public void testCercle() {
+		Point A = new Point(1, -2);
+		Point B = new Point(2, 1);
+		Point C = new Point(-4, 0);
+		Point E = new Point(-8, -4);
+		Point AE = new Point(-7.0/2, -3);
+		// Construire les cercles
+		Cercle C1 = new Cercle(A, E);
+		Cercle C2 = Cercle.creerCercle(B, C);
+		
+		//Test getCentre
+		assertEqualsPoints("test constructeur points diametralement opposés",
+				C1.getCentre(), AE);
+		
+		assertEqualsPoints("test creerCercle",
+				C2.getCentre(), B);
+		
+		//Test getRayon
+		assertEquals(C1.getRayon(), Math.sqrt(85)/2, EPSILON);
+		assertEquals(C2.getRayon(), Math.sqrt(37), EPSILON);
+		
+		//Test getDiametre
+		assertEquals(C1.getDiametre(), Math.sqrt(85), EPSILON);
+		assertEquals(C2.getDiametre(), 2*Math.sqrt(37), EPSILON);
+		
+		//Test contient
+		assertTrue(C1.contient(C));
+		assertTrue(C2.contient(B));
+		
+		//Test perimetre
+		assertEquals(C1.perimetre(), 2*Cercle.PI*C1.getRayon(), EPSILON);
+		assertEquals(C2.perimetre(), 2*Cercle.PI*C2.getRayon(), EPSILON);
+		
+		//Test aire
+		assertEquals(C1.aire(), Cercle.PI*C1.getRayon()*C1.getRayon(), EPSILON);
+		assertEquals(C2.aire(), Cercle.PI*C2.getRayon()*C2.getRayon(), EPSILON);
+		
+		/*// Test modification couleur
+		Color clr= Color.cyan;
+		C2.setCouleur(clr);
+		Color clrTmp=C2.getCouleur();
+		clr = Color.red;
+		assertEquals("Modif couleur E18", C2.getCouleur(), clrTmp);
+		
+		// Test modification couleur
+		Point centreC1= C1.getCentre();
+		A.translater(-4, 6);
+		assertEqualsPoints("Modif point E18", centreC1, C1.getCentre());
+		
+		// E1
+		C1.translater(-4, 6);// C1 a pour centre (-3,4)
+		assertEqualsPoints("Translater cercle E1", A, C1.getCentre());
+		
+		//E5*/
+		
+		
+	}
+}

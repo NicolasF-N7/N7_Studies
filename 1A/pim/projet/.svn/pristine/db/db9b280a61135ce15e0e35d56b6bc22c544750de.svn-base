@@ -1,0 +1,33 @@
+with Ada.Text_IO;use  Ada.Text_IO;
+with Calendar; use Calendar;
+with Arbre_Binaire; use Arbre_Binaire;
+
+package Registre is--Registre est un Arbre binaire de Recherche
+
+        type T_Registre is limited private;
+
+
+        procedure Initialiser(Abr: out T_ABR) with
+		Post => Est_Vide (Abr);
+
+
+
+private
+        type T_Noeud;
+        type T_Registre is access T_Noeud;
+	type T_Noeud is
+		record
+                    Id : Integer;
+                    Prenom: String;
+                    Nom: String;
+                    Date_Naissance: Time;
+                    Sexe: T_Sexe;
+                    Sous_Arbre_Gauche : T_Registre;
+                    Sous_Arbre_Droit : T_Registre;
+			-- Invariant
+			--    Pour tout noeud N dans Sous_Arbre_Gauche, N.Id < Id
+			--    Pour tout noeud N dans Sous_Arbre_Droit,  N.Id > Id
+		end record;
+
+
+end Registre;

@@ -1,0 +1,158 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Arbre_Genealogique;
+with registre; 
+with Liste_Chainee; use Liste_Chainee;
+with Ada.Integer_Text_IO;   use Ada.Integer_Text_IO;
+with Calendar; use Calendar;
+
+procedure main is
+    
+    --retourne false si le format aaa/mm/jj non respecte
+    function get_date(date: out Time) return Boolean is
+        year: Integer := 0;
+        month: Integer := 0;
+        day: Integer := 0;
+        buffer: Character;
+        valide_entry: Boolean := True;
+    begin
+        get(year);
+        get(buffer);--pour enlever le /
+        if buffer /= '/' then
+            valide_entry := False;
+        end if;
+        
+        get(month);
+        get(buffer);
+        if buffer /= '/' then
+            valide_entry := False;
+        end if;
+        
+        get(day);
+        get(buffer);
+        if buffer /= '/' then
+            valide_entry := False;
+        end if;
+        date := Time_of(year, month, day, 0.0);
+        return valide_entry;
+    end get_date;
+    
+    --Variables
+    
+    --Le booléan permettant de terminer le programme
+    continuer : boolean := true;
+    
+    --L'arbre généalogique utilisé et initialisé à chaque début de programme
+    Arbre : T_Arbre_Genealogique; 
+    
+    --Le registre utilisé et initialisé à chaque début de programme
+    Registre : T_Registre;
+    
+    --La racine de l'arbre 
+    Racine : T_Donnee;
+    
+    --Le choix de l'utilisateur pour l'action à effectuer sur son arbre
+    choix : integer;
+    
+    --La liste des homonymes lors de l'ajout d'un parent
+    Liste_Homonymes : Liste_Donnee;
+    
+    --Le choix de l'utilisateur pour le bon noeud affiché dans Liste_Homonymes lors de l'ajout d'un parent
+    choix_homonymes : Integer;
+    
+    --Les données pour l'ajout d'un parent
+    Donnee_Noeud : T_Donnee;
+    Donnee_Parent : T_Donnee;
+    
+begin
+    --On demande à l'utilisateur les données de la racine pour initialiser l'arbre
+    Put_Line("Pour initialiser votre arbre, Veuillez entrer un noeud racine pour votre arbre");
+    Put_Line("Donnez son Prénom:");
+    Get(Racine.Prenom);
+    Put_Line("Donnez son Nom");
+    Get(Racine.Nom);
+    Put_Line("Donnez sa date de naissance");
+    get(Racine.Date_Naissance);
+    Put_Line("Donnez son sexe");
+    Get(Racine.Sexe);
+    --L'identifiant de la racine est prit égal à 0
+    Racine.Id := 0;
+    --On initialise l'arbre avec la racine et on l'affiche.
+    Initialiser_Arbre_Genealogique(Arbre, Racine);
+    Initialiser_Registre(Registre);
+    Put_Line("L'arbre et le registre sont initialisés:");
+    Afficher(Arbre);
+    --Boucle qui permet de faire des modifications dans l'arbre ou de quitter le programme
+    while continuer loop
+        --On demande à l'utilisateur l'action qu'il souhaite faire
+        Put_Line("Quelle action souhaitez-vous faire parmis celles-ci?");
+        Put_Line("1 - Ajouter un parent à un noeud");
+        Put_Line("2 - Obtenir le nombre d'ancêtres connus d'un individu");
+        Put_Line("3 - Obtenir l'ensemble des ancêtres situés à une certaine génération d'un noeud");
+        Put_Line("4 - Afficher l'arbre à partir d'un noeud");
+        Put_Line("5 - Afficher l'arbre ");
+        Put_Line("6 - Supprimer un noeud et ses ancêtres");
+        Put_Line("7 - Obtenir l'ensemble des individus qui n'ont qu'un parent connu");
+        Put_Line("8 - Obtenir l'ensemble des individus dont les deux parents sont connus");
+        Put_Line("9 - Obtenir l'ensemble des individus dont les deux parents sont inconnus");
+        Put_Line("10 - Afficher les ancêtres d'un individu sur n générations");
+        Put_Line("11 - Vérifier si deux individus ont au moins un ancêtre homonyme");
+        Put_Line("0 - Quitter ");
+        Put_Line("Donnez votre choix:");
+        Get(choix);
+        --Si le choix n'est pas compris entre ceux proposés, on lui redemande
+        while choix > 11 or choix < 0 loop
+            Put_Line("Votre choix doit être compris entre 0 et 10");
+            Get(choix);
+        end loop;
+        Skip_Line;--vider le buffer de l'entree clavier pour la saisie suivante
+        --Selon le choix on effectue une action
+        case choix is 
+            when 0 => continuer := False;
+                Detruire(Arbre);
+                Detruire_Registre(Registre);
+            when 1 => 
+                --On demande le nom, prénom liés au noeud que la personne souhaite utiliser
+                Put_Line("Veuillez donner le noeud à partir duquel vous souhaitez ajouter cette personne");
+                get(Donnee_Noeud.Prenom);
+                Put_Line("Veuillez donner son nom");
+                get(Donnee_Noeud.Nom);
+                --On cherche ses homonymes et on les affiche
+                --Mettre une condition si on ne trouve personne? 
+                Homonymes(Registre,Donnee_Noeud.Prenom,Donnee_Noeud.Nom,Liste_Homonymes);
+                if Est_Liste_Vide(Liste_Homonymes) then 
+                    Put_Line("Il n'y a personne de ce prénom et nom dans l'arbre. Veuillez recommencer avec une autre donnée.");
+                else  
+                    Put_Line(Liste_Donnee'Image(Liste_Homonymes);
+                    Put_Line("Veuillez choisir la bonne personne parmi celles-ci");
+                    Get(choix_homonymes);
+                    Donnee_Parent := Liste_Homonymes(choix_homonymes);
+                    Put_Line("Veuillez entrer les données pour le parent à ajouter:");         
+                    Put_Line("Donnez son Prénom:");
+                    Get(Donnee_Parent.Prenom);
+                    Put_Line("Donnez son Nom");
+                    Get(Donnee_Parent.Nom);
+                    Put_Line("Donnez sa date de naissance");
+                    get(Donnee_Parent.Date_Naissance);
+                    Put_Line("Donnez son sexe");
+                    Get(Donnee_Parent.Sexe);
+                    Donnee_Parent.Id := Registre.Nb_individus + 1;      
+                    Ajouter(Arbre,Donnee_Noeud,Donnee_Parent);         
+                    Ajouter_Registre(Registre, -- Donnee?);
+                    Afficher(Arbre);
+                end if;
+                             
+           when 2 => Put_Line("Veuillez donner l'identifiant du parent");
+                get(Racine.Id);
+                Put_Line("Veuillez donner le prénom de ce parent");
+                get(Racine.Prenom);
+                Put_Line("Veuillez donner son nom");
+                get(Racine.Nom);
+                Put_Line("Veuillez donner sa date de naissance (jj/mm/aaaa)");
+                get_date(Racine.Date_Naissance);
+                Put_Line("Veuillez donner son sexe");
+                get(Racine.sexe);
+                
+        end case;
+    end loop;
+            
+end main;

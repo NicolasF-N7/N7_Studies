@@ -1,0 +1,16 @@
+total 260
+drwxrwxr-x 5 nfoin nfoin   4096 sept. 11 08:40 Bat_A
+drwxrwxr-x 5 nfoin nfoin   4096 sept. 11 08:43 Bat_B
+drwxrwxr-x 5 nfoin nfoin   4096 sept. 11 08:48 Bat_C
+-rw-rw-r-- 1 nfoin nfoin  30720 sept. 11 10:02 compress.tar
+-rwxrwxr-x 1 nfoin nfoin   8584 sept. 11 09:34 etape2
+-rw-rw-r-- 1 nfoin nfoin   1082 sept. 11 09:34 etape2.c
+-rw-rw-r-- 1 nfoin nfoin    187 sept. 16 10:46 etape3.txt
+-rw-rw-r-- 1 nfoin nfoin      0 sept. 16 11:32 f.log
+-rwx------ 1 nfoin nfoin  50216 sept. 11 08:11 jdp
+drwxr-x--- 5 nfoin nfoin   4096 sept. 16 10:44 Progs_C
+-rw-rw-r-- 1 nfoin nfoin  10240 sept. 16 10:35 progs_C.tar
+drwx------ 7 nfoin nfoin   4096 sept. 16 11:08 Projets_C
+-rw-rw-r-- 1 nfoin nfoin    618 sept. 16 10:18 result.tar.gz
+-rw-rw-r-- 1 nfoin nfoin 122880 sept. 16 10:22 tps_C.tar
+slt

@@ -1,0 +1,63 @@
+-- Specification du module arbre_binaire qui crée une structure de type arbre binaire pouvant contenir des informations T_Element qui sont en réalité des 
+--entiers (des identifiants uniques).
+
+generic
+    type T_Element is private;
+
+package Arbre_Binaire is
+    
+    Parents_Already_Defined_Exception: Exception;
+    
+    type T_AB is limited private;--type arbre binaire
+    
+    --Initialiser un arbre binaire avec un noeud initial.
+    procedure Initialiser_AB (Arbre : out T_AB; Donnee : in T_Element);
+    
+    --Savoir si un arbre ne contient aucun élément.
+    function Est_Vide_AB (Arbre : in T_AB) return Boolean;
+    
+    --Ajouter le noeud Donnee dans un arbre à partir de l'identifiant du père id.
+    procedure Ajouter_AB (Arbre : in out T_AB; Pere : in T_Element; Fils : in T_Element) with
+            Pre => Est_Present_AB(Arbre, Pere),
+            Post => Est_Present_AB(Arbre, Fils);
+    
+    -- Savoir si un individu (Donnee) est présent dans un arbre.
+    function Est_Present_AB (Arbre : in T_AB; Donnee : in T_Element) return Boolean;
+    
+    -- Connaitre la taille (le nombre d'individus) d'un arbre.
+    function Taille_AB (Arbre : in T_AB) return Integer;
+    
+    --Renvoie le nombre de fils du noeud racine
+    function Nombre_Fils(Arbre : in T_AB) return Integer;
+    
+    --rrenvoie le sous arbre gauche de arbre
+    function Get_sous_arbre_gauche(Arbre : in T_AB) return T_AB;
+    
+    function Get_sous_arbre_droit(Arbre : in T_AB) return T_AB;
+    
+    function Get_donnee(Arbre : in T_AB) return T_Element;
+    
+    -- Supprimer un individu (Donnée) et tout ses ancêtres.
+    procedure Supprimer_AB(Arbre : in out T_AB; Donnee : in T_Element) with
+            pre => Est_Present_AB(Arbre, Donnee),
+            post => not Est_Present_AB(Arbre, Donnee);
+    
+    --Detruire un arbre.
+    procedure Detruire_AB (Arbre : in out T_AB) with
+            post => Est_Vide_AB(Arbre);
+
+private 
+    	type T_Noeud;
+	type T_AB is access T_Noeud;
+	type T_Noeud is
+                record
+			Donnee : T_Element;
+			Sous_Arbre_Gauche : T_AB;
+			Sous_Arbre_Droit : T_AB;
+		end record;
+end Arbre_Binaire;
+
+
+
+
+

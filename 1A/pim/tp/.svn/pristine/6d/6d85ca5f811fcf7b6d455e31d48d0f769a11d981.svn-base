@@ -1,0 +1,18 @@
+R0: Afficher le plus petit et le plus grand élément d'une série d'entiers naturels lus au clavier.  La saisie de la série se termine par 0
+
+R1:
+Afficher la consigne
+Saisir un entier
+Répeter:
+    mettre à jour min et max
+    saisir un entier
+Tant que entier different de -1
+Afficher min et max
+
+R2:
+Comment Afficher *: Put("*")
+Comment Saisir un entier: Get(Entier)
+Comment Mettre à jour min et max: if Entier < min then min:=entier
+elsif Entier > max then max := Entier
+Comment entier different de -1: Entier /= -1
+

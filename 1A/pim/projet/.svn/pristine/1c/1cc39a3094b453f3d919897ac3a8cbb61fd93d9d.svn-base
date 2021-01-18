@@ -1,0 +1,56 @@
+with Ada.Text_IO;use  Ada.Text_IO;
+with Calendar; use Calendar;
+with Liste_Chainee;
+
+
+package body Registre is
+
+        procedure Initialiser_Registre (Registre : out T_Registre) is
+        begin
+                for i in 1..Capacite loop
+                        Registre(i) := Null;
+                end loop;
+        end Initialiser_Registre;
+
+
+        function Est_Registre_Vide (Registre : in T_Registre) return Boolean is
+                Resultat: Boolean;
+        begin
+                Resultat:= True;
+                for i in 1..Capacite loop
+                        if Registre(i) /= Null then
+                                Resultat := False;
+                        end if;
+                end loop;
+                return Resultat;
+        end Est_Registre_Vide;
+
+
+        function Est_Present_Registre (Registre : in T_Registre; Donnee : in T_Donnee) return Boolean is
+        begin
+                return Present(Registre(Donnee.Id mod Capacite, Donnee));
+        end Est_Present_Registre;
+
+
+        function Homonymes (Registre : in T_Registre; Nom : in String; Prenom : in String) return T_Liste is
+
+                --Renvoie les T_Donnee des personnes homonymes à Nom Prenom dans la liste Liste
+                function Homonymes_Liste(Liste : in T_Liste; Nom : in String; Prenom : in String) return T_Liste is
+                begin
+                        if Liste=Null then
+                                return Null;
+                        --Si en tete de Liste est une personne Homonyme à prenom, nom
+                        elsif Liste.all.Valeur.Nom = Nom and Liste.all.Valeur.Prenom = Prenom then
+                                return new T_Cellule'(Liste.all.Valeur, Homonymes_Liste(Liste.all.Suivant, Nom, Prenom));
+                        else
+
+                        end if;
+
+
+                end Homonymes_Liste;
+
+        begin
+
+        end Homonymes;
+
+end Registre;

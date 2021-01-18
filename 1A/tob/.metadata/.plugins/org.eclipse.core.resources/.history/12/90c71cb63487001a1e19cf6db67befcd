@@ -1,0 +1,11 @@
+package allumettes;
+
+public class Test {
+
+	public static void main(String[] args) {
+		String[] arguments = {"-confiant", "j1@naive", "j2@expert"};
+		Partie.main(arguments);
+		
+	}
+
+}

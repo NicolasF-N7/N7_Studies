@@ -1,0 +1,2 @@
+Q1- Image de tailles 264*400
+X est une matrice de 3 colonnes, dont chaque colonne est un vecteur représentant l'image selon la composante R, V ou B

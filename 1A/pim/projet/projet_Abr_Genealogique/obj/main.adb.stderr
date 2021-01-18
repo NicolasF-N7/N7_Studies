@@ -1,0 +1,3 @@
+main.adb:4:06: warning: redundant with clause
+main.adb:221:05: warning: variable "Donne1" is never read and never assigned
+main.adb:222:05: warning: variable "Donne2" is never read and never assigned

@@ -1,0 +1,185 @@
+
+package body Arbre_Genealogique is
+
+    function Est_Vide (Arbre : in T_Arbre_Genealogique) return boolean is
+    begin
+        --return Est_Vide_AB(Arbre.Arbre) and Est_Registre_Vide(Arbre.Registre);
+        return Est_Vide_AB(Arbre);
+    end Est_Vide;
+
+    procedure Initialiser_Arbre_Genealogique(Arbre: out T_Arbre_Genealogique; Racine : in Integer) is
+    begin
+        Initialiser_AB(Arbre , Racine);
+    end Initialiser_Arbre_Genealogique;
+
+
+    function Est_Present_Arbre_Genealogique(Arbre: in T_Arbre_Genealogique; Id_Noeud : in Integer) return Boolean is
+    begin
+        return Est_Present_AB(Arbre, Id_Noeud);
+    end Est_Present_Arbre_Genealogique;
+
+
+    procedure Ajouter_Arbre_Genealogique(Arbre: in out T_Arbre_Genealogique; Id_Fils : in Integer; Id_Parent: in Integer) is
+    begin
+        --attention Id_Fils correspond au pere dans l'arbre binaire
+        Ajouter_AB(Arbre, Id_Fils, Id_Parent);
+    end Ajouter_Arbre_Genealogique;
+
+
+    function Nombres_Ancetres (Arbre : in T_Arbre_Genealogique; Id_Noeud : in Integer) return Integer is
+    begin
+        if Est_Vide_AB(Arbre) then
+            return 0;
+        elsif Get_donnee(Arbre) /= Id_Noeud then
+            return Nombres_Ancetres(Get_sous_arbre_gauche(Arbre), Id_Noeud) + Nombres_Ancetres(Get_sous_arbre_droit(Arbre), Id_Noeud);
+        elsif Get_donnee(Arbre) = Id_Noeud then
+            return Taille_AB(Arbre);
+        else
+            return 0;
+        end if;
+    end Nombres_Ancetres;
+
+    function Nombre_Parents(Arbre: in T_Arbre_Genealogique; Id_Noeud : in Integer) return Integer is
+    begin
+         if Est_Vide_AB(Arbre) then
+            return 0;
+        elsif Get_donnee(Arbre) /= Id_Noeud then
+            return Nombre_Parents(Get_sous_arbre_gauche(Arbre), Id_Noeud) + Nombre_Parents(Get_sous_arbre_droit(Arbre), Id_Noeud);
+        elsif Get_donnee(Arbre) = Id_Noeud then
+                return Nombre_Fils(Arbre);
+        else
+            return 0;
+        end if;
+    end Nombre_Parents;
+
+    function Un_Parent (Arbre: in T_Arbre_Genealogique) return T_Liste is
+        Liste: T_Liste;
+    begin
+        Initialiser_Liste(Liste);
+        if Est_Vide_AB(Arbre) then
+            return Liste;
+        elsif Nombre_Fils(Arbre) = 1 then
+            Ajouter_Liste(Liste, Get_donnee(Arbre));
+            Concat(Liste, Un_Parent(Get_sous_arbre_droit(Arbre)));--Liste est le resulat de la concatenation
+            Concat(Liste, Un_Parent(Get_sous_arbre_gauche(Arbre)));
+            return Liste;
+        else
+            Concat(Liste, Un_Parent(Get_sous_arbre_droit(Arbre)));
+            Concat(Liste, Un_Parent(Get_sous_arbre_gauche(Arbre)));
+            return Liste;
+        end if;
+    end Un_Parent;
+
+
+    function Deux_Parents (Arbre : in T_Arbre_Genealogique) return T_Liste is
+        Liste: T_Liste;
+    begin
+       Initialiser_Liste(Liste);
+        if Est_Vide_AB(Arbre) then
+            return Liste;
+        elsif Nombre_Fils(Arbre) = 2 then
+            Ajouter_Liste(Liste, Get_donnee(Arbre));
+            Concat(Liste, Deux_Parents(Get_sous_arbre_droit(Arbre)));--Liste est le resultat de la concatenation
+            Concat(Liste, Deux_Parents(Get_sous_arbre_gauche(Arbre)));
+            return Liste;
+        else
+            Concat(Liste, Deux_Parents(Get_sous_arbre_droit(Arbre)));
+            Concat(Liste, Deux_Parents(Get_sous_arbre_gauche(Arbre)));
+            return Liste;
+        end if;
+    end Deux_Parents;
+
+    function Inconnus (Arbre : in T_Arbre_Genealogique) return T_Liste is
+        Liste: T_Liste;
+    begin
+        Initialiser_Liste(Liste);
+        if Est_Vide_AB(Arbre) then
+            return Liste;
+        elsif Nombre_Fils(Arbre) = 0 then
+            Ajouter_Liste(Liste, Get_donnee(Arbre));
+            Concat(Liste, Inconnus(Get_sous_arbre_droit(Arbre)));--Liste est le resulat de la concatenation
+            Concat(Liste, Inconnus(Get_sous_arbre_gauche(Arbre)));
+            return Liste;
+        else
+            Concat(Liste, Inconnus(Get_sous_arbre_droit(Arbre)));
+            Concat(Liste, Inconnus(Get_sous_arbre_gauche(Arbre)));
+            return Liste;
+        end if;
+    end Inconnus;
+
+    function Fils(Arbre: in T_Arbre_Genealogique; Noeud : in Integer) return Integer is
+        F_G: Integer:= 0;
+        F_D: Integer:= 0;
+    begin
+        if Est_Vide_AB(Arbre) then
+            return -1;
+        elsif Get_donnee(Get_sous_arbre_droit(Arbre)) = Noeud or Get_donnee(Get_sous_arbre_gauche(Arbre)) = Noeud then
+            return Get_donnee(Arbre);
+        else
+            --on retourne la valeur de Fils du sous arbre gauche/droit si le noeud est present dans sous arbregauche/droit
+            F_G:= Fils(Get_sous_arbre_gauche(Arbre), Noeud);
+            F_D:= Fils(Get_sous_arbre_droit(Arbre), Noeud);
+            if F_G >= 0 then
+                return F_G;
+            else
+                return F_D;
+            end if;
+        end if;
+    end Fils;
+
+    function Parents(Arbre: in out T_Arbre_Genealogique; Noeud : in Integer) return T_Parents is
+        Parents :T_Parents;
+        Parents_sous_arbre_gauche: T_Parents;
+        Parents_sous_arbre_droit: T_Parents;
+    begin
+        Parents := T_Parents'(-1, -1);
+
+        if Est_Vide_AB(Arbre) then
+            return Parents;
+        elsif Get_donnee(Arbre) /= Noeud then
+            Parents_sous_arbre_gauche := Parents(Get_sous_arbre_gauche(Arbre), Noeud);
+            Parents_sous_arbre_droit := Parents(Get_sous_arbre_droit(Arbre), Noeud);
+            --Si le parent est dans le sous ab gauche
+            if Parents_sous_arbre_gauche /= Parents then
+                return Parents_sous_arbre_gauche;
+            else
+                return Parents_sous_arbre_droit;
+            end if;
+        else
+            Parents := T_Parents'(Get_donnee(Get_sous_arbre_gauche(Arbre)), Get_donnee(Get_sous_arbre_droit(Arbre)));
+            return Parents;
+        end if;
+    end Parents;
+
+
+    procedure Supprimer_Arbre_Genealogique(Arbre: in out T_Arbre_Genealogique; Noeud : in Integer) is
+    begin
+        null;
+    end Supprimer_Arbre_Genealogique;
+
+    function Ancetres(Arbre: in out T_Arbre_Genealogique; Noeud: in Integer; min : in Integer; max: in Integer) return T_Liste is
+        Liste: T_Liste;
+    begin
+        Initialiser_Liste(Liste);
+        return Liste;
+    end Ancetres;
+
+    procedure Afficher(Arbre: in out T_Arbre_Genealogique) is
+    begin
+        null;
+    end Afficher;
+
+
+    procedure Afficher_A_Partire_Noeud(Arbre: in out T_Arbre_Genealogique; Noeud : in Integer) is
+    begin
+        null;
+    end Afficher_A_Partire_Noeud;
+
+    procedure Detruire_Arbre_Genealogique(Arbre: in out T_Arbre_Genealogique) is
+    begin
+        null;
+    end Detruire_Arbre_Genealogique;
+
+
+
+end Arbre_Genealogique;

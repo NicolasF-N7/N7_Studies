@@ -1,0 +1,16 @@
+5c5
+< 	/** Nombre maximal d'allumettes pouvant Ãªtre prises. */
+---
+> 	/** Nombre maximal d'allumettes pouvant etre prises. */
+7a8,10
+> 	/** Nombre d'allumettes au debut de la partie	 */
+> 	int NB_ALLUMETTES_INITIAL = 13;
+> 
+13c16
+< 	/** Retirer des allumettes.  Le nombre d'allumettes doit Ãªtre compris
+---
+> 	/** Retirer des allumettes.  Le nombre d'allumettes doit etre compris
+17c20
+< 	 * @throws CoupInvalideException tentative de prendre un nombre invalide d'alumettes
+---
+> 	 * @throws CoupInvalideException tentative de prendre un nombre invalide d'allumettes

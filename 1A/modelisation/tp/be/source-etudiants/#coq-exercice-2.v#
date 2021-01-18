@@ -1,0 +1,29 @@
+Require Import Naturelle.
+Section Session1_2018_Logique_Exercice_2.
+
+Variable A B : Prop.
+
+Theorem Exercice_2_Naturelle : ~(A /\ B) -> (~A \/ ~B).
+Proof.
+I_imp H.
+E_ou A (~A).
+TE.
+I_imp H1..
+I_ou_g.
+I_non H1.
+E_non (A /\ B).
+I_et.
+Hyp H1.
+absurde H2.
+E_non (B).
+
+
+Qed.
+
+Theorem Exercice_2_Coq : ~(A /\ B) -> (~A \/ ~B).
+Proof.
+(* A COMPLETER *)
+Qed.
+
+End Session1_2018_Logique_Exercice_2.
+

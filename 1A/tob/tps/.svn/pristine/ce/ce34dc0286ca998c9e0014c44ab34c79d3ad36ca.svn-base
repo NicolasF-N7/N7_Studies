@@ -1,0 +1,63 @@
+CercleTest.java:5: error: cannot find symbol
+		A = new Point(1, 2);
+		^
+  symbol:   variable A
+  location: class CercleTest
+CercleTest.java:6: error: cannot find symbol
+		B = new Point(2, 1);
+		^
+  symbol:   variable B
+  location: class CercleTest
+CercleTest.java:7: error: cannot find symbol
+		C = new Point(4, 1);
+		^
+  symbol:   variable C
+  location: class CercleTest
+CercleTest.java:8: error: cannot find symbol
+		D = new Point(8, 1);
+		^
+  symbol:   variable D
+  location: class CercleTest
+CercleTest.java:9: error: cannot find symbol
+		E = new Point(8, 4);
+		^
+  symbol:   variable E
+  location: class CercleTest
+CercleTest.java:12: error: cannot find symbol
+		C1 = new Cercle(A, 2.5);
+		^
+  symbol:   variable C1
+  location: class CercleTest
+CercleTest.java:12: error: cannot find symbol
+		C1 = new Cercle(A, 2.5);
+		                ^
+  symbol:   variable A
+  location: class CercleTest
+CercleTest.java:13: error: cannot find symbol
+		C2 = new Cercle(new Point(6, 1), 2);
+		^
+  symbol:   variable C2
+  location: class CercleTest
+CercleTest.java:14: error: no suitable constructor found for Color(no arguments)
+		Color clr= new Color();
+		           ^
+    constructor Color.Color(int,int,int) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Color.Color(int,int,int,int) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Color.Color(int) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Color.Color(int,boolean) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Color.Color(float,float,float) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Color.Color(float,float,float,float) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Color.Color(ColorSpace,float[],float) is not applicable
+      (actual and formal argument lists differ in length)
+CercleTest.java:16: error: cannot find symbol
+		C2.setCouleur();
+		^
+  symbol:   variable C2
+  location: class CercleTest
+10 errors

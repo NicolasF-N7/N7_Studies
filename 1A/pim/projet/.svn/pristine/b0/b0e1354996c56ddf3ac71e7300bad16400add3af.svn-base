@@ -1,0 +1,58 @@
+generic
+    type T_Element is private;--munis d'une relation d'ordre
+
+package Arbre_Binaire is
+    
+    type T_ABR is limited private;--type arbre binaire de recherche
+    
+    --Initialiser un arbre binaire.
+    procedure Initialiser (Arbre : out T_ABR) with
+            Post => Est_Vide(Arbre);
+    
+    --Savoir si un arbre ne contient aucun élément.
+    function Est_Vide (Arbre : in T_ABR) return Boolean;
+    
+    --Ajouter un descendant (cle) dans un arbre après la cle d'un parent.
+    procedure Ajouter (Arbre : in out T_ABR; Id : in T_Element) with
+            Post => Est_Present(Arbre, Id);
+    
+    -- Savoir si un individu est présent dans un arbre donné.
+    function Est_Present (Arbre : in T_ABR; Id : in T_Element) return Boolean;
+    
+    --Obtenir l'identification à partir d'un arbre et d'un noeud (comme cela seul le noeud est utile dans les fonctions).
+    --function Identification (Arbre : in T_AB; Cle : in Integer) return Integer with
+    --        pre => Est_Present(Arbre, Noeud);
+    
+    -- Connaitre la taille (le nombre d'individus) d'un arbre donné.
+    function Taille (Arbre : in T_ABR) return Integer with
+    post => Taille'result >=0 and (Taille'result=0) = Est_Vide(Arbre);
+    
+    -- Supprimer un individu et tout ses ancêtres.
+    procedure Supprimer(Arbre : in out T_ABR; Id : in T_Element) with
+            pre => Est_Present(Arbre, Id),
+            post => not Est_Present(Arbre, Id);
+    
+    --Detruire un arbre.
+    procedure Detruire (Arbre : in out T_ABR) with
+            post => Est_Vide(Arbre);
+     
+    --Afficher un arbre.
+    generic 
+                with procedure Afficher_Element(Id : in T_Element);
+    procedure Afficher (AB : in T_ABR);
+    
+    
+private 
+    	type T_Noeud;
+	type T_ABR is access T_Noeud;
+	type T_Noeud is
+                record
+			Id : T_Element;
+			Sous_Arbre_Gauche : T_ABR;
+			Sous_Arbre_Droit : T_ABR;
+			-- Invariant
+			--    Pour tout noeud N dans Sous_Arbre_Gauche, N.Id < Id
+			--    Pour tout noeud N dans Sous_Arbre_Droit,  N.Id > Id
+		end record;
+   
+end Arbre_Binaire;

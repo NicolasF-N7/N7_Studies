@@ -1,0 +1,94 @@
+V "GNAT Lib v2019"
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_IO
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U ensembles_tableau%b	ensembles_tableau.adb	8bda29a6 NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U ensembles_tableau%s	ensembles_tableau.ads	c8acd5e2 BN EE NE OO PK GE
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-inteio.ads		20190518041256 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D ensembles_tableau.ads	20191108164018 c8acd5e2 ensembles_tableau%s
+D ensembles_tableau.adb	20191024140416 1bc9a08d ensembles_tableau%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+G a e
+G c Z s b [ensembles_tableau standard 5 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 11|1r6 1r23 2r6 2r31
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 11|2w10 2r35
+X 7 a-textio.ads
+57K13*Text_IO 727e16 11|1w10 1r27
+X 10 ensembles_tableau.ads
+2i5 Capacite{integer} 46r34 72r33
+3+10 T_Element 38r29 45r29 54r31 64r45 72r46 11|44r29 65r29 81r31
+5k9*Ensembles_Tableau 2z5 3z10 72E10 81l5 81e22 11|4b14 123l5 123t22
+7R10*T_Ensemble 15r36 24r31 31r29 38r48 45r52 54r54 65r46 74c10 78e19 11|11r36
+. 22r31 33r29 44r48 65r52 81r54 113r42
+15U15*Initialiser 15<27 11|11b15 14l9 14t20
+15r27 Ens{7R10} 17r30 11|11b27 13m9
+24V14*Est_vide{boolean} 17s21 24>23 11|22b14 25l9 25t17
+24r23 Ens{7R10} 11|22b23 24r16
+31V14*Taille{integer} 31>21 46s20 11|33b14 36l9 36t15 49s21 68s22 89s25 98s29
+. 115s21
+31r21 Ens{7R10} 11|33b21 35r16
+38V14*Contient{boolean} 38>23 38>40 47s21 56s25 11|44b14 57l9 57t17 67s16
+. 86s12
+38*23 x{3+10} 11|44b23 50r30
+38r40 Ens{7R10} 11|44b40 49r28 50r16
+45U15*Ajouter 45>23 45=40 11|65b15 73l9 73t16
+45*23 x{3+10} 47r30 11|65b23 67r25 68r40
+45r40 Ens{7R10} 46r27 47r33 11|65b40 67r28 68m13 68r29 69m13 69r29
+54U15*Supprimer 54>25 54=42 11|81b15 105l9 105t18
+54*25 x{3+10} 56r34 11|81b25 86r21 90r34
+54r42 Ens{7R10} 56r37 11|81b42 86r24 89r32 90r20 98r36 99m17 99r32 102m13
+. 102r29
+64U32 Action 64>39 11|116s13
+64*39 x{3+10}
+65u19*Appliquer_Sur_Tous 65>38 11|113b15 119l9 119t27
+65r38 Ens{7R10} 11|113b34 115r28 116r20
+72A10 T_Tableau(3+10)<integer> 76r19
+76a13 Elmt{72A10} 11|50r20 68m17 90r24 99m21 99r36 116r24
+77i13 Nb_Elmts{integer} 11|13m13 24r20 35r20 69m17 69r33 102m17 102r33
+X 11 ensembles_tableau.adb
+45b9 Result{boolean} 47m9 51m17 56r16
+49i13 I{integer} 50r25
+82i9 IndX{integer} 87m13 91m21 98r22
+89i17 I{integer} 90r29 91r29
+98i17 I{integer} 99r26 99r41
+115i13 I{integer} 116r29
+

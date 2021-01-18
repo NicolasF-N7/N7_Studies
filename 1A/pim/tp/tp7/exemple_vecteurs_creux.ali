@@ -1,0 +1,76 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U exemple_vecteurs_creux%b  exemple_vecteurs_creux.adb  47d0bc77 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W vecteurs_creux%s	vecteurs_creux.adb	vecteurs_creux.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-flteio.ads		20190518041255 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiflio.ads		20190518041254 bf196650 ada.text_io.float_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D exemple_vecteurs_creux.adb  20191112194315 f0effae5 exemple_vecteurs_creux%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+D vecteurs_creux.ads	20191113083820 f841d45f vecteurs_creux%s
+G a e
+G c Z b b [exemple_vecteurs_creux standard 6 11 none]
+G r c none [exemple_vecteurs_creux standard 6 11 none] [initialiser vecteurs_creux 12 19 none]
+G r c none [exemple_vecteurs_creux standard 6 11 none] [modifier vecteurs_creux 35 19 none]
+G r c none [exemple_vecteurs_creux standard 6 11 none] [afficher vecteurs_creux 63 19 none]
+G r c none [exemple_vecteurs_creux standard 6 11 none] [detruire vecteurs_creux 17 19 none]
+X 1 ada.ads
+16K9*Ada 20e8 10|1r6 1r29 2r6 2r35
+X 3 a-flteio.ads
+20K13*Float_Text_IO[8|46] 10|2w10 2r39
+X 7 a-textio.ads
+57K13*Text_IO 727e16 10|1w10 1r33
+508U14*Put_Line 10|11s9 32s9
+X 10 exemple_vecteurs_creux.adb
+6U11*Exemple_Vecteurs_Creux 6b11 33l5 33t27
+8p9 V{26|8P14} 12m21 12r21 15m18 15r18 17m18 17r18 19m18 19r18 20r18 30m18
+. 30r18
+9p9 U{26|8P14} 13m21 13r21 23m18 23r18 25m18 25r18 27m18 27r18 28r18 31m18
+. 31r18
+X 26 vecteurs_creux.ads
+6K9*Vecteurs_Creux 10|3w6 3r29 26|92e19
+8P14*T_Vecteur_Creux 10|8r13 9r13
+12U19*Initialiser 10|12s9 13s9
+17U19*Detruire 10|30s9 31s9
+35U19*Modifier 10|15s9 17s9 19s9 23s9 25s9 27s9
+63U19*Afficher 10|20s9 28s9
+

@@ -1,0 +1,199 @@
+% Validation de http://cregut.svn.enseeiht.fr/2019/1sn/pim/tps/nfoin/pr2
+% Run on 2019-12-11 10:41:51.843699
+
+# Respect des fichiers fournis
+
+* Fichier alea.adb non modifié... ok
+* Fichier alea.ads non modifié... ok
+* Fichier exemple_alea.adb non modifié... ok
+* Fichier ensembles_tableau.ads modifié... ok
+* Fichier ensembles_tableau.adb modifié... ok
+* Fichier scenario_tableau.adb modifié... ok
+* Fichier nombre_moyen_tirages_tableau.adb modifié... ok
+* Fichier test_ensembles_tableau.adb modifié... ERREUR
+* Fichier ensembles_chainage.ads modifié... ok
+* Fichier ensembles_chainage.adb modifié... ok
+* Fichier scenario_chainage.adb modifié... ERREUR
+* Fichier nombre_moyen_tirages_chainage.adb modifié... ok
+* Fichier test_ensembles_chainage.adb modifié... ok
+* Running gnatclean... ok
+* Compilation de scenario_tableau.adb... ok
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g scenario_tableau.adb
+  | scenario_tableau.adb:5:11: warning: file name does not match unit name, should be "test_ensembles_sujet_tableau.adb"
+  | scenario_tableau.adb:112:17: warning: "Ens1" modified by call, but value might not be referenced
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g ensembles_tableau.adb
+  | ensembles_tableau.adb:1:09: warning: no entities of "Ada.Text_IO" are referenced
+  | ensembles_tableau.adb:1:19: warning: use clause for package "Text_IO" has no effect
+  | ensembles_tableau.adb:2:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | ensembles_tableau.adb:2:27: warning: use clause for package "Integer_Text_IO" has no effect
+  | x86_64-linux-gnu-gnatbind-8 -x scenario_tableau.ali
+  | x86_64-linux-gnu-gnatlink-8 scenario_tableau.ali -g
+
+* ./scenario_tableau < ""... ERREUR
+
+  | 
+  | FALSE
+
+
+  | 
+  | raised SYSTEM.ASSERTIONS.ASSERT_FAILURE : failed precondition from ensembles_tableau.ads:55 instantiated at scenario_tableau.adb:12
+
+* valgrind ./scenario_tableau < ""... ERREUR
+
+  | 
+  | FALSE
+
+
+  | ==975== Memcheck, a memory error detector
+  | ==975== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+  | ==975== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+  | ==975== Command: ./scenario_tableau
+  | ==975== 
+  | 
+  | raised SYSTEM.ASSERTIONS.ASSERT_FAILURE : failed precondition from ensembles_tableau.ads:55 instantiated at scenario_tableau.adb:12
+  | ==975== 
+  | ==975== HEAP SUMMARY:
+  | ==975==     in use at exit: 704 bytes in 1 blocks
+  | ==975==   total heap usage: 1 allocs, 0 frees, 704 bytes allocated
+  | ==975== 
+  | ==975== LEAK SUMMARY:
+  | ==975==    definitely lost: 0 bytes in 0 blocks
+  | ==975==    indirectly lost: 0 bytes in 0 blocks
+  | ==975==      possibly lost: 0 bytes in 0 blocks
+  | ==975==    still reachable: 704 bytes in 1 blocks
+  | ==975==         suppressed: 0 bytes in 0 blocks
+  | ==975== Rerun with --leak-check=full to see details of leaked memory
+  | ==975== 
+  | ==975== For lists of detected and suppressed errors, rerun with: -s
+  | ==975== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+* Compilation de nombre_moyen_tirages_tableau.adb... ok
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g nombre_moyen_tirages_tableau.adb
+  | nombre_moyen_tirages_tableau.adb:3:09: warning: no entities of "Ada.Text_IO" are referenced
+  | nombre_moyen_tirages_tableau.adb:3:19: warning: use clause for package "Text_IO" has no effect
+  | nombre_moyen_tirages_tableau.adb:5:09: warning: no entities of "Ada.Float_Text_IO" are referenced
+  | nombre_moyen_tirages_tableau.adb:5:25: warning: use clause for package "Float_Text_IO" has no effect
+  | nombre_moyen_tirages_tableau.adb:6:06: warning: redundant with clause
+  | nombre_moyen_tirages_tableau.adb:8:11: warning: file name does not match unit name, should be "nombre_moyen_tirage_tableau.adb"
+  | nombre_moyen_tirages_tableau.adb:25:15: warning: procedure "Afficher" is not referenced
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g alea.adb
+  | x86_64-linux-gnu-gnatbind-8 -x nombre_moyen_tirages_tableau.ali
+  | x86_64-linux-gnu-gnatlink-8 nombre_moyen_tirages_tableau.ali -g
+
+* ./nombre_moyen_tirages_tableau < "10 50 50 10 10 50 50 10"... ok
+
+  |         696
+
+* valgrind ./nombre_moyen_tirages_tableau < "10 50 50 10 10 50 50 10"... ok
+
+  |         421
+
+* Compilation de test_ensembles_tableau.adb... ok
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g test_ensembles_tableau.adb
+  | test_ensembles_tableau.adb:1:06: warning: unit "Ensembles_Tableau" is not referenced
+  | x86_64-linux-gnu-gnatbind-8 -x test_ensembles_tableau.ali
+  | x86_64-linux-gnu-gnatlink-8 test_ensembles_tableau.ali -g
+
+* ./test_ensembles_tableau < ""... ok
+
+  | 
+
+* valgrind ./test_ensembles_tableau < ""... ok
+
+  | 
+
+* Compilation de scenario_chainage.adb... ERREUR
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g scenario_chainage.adb
+  | scenario_chainage.adb:1:06: warning: unit "Ensembles_Chainage" is never instantiated
+  | scenario_chainage.adb:3:27: warning: use clause for package "Integer_Text_IO" has no effect
+  | scenario_chainage.adb:5:11: warning: file name does not match unit name, should be "test_ensembles_sujet_chainage.adb"
+  | scenario_chainage.adb:16:16: "T_Ensemble" is not visible
+  | scenario_chainage.adb:16:16: non-visible declaration at ensembles_chainage.ads:6
+  | scenario_chainage.adb:21:09: "Afficher" is undefined (more references follow)
+  | gnatmake: "scenario_chainage.adb" compilation error
+
+* Compilation de nombre_moyen_tirages_chainage.adb... ok
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g nombre_moyen_tirages_chainage.adb
+  | nombre_moyen_tirages_chainage.adb:3:09: warning: no entities of "Ada.Text_IO" are referenced
+  | nombre_moyen_tirages_chainage.adb:3:19: warning: use clause for package "Text_IO" has no effect
+  | nombre_moyen_tirages_chainage.adb:4:09: warning: no entities of "Ada.Float_Text_IO" are referenced
+  | nombre_moyen_tirages_chainage.adb:4:25: warning: use clause for package "Float_Text_IO" has no effect
+  | nombre_moyen_tirages_chainage.adb:7:11: warning: file name does not match unit name, should be "nombre_moyen_tirage_chainage.adb"
+  | nombre_moyen_tirages_chainage.adb:23:15: warning: procedure "Afficher" is not referenced
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g ensembles_chainage.adb
+  | ensembles_chainage.adb:1:09: warning: no entities of "Ada.Text_IO" are referenced
+  | ensembles_chainage.adb:1:19: warning: use clause for package "Text_IO" has no effect
+  | ensembles_chainage.adb:2:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+  | ensembles_chainage.adb:2:27: warning: use clause for package "Integer_Text_IO" has no effect
+  | x86_64-linux-gnu-gnatbind-8 -x nombre_moyen_tirages_chainage.ali
+  | x86_64-linux-gnu-gnatlink-8 nombre_moyen_tirages_chainage.ali -g
+
+* ./nombre_moyen_tirages_chainage < "10 50 50 10 10 50 50 10"... ok
+
+  |         556
+
+* valgrind ./nombre_moyen_tirages_chainage < "10 50 50 10 10 50 50 10"... ok
+
+  |         682
+
+* Compilation de test_ensembles_chainage.adb... ok
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g test_ensembles_chainage.adb
+  | test_ensembles_chainage.adb:56:14: warning: "E" modified by call, but value might not be referenced
+  | x86_64-linux-gnu-gnatbind-8 -x test_ensembles_chainage.ali
+  | x86_64-linux-gnu-gnatlink-8 test_ensembles_chainage.ali -g
+
+* ./test_ensembles_chainage < ""... ok
+
+  | Est_Vide: TRUE
+  |          11
+  |           7
+  |           5
+  |           3
+  |           2
+  | Est_Vide: FALSE
+  | Suppression de 7
+  |          11
+  |           5
+  |           3
+  |           2
+  | Suppression de 2
+  |          11
+  |           5
+  |           3
+  | Suppression de 11
+  |           5
+  |           3
+  | Contient 11: FALSE
+  | Contient 5: TRUE
+
+* valgrind ./test_ensembles_chainage < ""... ok
+
+  | Est_Vide: TRUE
+  |          11
+  |           7
+  |           5
+  |           3
+  |           2
+  | Est_Vide: FALSE
+  | Suppression de 7
+  |          11
+  |           5
+  |           3
+  |           2
+  | Suppression de 2
+  |          11
+  |           5
+  |           3
+  | Suppression de 11
+  |           5
+  |           3
+  | Contient 11: FALSE
+  | Contient 5: TRUE
+
+* Running gnatclean... ok

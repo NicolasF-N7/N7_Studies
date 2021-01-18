@@ -1,0 +1,21 @@
+
+package body Arbre_Genealogique is
+
+    function Est_Vide (A : in T_Arbre_Genealogique) return boolean is
+    begin
+        return Est_Vide_AB(A.Arbre) and Est_Registre_Vide(A.Registre);
+    end Est_Vide;
+
+    procedure Initialiser_Arbre_Genealogique(A: out T_Arbre_Genealogique; Racine : in T_Donnee) is
+    begin
+        Ajouter_Registre(A.Registre, Racine);
+        Initialiser_AB(A.Arbre, 1);
+    end Initialiser_Arbre_Genealogique;
+
+
+    procedure Ajouter(A: in out T_Arbre_Genealogique; Donnee_Noeud : in T_Donnee ; Donnee_Parent: in T_Donnee) is
+    begin
+
+    end Ajouter;
+
+end Arbre_Genealogique;

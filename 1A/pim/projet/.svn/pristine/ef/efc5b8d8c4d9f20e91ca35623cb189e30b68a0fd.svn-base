@@ -1,0 +1,11 @@
+-- Implantation du module Arbre_Binaire.
+with Ada.Text_IO;            use Ada.Text_IO;
+with Ada.Integer_Text_IO;    use Ada.Integer_Text_IO;
+with Ada.Unchecked_Deallocation;
+
+package body Arbre_Binaire is
+
+   procedure Free is
+            new Ada.Unchecked_Deallocation (Object => T_Noeud, Name => T_ABR);
+
+end Arbre_Binaire;

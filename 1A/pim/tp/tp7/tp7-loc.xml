@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 30" line=" 15" >
+      <vfs_project>/home/nfoin/1A/pim/tp/tp7/tp7.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/tp7/exemple_vecteurs_creux.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/tp7/tp7.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/tp7/vecteurs_creux.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

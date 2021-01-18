@@ -1,0 +1,97 @@
+--Specification du module Arbre_Genealogique. Il utilise les modules Arbre_Binaire (pour avoir la structure d'un arbre) et Registre (pour pouvoir insérer dans 
+--chaque noeud de l'arbre une donnée, elle-même répertoriée dans le registre.
+
+with Ada.Text_IO;use  Ada.Text_IO;
+with Calendar; use Calendar;
+with Arbre_Binaire; 
+with Registre;
+
+
+--On assure qu'un individu existe dans le registre SSI il existe dans l'arbre.
+package Arbre_Genealogique is
+    
+    package Registre_Arbre is
+            new registre (Capacite => 10);
+    use Registre_Arbre;
+    
+    package Arbre_Entier is
+            new Arbre_Binaire(T_Element => Integer);
+    use Arbre_Entier;
+    
+    type T_Arbre_Genealogique is limited private;
+    
+    --Instenciation de arbre binaire par des entiers
+    package Arbre_Binaire_Entier is
+            new Arbre_Binaire(Integer);
+    
+    --Savoir si un arbre généalogique est vide.
+    function Est_Vide (A : in T_Arbre_Genealogique) return boolean;
+
+    --Initialise un arbre minimal contenant le seul noeud racine, sans père ni mère.
+    procedure Initialiser_Arbre_Genealogique(A: out T_Arbre_Genealogique) with
+            Pre => True,
+            Post => Est_Vide(A);
+    
+    --Ajouter un noeud dans un arbre genealogique tel que Prenom ait pour fils Prenom_Fils
+    procedure Ajouter(A: in out T_Arbre_Genealogique; Donnee_Noeud : in T_Donnee ; Donnee_Parent: in T_Donnee) with
+            Pre => Est_Present2(A.Registre, Donnee_Noeud),
+            Post => Est_Present2(A.Registre, Donnee_Parent);
+    
+    -- Connaitre le nombre d'ancetres connus d'un individu.
+    function Nombres_Ancetres (A : in T_Arbre_Genealogique; Donnee_Noeud : in T_Donnee) return Integer;
+    
+    --Renvoie le nombre de parents.
+    function Nombre_Parents(A: in out T_Arbre_Genealogique; Noeud : in T_Donnee) return Integer with
+            Pre => Est_Present2(A.Registre, Noeud),
+            Post => True;
+    
+    --Obtenir l'ensemble des individus qui n'ont qu'un parent connu.
+    function Un_Parent (A: in T_Arbre_Genealogique) return T_Liste;
+    
+    --Obtenir l'ensemble des individus dont les deux parents sont connus.
+    function Deux_Parents (A : in T_Arbre_Genealogique) return T_Liste;
+    
+    --Obtenir l'ensemble des individus dont les deux parents sont inconnus.
+    function Inconnus (A : in T_Arbre_Genealogique) return T_Liste;
+    
+    --Renvoie l'identifiant du fil de Prenom
+    function Fils(A: in out T_Arbre_Genealogique; Noeud : in T_Donnee) return Integer with
+            Pre => Est_Present(A.Registre, Noeud),
+            Post => True;
+    
+    --Renvoie les identifiants des parents du noeud
+    function Parents(A: in out T_Arbre_Genealogique; Noeud : in T_Donnee) return T_Parents with
+            Pre => Est_Present(A.Registre, Noeud),
+            Post => True;
+    
+    
+    --Supprime le noeud associe a Prenom, et tout ses ancetres.
+    procedure Supprimer(A: in out T_Arbre_Genealogique; Noeud : in T_Donnee) with
+            Pre => Est_Present(A.Registre, Noeud),
+            Post => not Est_Present(A.Registre, Noeud);
+    
+    
+    function Ancetres(A: in out T_Arbre_Genealogique; Noeud: in T_Donnee; min : in Integer; max: in Integer) return T_Liste;
+        
+    --Affiche dans la console l'arbre genealogique
+    procedure Afficher(A: in out T_Arbre_Genealogique);
+    
+    --Afficher l'arbre à partir d'un noeud donnée.
+    procedure Afficher2(A: in out T_Arbre_Genealogique; Noeud : in T_Donnee);
+    
+    
+    --Detruire: liberer l'espace memoire occupé par l'arbre
+    procedure Detruire(A: in out T_Arbre_Genealogique) with
+            Pre => True,
+            Post => A = Null;
+    
+
+private
+
+        Type T_Arbre_Genealogique is
+            record
+                Arbre : T_AB;
+                Registre : T_Registre;
+            end record;
+        
+end Arbre_Genealogique;

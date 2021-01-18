@@ -1,0 +1,56 @@
+-----Pointeurs-----:
+Vecteur_Restant_Precedent := V;
+Vecteur_Restant := V.all.Suivant;
+
+while (Vecteur_Restant /= Null and then Vecteur_Restant_Precedent.all.Indice < Indice) loop
+                                Vecteur_Restant_Precedent := Vecteur_Restant;
+                                Vecteur_Restant := Vecteur_Restant.all.Suivant;
+                        end loop;
+ATTENTION Vecteur_Restant et Vecteur_Restant_Precedent sont 2 ptr pointant sur la même cellule, mais des ptrs différents.
+Donc
+Vecteur_Restant_Precedent.all.Suivant := new T_Cellule'(Indice, Valeur, Null);
+a pour effet de modifier la variable Suivant de la case pointée par VRP 
+Mais
+Vecteur_Restant.all.Suivant := new T_Cellule'(Indice, Valeur, Null);
+modifie uniquement VR. on a juste changé l'addresse pointée par VR
+
+
+
+VERSION QUI MARCHE:
+procedure Modifier (V : in out T_Vecteur_Creux ;
+                     Indice : in Integer ;
+                     Valeur : in Float ) is
+                Vecteur_Restant: T_Vecteur_Creux;
+        begin
+                --Si on veut supprimer une cellule
+                if Valeur=0.0 then
+                        if V = Null then
+                                Null;
+                        elsif V.all.Indice = Indice then
+                                V := V.all.Suivant;
+                        else--sinon V/= null et V.all.Indice /= Indice
+                                Modifier(V.all.Suivant, Indice, Valeur);
+                        end if;
+                elsif V = Null then--Donc Valeur /=0.0
+                        V := new T_Cellule'(Indice, Valeur, Null);
+                else--Sinon V contient au moins 1 cellule
+                        Vecteur_Restant := V;
+
+                        --Parcourt
+                        while (Vecteur_Restant.all.Suivant /= Null and then Vecteur_Restant.all.Suivant.all.Indice < Indice) loop
+                                Vecteur_Restant := Vecteur_Restant.all.Suivant;
+                        end loop;
+
+                        --Si Vecteur_Restant.all.Suivant = Null;
+                        if Vecteur_Restant.all.Suivant = Null then
+                                Vecteur_Restant.all.Suivant := new T_Cellule'(Indice, Valeur, Null);
+                        --Si la cellule d'indice Indice n'existe pas: On insère une cellule
+                        elsif Vecteur_Restant.all.Suivant.all.Indice > Indice then
+                                Vecteur_Restant.all.Suivant := new T_Cellule'(Indice, Valeur, Vecteur_Restant.all.Suivant);
+                        elsif Vecteur_Restant.all.Suivant.all.Indice = Indice then
+                                Vecteur_Restant.all.Suivant.all.Valeur := Valeur;
+                        else
+                                null;
+                        end if;
+                end if;
+	end Modifier;

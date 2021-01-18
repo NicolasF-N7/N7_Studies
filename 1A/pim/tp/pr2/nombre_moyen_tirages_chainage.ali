@@ -1,0 +1,112 @@
+V "GNAT Lib v7"
+M P W=b
+A -gnatwa
+P SS ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U nombre_moyen_tirage_chainage%b  nombre_moyen_tirages_chainage.adb  cce8c865 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.discrete_random%s
+W ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_deallocation%s
+W alea%s		alea.adb		alea.ali
+W ensembles_chainage%s	ensembles_chainage.adb	ensembles_chainage.ali
+Z system%s		system.ads		system.ali
+Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
+
+D ada.ads		20170106103348 76789da1 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-flteio.ads		20070406091342 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20070406091342 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20080324174807 bb51c45a ada.numerics%s
+D a-nudira.ads		20160418104118 71e55def ada.numerics.discrete_random%s
+D a-nudira.adb		20160418104118 72908cdb ada.numerics.discrete_random%b
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiflio.ads		20140717063513 56fbda09 ada.text_io.float_io%s
+D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20170106103348 31484697 ada.unchecked_conversion%s
+D a-uncdea.ads		20070406091342 f15a5ed1 ada.unchecked_deallocation%s
+D alea.ads		20191015101053 9fe1c6b1 alea%s
+D alea.adb		20191015101052 ca5296b2 alea%b
+D ensembles_chainage.ads  20191113123558 64df418a ensembles_chainage%s
+D ensembles_chainage.adb  20191113123555 a429908b ensembles_chainage%b
+D interfac.ads		20160502101001 5ab55268 interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D nombre_moyen_tirages_chainage.adb  20191113124217 187a748e nombre_moyen_tirage_chainage%b
+D system.ads		20170510173650 4635ec04 system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-imguns.ads		20140717070019 9ff43cf7 system.img_uns%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-rannum.ads		20150205111725 99ade2f2 system.random_numbers%s
+D s-rannum.adb		20160418125822 20ba1217 system.random_numbers%b
+D s-ransee.ads		20120130115052 01a57b33 system.random_seed%s
+D s-secsta.ads		20170112134946 9751b57e system.secondary_stack%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160502101423 34867c83 system.unsigned_types%s
+D s-valuns.ads		20150220142606 10a8ed3b system.val_uns%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+X 1 ada.ads
+16K9*Ada 20e8 22|3r6 3r23 4r6 4r29 5r6 5r31
+X 3 a-flteio.ads
+20K13*Float_Text_IO[12|46] 22|4w10 4r33
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[13|46] 22|5w10 5r35
+X 8 a-nudira.adb
+53V16 Random[29|83]{integer} 30|392b13[17|7[22|26]]
+X 11 a-textio.ads
+49K13*Text_IO 471e16 22|3w10 3r27
+X 13 a-tiinio.ads
+66U14*Put 22|19s9[4|18] 43s5[4|18]
+X 16 alea.ads
+5k9*Alea 13e9 22|2w6 27r17
+11U19 Get_Random_Number 22|38s9[26]
+X 18 ensembles_chainage.ads
+4k9*Ensembles_Chainage 89e23 22|1w6 9r17
+6P10 T_Ensemble 22|31r11[8]
+14U15 Initialiser 22|36s5[8]
+38V14 Taille{integer} 22|37s11[8]
+52U15 Ajouter 22|39s9[8]
+72u15 Appliquer_Sur_Tous 22|23r50[8]
+X 20 interfac.ads
+74M9*Unsigned_32
+77M9*Unsigned_64
+X 22 nombre_moyen_tirages_chainage.adb
+7U11*Nombre_Moyen_Tirage_Chainage 7b11 44l5 44t33
+8K13 T_Ensemble_Integer[18|4] 10r9 23r31
+17U15 Affiche_Elemt 17b15 17>29 20l9 20t22 23r69
+17i29 X{integer} 19r13
+23U15 Afficher[18|72]
+26K13 Mon_Alea[16|5] 28r9
+31p5 Ens{18|6P10[8]} 36m17 36r17 37r18 39m20 39r20
+32i5 N{integer} 38m27 39r17
+33i5 Count{integer} 35m5 40m9 40r18 43r9
+X 29 s-rannum.ads
+75V13*Random{20|74M9} 30|221i21
+76V13*Random{20|77M9} 30|221i21
+

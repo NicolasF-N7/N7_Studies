@@ -1,0 +1,63 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Arbre_Genealogique;
+with Ada.Integer_Text_IO;   use Ada.Integer_Text_IO;
+
+procedure main is
+    
+    continuer : boolean := true;
+    choix : integer;
+    Arbre : T_Arbre_Genealogique;
+    Racine : T_Donnee;
+    Donnee_Parent : T_Donnee;
+    Donnee_Noeud : T_Donnee;
+begin
+    while continuer loop
+        loop
+            Put_Line("Quelle action souhaitez-vous effectuer parmis celles-ci?");
+            Put_Line("1 - Créer un arbre minimal avec un seul noeud");
+            Put_Line("2 - Ajouter un parent à un noeud");
+            Put_Line("3 - Obtenir le nombre d'ancêtres connus d'un individu");
+            Put_Line("4 - Obtenir l'ensemble des ancêtres situés à une certaine génération d'un noeud");
+            Put_Line("5 - Afficher l'arbre à partir d'un noeud");
+            Put_Line("6 - Supprimer un noeud et ses ancêtres");
+            Put_Line("7 - Obtenir l'ensemble des individus qui n'ont qu'un parent connu");
+            Put_Line("8 - Obtenir l'ensemble des individus dont les deux parents sont connus");
+            Put_Line("9 - Obtenir l'ensemble des individus dont les deux parents sont inconnus");
+            Put_Line("10 - Afficher les ancêtres d'un individu sur n générations");
+            Put_Line("11 - Vérifier si deux individus ont au moins un ancêtre homonyme");
+            Put_Line("0 - quitter ");
+            Put_Line("Donnez votre choix:");
+            Get(choix);
+            while choix > 11 or choix < 0 loop
+                Put_Line("Votre choix doit être compris entre 1 et 11");
+                Get(choix);
+            end loop;
+            exit when choix >= 0 and choix <= 11;
+        end loop;
+        case choix is 
+            when 0 => continuer := False;
+            when 1 => Put_Line("Veuillez donner le prénom de cette personne");
+                get(Racine.Prenom);
+                Put_Line("Veuillez donner son nom");
+                get(Racine.Nom);
+                Put_Line("Veuillez donner sa date de naissance (jj/mm/aaaa)");
+                get(Racine.Date_Naissance);
+                Put_Line("Veuillez donner son sexe");
+                get(Racine.sexe);
+                Initialiser_Arbre_Genealogique(Arbre,Racine);
+                Afficher(Arbre);
+            when 2 => Put_Line("Veuillez donner l'identifiant du parent");
+                get(Racine.Id);
+                Put_Line("Veuillez donner le prénom de ce parent");
+                get(Racine.Prenom);
+                Put_Line("Veuillez donner son nom");
+                get(Racine.Nom);
+                Put_Line("Veuillez donner sa date de naissance (jj/mm/aaaa)");
+                get(Racine.Date_Naissance);
+                Put_Line("Veuillez donner son sexe");
+                get(Racine.sexe);
+                
+        end case;
+        end loop;
+            
+end main;

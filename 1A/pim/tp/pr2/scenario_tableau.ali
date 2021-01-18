@@ -1,0 +1,95 @@
+V "GNAT Lib v2019"
+M P W=b
+P ZX
+
+RN
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U test_ensembles_sujet_tableau%b  scenario_tableau.adb  4d9487d6 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ensembles_tableau%s	ensembles_tableau.adb	ensembles_tableau.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.concat_8%s	s-conca8.adb		s-conca8.ali
+Z system.img_bool%s	s-imgboo.adb		s-imgboo.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-inteio.ads		20190518041256 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D ensembles_tableau.ads	20191024140439 c8acd5e2 ensembles_tableau%s
+D ensembles_tableau.adb	20191024140455 1bc9a08d ensembles_tableau%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-conca2.ads		20190518041255 02a0d7d0 system.concat_2%s
+D s-conca8.ads		20190518041255 e3074dd7 system.concat_8%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-imgboo.ads		20190518041254 f5d971eb system.img_bool%s
+D s-imgint.ads		20190518041254 02dbe0c2 system.img_int%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+D scenario_tableau.adb	20191024132848 dd870efd test_ensembles_sujet_tableau%b
+G a e
+G c Z b b [test_ensembles_sujet_tableau standard 5 11 none]
+G r i none [test_ensembles_sujet_tableau standard 5 11 none] [ensembles_tableau standard 5 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 31|2r6 2r23 3r6 3r31
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 31|3w10 3r35
+X 7 a-textio.ads
+57K13*Text_IO 727e16 31|2w10 2r27
+264U14*New_Line 31|36s5 51s5 63s5 74s5 85s5 104s5
+508U14*Put_Line 31|37s5 44s5 45s5 46s5 55s5 56s5 57s5 67s5 68s5 69s5 78s5
+. 79s5 80s5 89s5 90s5 91s5 97s5 98s5 99s5 108s5 109s5 110s5
+X 8 a-tiinio.ads
+80U14*Put 31|23s9[3|18]
+X 10 ensembles_tableau.ads
+5k9*Ensembles_Tableau 81e22 31|1w6 13r17
+7R10 T_Ensemble 31|29r12[12]
+15U15 Initialiser 31|32s5[12] 112s5[12]
+24V14 Est_vide{boolean} 31|44s43[12] 55s43[12] 67s43[12] 78s43[12] 89s43[12]
+. 97s43[12] 108s43[12]
+31V14 Taille{integer} 31|45s41[12] 56s41[12] 68s41[12] 79s41[12] 90s41[12]
+. 98s41[12] 109s41[12]
+38V14 Contient{boolean} 31|37s28[12] 46s45[12] 46s90[12] 46s135[12] 46s181[12]
+. 57s45[12] 57s90[12] 57s135[12] 57s181[12] 69s45[12] 69s90[12] 69s135[12]
+. 69s181[12] 80s45[12] 80s90[12] 80s135[12] 80s181[12] 91s45[12] 91s90[12]
+. 91s135[12] 91s181[12] 99s45[12] 99s90[12] 99s135[12] 99s181[12] 110s45[12]
+. 110s90[12] 110s135[12] 110s181[12]
+45U15 Ajouter 31|48s5[12] 59s5[12] 60s5[12] 71s5[12]
+54U15 Supprimer 31|38s5[12] 39s5[12] 40s5[12] 82s5[12] 93s5[12] 101s5[12]
+66u15 Appliquer_Sur_Tous 31|27r50[12]
+X 31 scenario_tableau.adb
+5U11*Test_Ensembles_Sujet_Tableau 5b11 114l5 114t33
+12K13 T_Ensemble_Integer[10|5] 14r9 27r31
+21U15 Affiche_Elemt 21b15 21>29 24l9 24t22 27r69
+21i29 X{integer} 23r13
+27U15 Afficher[10|66] 35s5 50s5 62s5 73s5 84s5 103s5
+29r5 Ens1{10|7R10[12]} 32m17 35r15 37r40 38m19 38r19 39m19 39r19 40m19 40r19
+. 44r52 45r48 46r57 46r102 46r147 46r194 48m16 48r16 50r15 55r52 56r48 57r57
+. 57r102 57r147 57r194 59m17 59r17 60m17 60r17 62r15 67r52 68r48 69r57 69r102
+. 69r147 69r194 71m16 71r16 73r15 78r52 79r48 80r57 80r102 80r147 80r194
+. 82m19 82r19 84r15 89r52 90r48 91r57 91r102 91r147 91r194 93m18 93r18 97r52
+. 98r48 99r57 99r102 99r147 99r194 101m18 101r18 103r15 108r52 109r48 110r57
+. 110r102 110r147 110r194 112m17
+

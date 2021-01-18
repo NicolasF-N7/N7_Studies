@@ -1,0 +1,15 @@
+Je suis le processus principal de pid 30760
+
+Processus de pid 30760 a cree un fils numero 1, de pid 30761 
+
+Processus de pid 30760 a cree un fils numero 2, de pid 30762 
+
+     Processus fils numero 1, de pid 30761, de pere 30760.
+
+Processus de pid 30760 a cree un fils numero 3, de pid 30763 
+
+     Processus fils numero 2, de pid 30762, de pere 30760.
+
+     Processus fils numero 3, de pid 30763, de pere 30760.
+
+     Processus fils numero 2 : ERREUR EXEC

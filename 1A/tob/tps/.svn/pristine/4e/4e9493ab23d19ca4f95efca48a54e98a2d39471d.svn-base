@@ -1,0 +1,36 @@
+Date de l'évaluation : mardi 28 janvier 2020, 14:03:35 (UTC+0100)
+
+Compilation de Cercle.java : OK.
+    ATTENTION, la classe Cercle ne doit pas utiliser JUnit (il faut utiliser assert en non assertTrue, etc.)
+
+Types d'erreurs checkstyle : 15	(voir evaluation1/Cercle.checkstyle)
+
+Résultat de recherche de similitudes sur Cercle.java dans evaluation1/Cercle.sim
+
+JavaDoc automatique de Cercle : ok	(voir evaluation1/Cercle.javadoc)
+
+Un constructeur devrait appeler l'autre.
+
+Test SujetCercleTest : OK (14 tests)	(voir evaluation1/SujetCercleTest.log)
+Test RobustesseCercleTest : Tests run: 20,  Failures: 4	(voir evaluation1/RobustesseCercleTest.log)
+    1) testerE11a(RobustesseCercleTest)
+        Exception: Unexpected exception, expected<AssertionError> but was<NullPointerException>
+    2) testerE12c(RobustesseCercleTest)
+        AssertionError: Expected exception: AssertionError
+    3) testerE13c(RobustesseCercleTest)
+        AssertionError: Expected exception: AssertionError
+    4) testerE13d(RobustesseCercleTest)
+        AssertionError: Expected exception: AssertionError
+
+Test FormeCercleTest : OK (12 tests)	(voir evaluation1/FormeCercleTest.log)
+Test Forme2CercleTest : OK (9 tests)	(voir evaluation1/Forme2CercleTest.log)
+
+ComplementsCercleTest : modifiée... on l'utilise donc...
+Compilation de ComplementsCercleTest.java : OK.
+Test ComplementsCercleTest : Tests run: 1,  Failures: 1	(voir evaluation1/ComplementsCercleTest.log)
+    1) initializationError(ComplementsCercleTest)
+        Exception: No runnable methods
+
+
+Compilation de CercleTest.java : ERREUR !	(voir evaluation1/CercleTest.java.log)
+CercleTest.java ne compile pas !!!

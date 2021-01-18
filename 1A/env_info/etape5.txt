@@ -1,0 +1,8 @@
+ls ./Projets_C | wc -w
+5
+ls ./Projets_C/* | wc -w
+55
+ls ./Projets_C/*/* | wc -w
+123
+ls ./Projets_C/*/*/*.c | xargs cat | wc -l
+511

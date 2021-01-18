@@ -1,0 +1,23 @@
+--with Registre;
+--with Liste_Chainee;
+with Ada.Text_IO;            use Ada.Text_IO;
+with Ada.Integer_Text_IO;    use Ada.Integer_Text_IO;
+with Calendar; use Calendar;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Arbre_Genealogique; use Arbre_Genealogique;
+
+
+procedure test_ag is
+    AG: T_Arbre_Genealogique;
+    
+    Racine: Arbre_Genealogique.Registre_Arbre.T_Donnee;
+    Liste :Arbre_Genealogique.Liste_Donnee.T_Liste;
+begin
+    Racine := Arbre_Genealogique.Registre_Arbre.T_Donnee'(1,Ada.Strings.Unbounded.To_Unbounded_String("PrenomRacine"),To_Unbounded_String("NomRacine"),Time_Of(2018,7,27,0.0),Arbre_Genealogique.Registre_Arbre.Homme);
+    
+    Initialiser_Arbre_Genealogique(AG, Racine.Id);
+    
+    Liste := Un_Parent(AG);
+    Put_Line("test");
+    Put_Line(To_String(Arbre_Genealogique.Liste_Donnee.Tete_Liste(Liste).Prenom));
+end test_ag;

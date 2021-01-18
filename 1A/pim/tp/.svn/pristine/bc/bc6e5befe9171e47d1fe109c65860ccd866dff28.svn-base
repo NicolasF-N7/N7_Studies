@@ -1,0 +1,49 @@
+% Evaluation du projet "tables de multiplication"
+% PIM 2019-2020
+%
+
+# Total (20 pt) : 16
+
+# Compilation (-5 pt) : 0
+
+# Raffinage (6 pt) : 4
+
+* R0 absent
+* Présentation incorrecte
+    | Les actions (ou expressions) complexes doivent être identifiées et
+    | décomposées (raffinage).
+    | Les actions complexes doivent être des verbes à l'infinitif
+    | On présente sous forme de raffinage de la forme :
+    | 
+    |    Ri : Comment "action complexe"
+    |           actions...
+    |           liées par des structures de contrôle
+    |           ....
+    |
+* Mauvaise utilisation de la méthode des raffinages
+    | Chaque raffinage est un algorithme qui autorise des actions (ou
+    | expressions) complexes.  Ce n'est pas une liste d'objectifs à réaliser.
+* Raffinages incomplets (il manque des niveaux)
+    | tous les aspects du sujet doivent été détaillés :
+    | saisie contrôlée, affichage de la mention, etc.
+
+# Code (6 pt) : 4
+
+* Mauvaise aération du code / Mauvaise indentation du code
+* Un commentaire doit expliquer le rôle des variables (lors de leur déclaration)
+* Non respect des règles de programmation énoncés en cours/TD/TP
+    | Toujours un Sinon pour un Si, etc.
+    | Pas de exit sauf pour faire un Répéter (juste avant le end loop).
+* Mauvaise utilisation des commentaires
+    | on doit avoir des commentaires de raffinages (normalement avant et
+    | alignés avec les instructions qu'ils décrivent)
+    | les autres commentaires doivent être informatifs (en général à la fin
+    | d'une ligne) : déclaration d'une variable.
+
+
+# Fonctionnel (5 pt) : 5
+
+
+# Questions (LISEZ-MOI.txt et questionnaire) (3 pt) : 3
+
+

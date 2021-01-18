@@ -1,0 +1,69 @@
+--Specification du module registre.
+-- Pas de ABR, a chaque fois qu'on ajoute une personne son id prend la valeur de l'id du noeud + 1, on fait congrulo on le rajoute dans un tableau de 
+--taille la congrulo, on peut trier chaque case du tableau et on trouve l'id facilement.
+with liste_chainee; 
+with Calendar; use Calendar;
+
+generic
+    Capacite: Integer;
+
+package Registre is
+    
+    type T_Donnee is private;
+    
+    package Liste_Individus is
+        new liste_chainee(T_Donnee);
+
+    type T_Registre is limited private; --Type registre.
+    
+    --Initialiser un registre.
+    procedure Initialiser (Registre : out T_Registre) with
+            Post => Est_Vide(Registre);
+    
+    --Savoir si un registre ne contient que des listes vides.
+    function Est_Vide (Registre : in T_Registre) return Boolean;
+    
+    -- Savoir si une donnée est présente dans un registre.
+    function Est_Present (Registre : in T_Registre; Donnee : in T_Donnee) return boolean;
+    ;
+    --Ajouter une donnée dans un registre en fonction du modulo capacite.
+    procedure Ajouter (Registre : in out T_Registre; Donnee : in T_Donnee) with
+            pre => not(Est_Present (Registre, Donnee)),
+            post => La_Donnee (Registre, Donnee.Id) = Donnee;
+    
+    -- Connaitre la donnée a partir d'un id.
+    function La_Donnee (Registre : in T_Registre; id : in Integer) return T_Donnee;
+    ;
+    -- Modifier un element dans le registrer.
+    procedure Modifier (Registre : in out T_Registre; Donnee : in T_Donnee) with 
+            post => La_Donnee(Registre, Donnee.Id) = Donnee;
+    
+    -- Connaitre la taille d'un registre.
+    function Taille (Registre : in T_Registre) return Integer with
+    post => Taille'result >=0 and (Taille'result=0) = Est_Vide(Registre);
+    
+    -- Supprimer une donnée dans un registre.
+    procedure Supprimer(Registre : in out T_Registre; Donnee : in T_Donnee) with 
+            pre => Est_Present (Registre, Donnee),
+            post => not(Est_Present (Registre, Donnee));
+    
+            
+    --Detruire un registre (toutes les listes sont de tailles vides).
+    procedure Detruire (Registre : in out T_Registre) with
+            post => Est_Vide(Registre);
+ 
+    Type T_Sexe is (Femme, Homme);
+    
+private
+        type T_Registre is array (1..Capacite) of T_Liste;
+	type T_Donnee is
+		record
+                    Id : Integer;
+                    Prenom: String;
+                    Nom: String;
+                    Date_Naissance: Time;
+                    Sexe: T_Sexe;
+		end record;
+
+
+end Registre;

@@ -1,0 +1,45 @@
+import static org.junit.Assert.assertEquals;
+
+import java.awt.Color;
+
+public class CercleTest{
+	// précision pour les comparaisons réelle
+	public final static double EPSILON = 0.001;
+	
+	private static void assertEqualsPoints(String s, Point a, Point b) {
+		assertEquals(s, a.getX(), b.getX(), EPSILON);
+		assertEquals(s, a.getY(), b.getY(), EPSILON);
+	}
+	
+	public static void main(String[] args) {
+		Point A = new Point(1, -2);
+		Point B = new Point(2, 1);
+		Point C = new Point(-4, 1);
+		Point D = new Point(8, 1);
+		Point E = new Point(-8, -4);
+
+		// Construire les cercles
+		Cercle C1 = new Cercle(A, 2.5);
+		Cercle C2 = new Cercle(new Point(6, 1), 2);
+		
+		// Test modification couleur
+		Color clr= Color.cyan;
+		C2.setCouleur(clr);
+		Color clrTmp=C2.getCouleur();
+		clr = Color.red;
+		assertEquals("Modif couleur E18", C2.getCouleur(), clrTmp);
+		
+		// Test modification couleur
+		Point centreC1= C1.getCentre();
+		A.translater(-4, 6);
+		assertEqualsPoints("Modif point E18", centreC1, C1.getCentre());
+		
+		// E1
+		C1.translater(-4, 6);// C1 a pour centre (-3,4)
+		assertEqualsPoints("Translater cercle E1", A, C1.getCentre());
+		
+		//E5
+		
+		
+	}
+}

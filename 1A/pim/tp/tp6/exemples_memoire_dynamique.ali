@@ -1,0 +1,95 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatwa
+A -gnata
+A -g
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_DEALLOCATION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U exemples_memoire_dynamique%b  exemples_memoire_dynamique.adb  8758bb0a NE OO SU
+W ada%s			ada.ads			ada.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.unchecked_deallocation%s
+W piles%s		piles.adb		piles.ali
+Z system.assertions%s	s-assert.adb		s-assert.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20190518041255 eff36322 ada.unchecked_deallocation%s
+D exemples_memoire_dynamique.adb  20191023071445 63ca11a3 exemples_memoire_dynamique%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D piles.ads		20191015101053 a5951ce6 piles%s
+D piles.adb		20191015101053 43a1d5bc piles%b
+D system.ads		20190518041255 4635ec04 system%s
+D s-assert.ads		20190518041255 cd8d2c94 system.assertions%s
+D s-conca2.ads		20190518041255 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-imgint.ads		20190518041254 02dbe0c2 system.img_int%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+G a e
+G c Z b b [exemples_memoire_dynamique standard 5 11 none]
+X 1 ada.ads
+16K9*Ada 20e8 9|2r6 2r34 3r6 12r24
+X 6 a-textio.ads
+57K13*Text_IO 727e16 9|2w10 2r38
+508U14*Put_Line 9|21s17 33s17 49s17 50s17 94s17 112s17 114s17
+X 8 a-uncdea.ads
+20u15*Unchecked_Deallocation 9|3w10 12r28
+X 9 exemples_memoire_dynamique.adb
+5U11*Exemples_Memoire_Dynamique 5b11 130l5 130t31
+8P14 T_Pointeur_Integer(integer) 12r61 17r24 29r24 42r30 82r40 87r23
+11U19 Free[8|20] 22s17 34s17 52s17 96s17
+16U19 Illustrer_Memoire_Dynamique 16b19 24l13 24t40
+17p17 Ptr1{8P14} 19m17 20r17 21r58 22m23 22r23 23r32
+28U19 Illustrer_Memoire_Dynamique_Sans_Free 28b19 35l13 35t50
+29p17 Ptr1{8P14} 31m17 32r17 33r58 34m22 34r22
+40U19 Illustrer_Memoire_Dynamique_Erreur 40b19 75l13 75t47 127s9
+42p17 Ptr1{8P14} 44m17 45r25 46r17 47r32 49r58 52m23 52r23 54r32
+42p23 Ptr2{8P14} 45m17 48r32 50r58 55r32
+80U19 Illustrer_Pointeur_In 80b19 97l13 97t34
+82U27 SP 82b27 82>31 85l21 85t23 92s17
+82p31 Ptr{8P14} 84r25
+87p17 Ptr{8P14} 90m17 91r17 92r21 94r67 96m23 96r23
+102U19 Illustrer_Pile_Locale 102b19 121l13 121t34
+104K25 Pile[12|6] 106r21
+108p17 P{12|8P14[104]} 110m30 110r30 111m26 111r26 112r64 113m26 113r26 114r64
+. 115m26 115r26
+X 12 piles.ads
+6k9*Piles 9|1w6 105r29 12|60e10
+8P14 T_Pile 9|108r21[104]
+12U19 Initialiser 9|110s17[104]
+22V18 Sommet{integer} 9|112s56[104] 114s56[104]
+28U19 Empiler 9|111s17[104] 113s17[104]
+39U19 Detruire 9|115s17[104]
+

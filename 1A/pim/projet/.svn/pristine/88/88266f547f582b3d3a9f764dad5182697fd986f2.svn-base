@@ -1,0 +1,115 @@
+
+package body Arbre_Genealogique is
+
+    function Est_Vide (Arbre : in T_Arbre_Genealogique) return boolean is
+    begin
+        --return Est_Vide_AB(Arbre.Arbre) and Est_Registre_Vide(Arbre.Registre);
+        return Est_Vide_AB(Arbre);
+    end Est_Vide;
+
+    procedure Initialiser_Arbre_Genealogique(Arbre: out T_Arbre_Genealogique; Racine : in Integer) is
+    begin
+        Initialiser_AB(Arbre , Racine);
+        Put_Line("AG init");
+    end Initialiser_Arbre_Genealogique;
+
+
+    procedure Ajouter_Arbre_Genealogique(Arbre: in out T_Arbre_Genealogique; Id_Noeud : in Integer; Id_Parent: in Integer) is
+    begin
+        Ajouter_AB(Arbre, Id_Parent, Id_Noeud);
+    end Ajouter_Arbre_Genealogique;
+
+
+    function Nombres_Ancetres (Arbre : in T_Arbre_Genealogique; Id_Noeud : in Integer) return Integer is
+    begin
+        if Est_Vide_AB(Arbre) then
+            return 0;
+        elsif Get_donnee(Arbre) /= Id_Noeud then
+            return Nombres_Ancetres(Get_sous_arbre_gauche(Arbre), Id_Noeud) + Nombres_Ancetres(Get_sous_arbre_droit(Arbre), Id_Noeud);
+        elsif Get_donnee(Arbre) = Id_Noeud then
+            return Taille_AB(Arbre);
+        else
+            return 0;
+        end if;
+    end Nombres_Ancetres;
+
+    function Nombre_Parents(Arbre: in T_Arbre_Genealogique; Id_Noeud : in Integer) return Integer is
+    begin
+         if Est_Vide_AB(Arbre) then
+            return 0;
+        elsif Get_donnee(Arbre) /= Id_Noeud then
+            return Nombre_Parents(Get_sous_arbre_gauche(Arbre), Id_Noeud) + Nombre_Parents(Get_sous_arbre_droit(Arbre), Id_Noeud);
+        elsif Get_donnee(Arbre) = Id_Noeud then
+                return Nombre_Fils(Arbre);
+        else
+            return 0;
+        end if;
+    end Nombre_Parents;
+
+    function Un_Parent (Arbre: in T_Arbre_Genealogique) return T_Liste is
+        Liste: T_Liste;
+        Donnee: T_Donnee;
+    begin
+        Initialiser_Liste(Liste);
+        Donnee := T_Donnee'(1,Ada.Strings.Unbounded.To_Unbounded_String("Personne1"),To_Unbounded_String("Nom1"),Time_Of(2018,7,27,0.0),Homme);
+        Ajouter_Liste(Liste, Donnee);
+        return Liste;
+    end Un_Parent;
+
+
+    function Deux_Parents (Arbre : in T_Arbre_Genealogique) return T_Liste is
+        Liste: T_Liste;
+    begin
+        Initialiser_Liste(Liste);
+        return Liste;
+    end Deux_Parents;
+
+    function Inconnus (Arbre : in T_Arbre_Genealogique) return T_Liste is
+        Liste: T_Liste;
+    begin
+        Initialiser_Liste(Liste);
+        return Liste;
+    end Inconnus;
+
+    function Fils(Arbre: in out T_Arbre_Genealogique; Noeud : in T_Donnee) return Integer is
+    begin
+        return 0;
+    end Fils;
+
+    --function Parents(Arbre: in out T_Arbre_Genealogique; Noeud : in T_Donnee) return T_Parents is
+   -- begin
+   --     return new T_Parents'();
+    --end Parents;
+
+
+    procedure Supprimer_Arbre_Genealogique(Arbre: in out T_Arbre_Genealogique; Noeud : in T_Donnee) is
+    begin
+        null;
+    end Supprimer_Arbre_Genealogique;
+
+    function Ancetres(Arbre: in out T_Arbre_Genealogique; Noeud: in T_Donnee; min : in Integer; max: in Integer) return T_Liste is
+        Liste: T_Liste;
+    begin
+        Initialiser_Liste(Liste);
+        return Liste;
+    end Ancetres;
+
+    procedure Afficher(Arbre: in out T_Arbre_Genealogique) is
+    begin
+        null;
+    end Afficher;
+
+
+    procedure Afficher_A_Partire_Noeud(Arbre: in out T_Arbre_Genealogique; Noeud : in T_Donnee) is
+    begin
+        null;
+    end Afficher_A_Partire_Noeud;
+
+    procedure Detruire_Arbre_Genealogique(Arbre: in out T_Arbre_Genealogique) is
+    begin
+        null;
+    end Detruire_Arbre_Genealogique;
+
+
+
+end Arbre_Genealogique;

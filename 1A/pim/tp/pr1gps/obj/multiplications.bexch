@@ -1,0 +1,20 @@
+[GENERATED OBJECT FILE]
+b__multiplications.o
+[PROJECT FILES]
+/home/nfoin/1A/pim/tp/pr1gps/pr1gps.gpr
+20190930114224
+[BOUND OBJECT FILES]
+/home/nfoin/1A/pim/tp/pr1gps/obj/alea.o
+/home/nfoin/1A/pim/tp/pr1gps/obj/multiplications.o
+[GENERATED SOURCE FILES]
+b__multiplications.ads
+b__multiplications.adb
+b__multiplications.ali
+[RESULTING OPTIONS]
+-L/home/nfoin/1A/pim/tp/pr1gps/obj/
+-L/home/nfoin/1A/pim/tp/pr1gps/obj/
+-L/applications/gnat/lib/gcc/x86_64-pc-linux-gnu/8.3.1/adalib/
+-static
+-static-libgcc
+/applications/gnat/lib/gcc/x86_64-pc-linux-gnu/8.3.1/adalib/libgnat.a
+-ldl

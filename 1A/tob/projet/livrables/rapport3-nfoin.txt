@@ -1,0 +1,5 @@
+#Ajout de l'interface attaque dans l'interface planète pour la saisie des troupes attaquantes.#
+#Mise en fonction des attaques.#
+#Gestion du résultat des attaques.#
+#Ajout de la perte des troupes attaquantes et défenseuses après attaque.#
+#Acquérir une nouvelle planete pour le joueur.#

@@ -1,0 +1,55 @@
+Date de l'évaluation : jeudi 23 avril 2020, 17:22:45 (UTC+0200)
+
+!!! Il est interdit de changer Jeu.java (voir evaluation1/Jeu.java.diff)
+!!! Il est interdit de changer ConfigurationException.java (voir evaluation1/ConfigurationException.java.diff)
+!!! Il est interdit de changer CoupInvalideException.java (voir evaluation1/CoupInvalideException.java.diff)
+
+Nombre de similitudes (voir evaluation1/sim_java.txt) : 7
+Les similitudes indiquent généralement du code à restructurer.
+
+Erreurs checkstyle (différentes/types) : 45/10	(voir evaluation1//checkstyle.log)
+
+Utilisation de 'Scanner' : ok
+	./allumettes/StrategieHumain.java:	Scanner scanner;
+	./allumettes/StrategieHumain.java:		scanner = new Scanner(System.in);
+
+Utilisation de 'split' : ok mais un seul split devrait suffir !  Code à restructurer...
+	./allumettes/Partie.java:		if (args[0 + indexOffset].split("@").length != 2 || args[1 + indexOffset].split("@").length != 2) {
+	./allumettes/Partie.java:			tabJoueurs[i] = args[i + indexOffset].split("@");
+
+Utilisation de 'Random' : ok
+	./allumettes/StrategieNaive.java:import java.util.Random;
+	./allumettes/StrategieNaive.java:	Random rand;
+	./allumettes/StrategieNaive.java:		rand = new Random();
+
+Utilisation de '3' : la constante Jeu.PRISE_MAX doit être utilisée
+	./allumettes/Partie.java:		//Ici on sait qu'il y a 2 ou 3 arguments dans args
+	./allumettes/StrategieNaive.java:		//Renvoie un entier entre 1 et 3 inclus
+	./allumettes/StrategieRapide.java:	 * Obtenir le nombre d'allumettes à retirer selon la strategie rapide, c'est à dire la prise max (3) ou bien le nombre d'allumettes restantes
+	./allumettes/StrategieExpert.java:			case 3: return 2;//Gagné
+	./allumettes/StrategieExpert.java:			case 0: return 3;//Gagné
+
+Utilisation de 'System.exit' : INTERDIT d'utiliser System.exit(), sauf celui fourni dans Partie.java
+	./allumettes/Partie.java:			//System.exit(1);
+	./allumettes/Partie.java:			//System.exit(1);
+
+Compilation de Partie.java : OK.
+Compilation de Arbitre.java : OK.
+Test exemplePresqueSujet : ok
+Test exempleTricheurSujet : ok
+Test exempleConfiantTricheurSujet : ok
+Test exempleRobustesse : ok
+Test exempleRapideRapide : ok
+Test exempleTricheurExpert : ok
+
+On recommence avec les classes/interfaces fournies : Jeu ConfigurationException CoupInvalideException
+Compilation de Partie.java : OK.
+Compilation de Arbitre.java : OK.
+
+Vérification du respect du diagramme de classe...
+Test FormeTest : Tests run: 2,  Failures: 1	(voir evaluation1/FormeTest.log)
+    1) testerRespectArchitecture(FormeTest)
+        AssertionError: Constructeur manquant dans la classe allumettes.Arbitre : allumettes.Arbitre(allumettes.Joueur, allumettes.Joueur)
+
+
+Aucune classe de test (fichier *Test.java ou Test*.java) !

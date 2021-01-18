@@ -1,0 +1,4 @@
+18c18
+< 		super("Prise invalide : " + nb + " (" + message + ")");
+---
+> 		super("Erreur ! Prise invalide : " + nb + " (" + message + ")");

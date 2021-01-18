@@ -1,0 +1,19 @@
+| Attention, les pénalités sont calculées sur 6 points qui
+| seront ensuite ramenés sur 3.  Les pénalités affichées sont
+| donc le double des pénalités réelles.
+
+Compilation de Cercle.java : OK.
+Compilation de SujetCercleTest.java : OK.
+Compilation de CercleTest.java : OK.
+Test CercleTest : Tests run: 1,  Failures: 1	(voir penalites1/CercleTest.log)
+    1) initializationError(CercleTest)
+        Exception: No runnable methods
+
+Essai en supprimant l'option -ea
+Test CercleTest : Tests run: 1,  Failures: 1	(voir penalites1/CercleTest.log)
+    1) initializationError(CercleTest)
+        Exception: No runnable methods
+
+CercleTest ne fonctionne pas !	(pénalité : 2)
+JavaDoc automatique de Cercle : OK
+Total pénalités V1 : 2

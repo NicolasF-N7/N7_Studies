@@ -1,0 +1,20 @@
+Q7 A is in R^(n*n) so A² requires n^3 multiplications, and (n-1)n^2 additions, so a total of 2*n^3 - n^2 flops.
+For A^p, (p-1)(2n^3 - n^2) operations are computed.✍️
+The cost of A^p * V is then (p-1)(2n^3 - n^2) + mn^2 + mn(n-1) = (p-1)(2n^3 - n^2) + 2mn^2 -mn 
+
+To reduce the cost, we can stock in memory the matrix A^p at each iterations so that we only have to compute a product between A^(p-1) and A
+at iteration p. The cost is then equivalent to 2n^3
+
+Q8
+J'ai remplacé Y = AV par Y = A^p V
+
+Q9
+Avec /main  -imat 2 -n 700 -m 20 -v 1 -disp 2
+on observe que la derniere valeur propre possède une meilleur précision que les autres; alors qu'avec m=40 la dernière à la moins bonne précision.
+Ceci est expicable par le fait que la précision est calculée à partir du ieme vecteur de V, or celui ci change tout au long de l'algorithme.
+
+Q10
+la précision des valeurs propre sera identique puisqu'on ne modifiera plus le début de la matrice V
+
+Q11
+Modification: 

@@ -1,0 +1,170 @@
+Nom    : FOIN
+Prénom : Nicolas
+Groupe : C
+--------------------------------------------------------------------------------
+
+
+Consigne : Dans ce fichier, il faut répondre à la place des "..." et sur les
+lignes qui les suivent.  Le texte déjà écrit doit être conservé !
+
+=====[ Temps passé ]============================================================
+
+Ces informations de temps sont demandées à titre indicatif et ne sont pas
+prises en compte dans la notation du projet.
+
+Toutes les durées sont à saisir en heures.  Par exemple, si vous avez passé
+1h45, il faudra indiquer 1.75.  Si vous avez passé 2h30, il faudra indiquer
+2.5.
+
+Temps total passé sur ce mini-projet (en h) : 4.50
+Temps passé sur les raffinages (en h) : 2.5
+
+=====[ Raffinages ]=============================================================
+
+-- Ne donner que les niveaux de raffinages qui sont informatifs.   Il est
+-- généralement inutile de donner le dernier niveau de raffinage s'il ne
+-- contient pas d'étapes non élémentaires.
+
+
+R0 : La spec
+
+
+Exemples : On ne donnera pas d'exemples d'utilisation
+
+
+
+R1 : Comment R0?
+Répéter
+	Demander quelle table réviser.
+	Faire réviser la table choisie.
+  	Afficher les résultats.
+  	Demander si continuer ou quitter.
+tant que choix utilisateur est continuer
+
+R2: Comment demander quelle table réviser?:
+Afficher "Table à réviser ?:"
+saisir réponse utilisateur: Table
+
+Répéter tant que Table <0 ou Table >10
+	Afficher "Table à réviser (Comprise entre 1 et 10)?:"
+	saisir réponse utilisateur: Table
+Fin_tant_que
+
+R2:Comment faire réviser la table choisie?:
+Initialiser le nombre d'erreur à 0
+Pour i entre 1 et 10 faire
+	choisir un nombre aléatoire: N
+	Demander la réponse utilisateur
+	Traiter la réponse
+Fin pour
+
+
+R3: Comment demander la réponse utilisateur?:
+Afficher "(MN) Table * N ?"
+
+R3: Comment traiter la réponse
+Récupérer la réponse et calculer le temps de réponse (Tps_Rep)
+
+Actualiser le temps de réponse max et la table sur laquelle l'utilisateur a des hésitations
+Actualiser le temps de réponse moyen
+Afficher un message en fonction de la réponse et actualiser le nombre d'erreur.
+
+R4: Comment récuperer la réponse et calculer le temps de réponse ?:
+Conserver l'heure de début(Heure_Debut)
+Lire la réponse Rep
+Récupérer l'heure de fin (Heure_Fin)
+Tps_Rep est egale à la différence entre Heure_Fin et Heure_Debut
+
+R4: Comment actualiser le temps de réponse max et la table sur laquelle l'utilisateur a des hésitations?:
+si Tps_Rep est supérieur à temps de réponse max alors 
+	temps réponse max <- Tps_Rep
+	TableHesite <- N
+Fin si
+
+R4: Comment actualiser le temps de réponse moyen
+temps de réponse moyen <- temps réponse moyen + Tps_Rep divisé par 10
+
+R4: Comment afficher un message en fonction de la réponse et actualiser le nombre d'erreur?:
+si Rep est different de Table*N alors
+	Afficher "Mauvaise réponse"
+	Incrementer le nombre d'erreur de 1
+sinon
+	Afficher "Bravo!"
+Fin si
+
+
+R2: Comment Afficher les résultats ?:
+Selon nombre d'erreur dans
+	0 => Afficher "Aucune erreur. Excellent!"
+	1 => Afficher "Une seule erreur. Très bien."
+	10 => Afficher "Tout est faux! Volontaire?"
+	2..4 =>	Afficher nombre de réponses "Il faut encore retravailler la table de" Table
+	5..9 =>	Afficher "Seulement" 10-nombre d'erreur " bonnes réponses. Il faut apprendre la table de " Table
+Fin selon
+
+si temps réponse max > temps réponse moyen+1 alors
+	Afficher "Des hésitations sur la table " TableHesite ":" temps réponse max "secondes contre " temps reponse moyen " en moyenne. Il faut certainement la réviser!"
+
+
+R2: Comment demander si continuer ou quitter?:
+Afficher "On Continue ?(o/n)"
+Saisir le choix utilisateur
+
+
+=====[ Test ]===================================================================
+
+* Expliquer rapidement comment vous avez testé votre programme.
+Faire un sans faute puis en faisant une faute, puis peu de faute puis beaucoup et vérifier les messages.
+Rentrer un chiffre hors des bornes pour la table à réviser
+
+
+=====[ Difficultés ]============================================================
+
+* Indiquer les difficultés rencontrées
+
+...
+
+
+=====[ Questions ]==============================================================
+
+Pour les questions suivantes, il ne s'agit pas de modifier le programme écrit
+mais d'expliquer comment il faudrait le modifier pour prendre en compte les
+évolutions envisagées.
+
+
+* Au lieu de poser 10 questions, on veut en poser 15. Comment faire ?
+Modifier les bornes du random avant begin
+Modifier les bornes de la boucle for principale
+Pour le calcul du temps de réponse moyen: diviser par 15 au lieu de 10
+Modifier les conditions dans le 'case'
+Modifier 10-erreur en 15- erreur pour afficher le nombre de bonnes réponses
+
+
+
+* On veut afficher "Bien" si l'utilisateur n'a commis que 2 ou 3 erreurs.
+  Comment modifier le programme ?
+Dans le case: ajouter 2..3 => Put_Line("Bien!"); 
+et modifier le cas 2..4 en 4
+
+
+* On veut donner la possibilité à l'utilisateur d'abandonner le programmes en
+  tapant 0 quand on lui demande le résultat d'une multiplication. Quelles
+  modifications faut-il alors faire au programme ? 
+
+Rajouter exit when Rep = 0 juste avant le end loop de la boucle for
+
+* À la fin d'une série de questions, on veut proposer à l'utilisateur de
+  réviser la table pour laquelle l'utilisateur a commis le plus d'erreurs.
+  Par exemple, s'il se trompe pour 3 * 5, on compte une erreur pour 3 et
+  une erreur pour 5.  Comment faire ?
+
+...
+
+
+=====[ Remarques diverses ]=====================================================
+
+Cette rubrique est libre (et ne sera pas prise en compte dans la notation).
+
+...
+
+--------------------------------------------------------------------------------

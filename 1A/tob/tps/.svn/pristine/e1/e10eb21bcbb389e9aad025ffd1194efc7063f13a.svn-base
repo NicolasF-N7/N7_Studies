@@ -1,0 +1,38 @@
+Nom       : Foin
+Prénom    : Nicolas
+Groupe TP : C
+
+
+Consigne :  Ci-dessous, répondre à la place des « ... ».
+
+
+=====[ Temps ]==================================================================
+
+Temps consacré au projet pour rendre la V1 :2 heures 0 minutes
+Temps consacré au projet pour rendre la V2 : 6 heures 0 minutes
+(Pour la V2 on ne tiendra pas du temps passé sur la V1)
+(Bien sûr, Les temps renseignés ici ne sont pas pris en compte dans la notation)
+
+
+=====[ Questions ]==============================================================
+
+Indiquer la relation UML entre Cercle et le Point centre du cercle.
+-------------------------------------------------------------------
+La classe cercle et le centre du cercle sont reliés par une relation de Composition 
+car lorsque le cercle est détruit, son centre l'est aussi.
+
+
+Comment est réalisée l'exigence E18 ?
+-------------------------------------
+
+Puisque une poignée est un pointeur, il faut faire une copie des attributs centre et couleur avant des les renvoyer.
+Pas besoins pour rayon car c'est un entier, pas un poiteur.
+
+
+
+=====[ Explications ]===========================================================
+
+(Facultatif) Donner ici les explications supplémentaires utiles à la
+compréhension du travail rendu.
+
+...

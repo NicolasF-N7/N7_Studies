@@ -1,0 +1,12 @@
+registre.adb:1:06: warning: redundant with clause in body
+registre.adb:1:09: warning: no entities of "Ada.Text_IO" are referenced
+registre.adb:1:18: warning: "Text_IO" is already use-visible through previous use_clause at registre.ads:5
+registre.adb:1:18: warning: use clause for package "Text_IO" has no effect
+registre.adb:2:06: warning: redundant with clause in body
+registre.adb:2:16: warning: "Calendar" is already use-visible through previous use_clause at registre.ads:4
+registre.adb:2:16: warning: use clause for package "Calendar" has no effect
+registre.adb:3:06: warning: redundant with clause in body
+registre.adb:72:09: warning: variable "Liste_Temporaire" is not referenced
+registre.adb:184:09: warning: variable "Taille" is never read and never assigned
+registre.ads:5:09: warning: no entities of "Ada.Text_IO" are referenced
+registre.ads:5:19: warning: use clause for package "Text_IO" has no effect

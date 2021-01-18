@@ -1,0 +1,10 @@
+B1.1: n: 8 à 37
+	p: 9 à 37
+	a: 13 à 18
+	n: 22 à 25
+	r: 30 à 33
+B1.2: oui pour n
+B1.3: non car il affiche des addresses mémoires qui varient d'une execution à une autre
+B1.4: p pointe vers a (l14) mais a est detruit l18 donc p pointe sur une case qui a été libérer: Erreur de segmentation
+B1.5: oui car p pointe sur une adresse mémoire différente de celle à la quelle il a été initialisé (NULL)
+B1.6: on modifierais une case mémoire qui n'est plus réservée au pogramme qui est executé: Erreur de segmentation

@@ -1,0 +1,11 @@
+allumettes/Partie.java:46: error: cannot find symbol
+					default: throw new StrategieInexistanteException(strategieJoueurs[i]);
+					                   ^
+  symbol:   class StrategieInexistanteException
+  location: class Partie
+allumettes/Partie.java:71: error: cannot find symbol
+		catch(StrategieInexistanteException e){
+		      ^
+  symbol:   class StrategieInexistanteException
+  location: class Partie
+2 errors

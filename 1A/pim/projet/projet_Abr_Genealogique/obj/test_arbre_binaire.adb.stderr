@@ -1,0 +1,4 @@
+test_arbre_binaire.adb:25:05: warning: "id1" is not modified, could be declared constant
+test_arbre_binaire.adb:26:05: warning: "id2" is not modified, could be declared constant
+test_arbre_binaire.adb:27:05: warning: "id3" is not modified, could be declared constant
+test_arbre_binaire.adb:28:05: warning: "id4" is not modified, could be declared constant

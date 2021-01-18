@@ -1,0 +1,17 @@
+test_arbre_genealogique.adb:3:16: warning: use clause for package "Calendar" has no effect
+test_arbre_genealogique.adb:7:17: "Arbre_Genealogique" is not the name of a generic package
+test_arbre_genealogique.adb:8:09: "Arbre_Test" is undefined
+test_arbre_genealogique.adb:11:19: "T_Donnee" is undefined (more references follow)
+test_arbre_genealogique.adb:26:05: "put_line" is not visible (more references follow)
+test_arbre_genealogique.adb:26:05: non-visible declaration at a-textio.ads:508
+test_arbre_genealogique.adb:26:05: non-visible declaration at a-textio.ads:498
+test_arbre_genealogique.adb:29:20: "Est_Present_Registre" is undefined (more references follow)
+test_arbre_genealogique.adb:29:41: invalid prefix in selected component "Ab"
+test_arbre_genealogique.adb:36:05: "Ajouter" is undefined (more references follow)
+test_arbre_genealogique.adb:39:41: invalid prefix in selected component "Ab"
+test_arbre_genealogique.adb:40:41: invalid prefix in selected component "Ab"
+test_arbre_genealogique.adb:51:05: "Supprimer" is undefined
+test_arbre_genealogique.adb:53:45: invalid prefix in selected component "Ab"
+test_arbre_genealogique.adb:54:45: invalid prefix in selected component "Ab"
+test_arbre_genealogique.adb:55:45: invalid prefix in selected component "Ab"
+test_arbre_genealogique.adb:58:05: "Detruire" is undefined

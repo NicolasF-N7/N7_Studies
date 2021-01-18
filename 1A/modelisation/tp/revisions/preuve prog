@@ -1,0 +1,21 @@
+(* Bibliothèque pour l’extraction de programme. *)
+Require Extraction. (* Ouverture d’une section *)
+Section Induction. (* Déclaration d’un domaine pour les éléments des listes *)
+Variable A : Set.
+
+Inductive liste : Set :=
+  Nil    : liste
+  | Cons : A -> liste -> liste.
+
+(* Déclaration du nom de la fonction *)
+Variable append_spec : liste -> liste -> liste.
+(* Spécification du comportement pour Nil *)
+Axiom append_Nil : forall (l : liste), append_spec Nil l = l.
+(* Spécification du comportement pour Cons *)
+Axiom append_Cons : forall (t : A), forall (q l : liste),
+  append_spec (Cons t q) l = Cons t (append_spec q l).
+
+Theorem append_Nil_right : forall (l : liste), (append_spec l Nil) = l.
+induction l.
+apply (append_Nil Nil).
+rewrite append_Cons.

@@ -1,0 +1,129 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U evaluer_alea%b	evaluer_alea.adb	82b6ee4c NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.discrete_random%s
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W alea%s		alea.adb		alea.ali
+W system%s		system.ads		system.ali
+Z system.assertions%s	s-assert.adb		s-assert.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-flteio.ads		20190518041255 e18a47a0 ada.float_text_io%s
+D a-inteio.ads		20190518041256 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20190518041254 bb51c45a ada.numerics%s
+D a-nudira.ads		20190518041254 71e55def ada.numerics.discrete_random%s
+D a-nudira.adb		20190518041254 72908cdb ada.numerics.discrete_random%b
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiflio.ads		20190518041254 bf196650 ada.text_io.float_io%s
+D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D alea.ads		20190930082518 9fe1c6b1 alea%s
+D alea.adb		20190930082518 ca5296b2 alea%b
+D evaluer_alea.adb	20191007074341 a4623394 evaluer_alea%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-assert.ads		20190518041255 cd8d2c94 system.assertions%s
+D s-conca2.ads		20190518041255 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-imgint.ads		20190518041254 02dbe0c2 system.img_int%s
+D s-imguns.ads		20190518041255 9ff43cf7 system.img_uns%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-rannum.ads		20190518041255 99ade2f2 system.random_numbers%s
+D s-rannum.adb		20190518041256 20ba1217 system.random_numbers%b
+D s-ransee.ads		20190518041256 01a57b33 system.random_seed%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-valuns.ads		20190518041256 35067db9 system.val_uns%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+G a e
+G c Z b b [evaluer_alea standard 11 11 none]
+G r i none [evaluer_alea standard 11 11 none] [alea standard 5 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 17|1r6 2r5 3r6 4r5 5r6 6r5
+X 3 a-flteio.ads
+20K13*Float_Text_IO[12|46] 17|5w10 6r9
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[13|46] 17|3w10 4r9
+X 8 a-nudira.adb
+53V16 Random[29|83]{integer} 30|392b13[16|7[17|63]]
+X 11 a-textio.ads
+57K13*Text_IO 727e16 17|1w10 2r9
+264U14*New_Line 17|114s9 124s5
+465U14*Put 17|108s9
+508U14*Put_Line 17|106s9 107s9
+X 12 a-tiflio.ads
+82U14*Put 17|109s9[3|20]
+X 15 alea.ads
+5k9*Alea 13e9 17|7w6 64r17
+11U15 Get_Random_Number 17|77s13[63]
+X 17 evaluer_alea.adb
+11U11*Evaluer_Alea 11b11 142l5 142t17
+13i5 CAPACITE{integer} 15r38
+15A10 Tableau_Entier(integer)<integer> 67r22
+49U15 Calculer_Statistiques 49b15 50>9 51>9 52<9 52<14 53<9 97l9 97t30 139s1
+50i9 Borne{integer} 56r16 60r51 64r26 72r21 84r21 95r40
+51i9 Taille{integer} 56r30 57r37 58r37 59r30 60r34 76r21 95r26
+52i9 Min{integer} 57r22 57r30 59r17 61r24 93m9
+52i14 Max{integer} 58r22 58r30 59r23 61r62 94m9
+53f9 Moyenne{float} 60r17 61r32 61r44 95m9
+63K17 Mon_Alea[15|5] 65r13
+67a9 Tab_Tirages{15A10} 73m13 78m13 78r34 81r18 82r18 85r16 86r27 87r19 88r27
+68i9 Alea{integer} 77m32 78r25 78r46
+69i9 Cp_Min{integer} 81m9 87r36 88m17 93r16
+70i9 Cp_Max{integer} 82m9 85r33 86m17 94r16
+72i13 i{integer} 73r25
+76i13 i{integer}
+84i13 i{integer} 85r28 86r39 87r31 88r39
+104U15 Afficher_Statistiques 104b15 104>38 104>43 104>57 115l9 115t30 140s1
+104i38 Min{integer} 106r48
+104i43 Max{integer} 107r48
+104f57 Moyenne{float} 109r14
+118i5 Min{integer} 139m33 140r24
+118i10 Max{integer} 139m38 140r29
+119f5 Moyenne{float} 139m43 140r34
+X 18 interfac.ads
+74M9*Unsigned_32
+77M9*Unsigned_64
+X 29 s-rannum.ads
+75V13*Random{18|74M9} 30|221i21
+76V13*Random{18|77M9} 30|221i21
+

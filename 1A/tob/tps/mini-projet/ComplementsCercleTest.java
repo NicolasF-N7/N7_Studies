@@ -1,0 +1,13 @@
+import org.junit.Test;
+
+public class ComplementsCercleTest{
+	//public static void main(String[] args) {
+	@Test
+	public void testComplement() {
+		Cercle c1= new Cercle(new Point(1,1), 10);
+		Point a=new Point(5,5);
+		Cercle c2= new Cercle(a, 2);
+		
+		
+	}
+}

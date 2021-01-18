@@ -1,0 +1,2 @@
+test.adb:18:15: warning: procedure "Aff_Elmt" is not referenced
+test.adb:32:15: warning: procedure "Afficher_Liste_Donnee" is not referenced

@@ -1,0 +1,53 @@
+set tab, %r1
+set N, %r2
+PILE = 0x2000
+set PILE, %sp
+
+ld [%r2], %r2
+add %r2, %r0, %r3//i=N
+sub %r3, 1, %r3//i<-i-1=N-1
+add %r0, %r0, %r4//j = 0
+// i = r3
+//j = r4
+// TRI A BULLES
+loop1: subcc %r2, %r3, %r0//N-i
+
+  loop2:sub %r3, 1, %r21//r21=i-1
+        subcc %r21, %r4, %r0//i-1-j
+        be endloop2//fin de boucle si j=i-1
+        
+        push %r1// empiler tab
+        push %r4// empiler j
+
+        //call permuter
+        clr %r28//r28 <- 0
+        add %r28, %r30, %r28//r28 <-pc sauvegarde de pc
+        ba permuter//appel du sous prgm
+
+        add %r4, 1, %r4//j=j+1
+        ba loop2
+  endloop2:
+
+      sub %r3, 1, %r3//i=i-1
+      ba loop1
+endloop1:ba endloop1
+
+// PERMUTER
+permuter:  
+  pop %r8//r8=j
+  pop %r9//r9=tab
+
+  ld [%r8 + %r9], %r10//r10 = tab[j]
+  add %r8, 1, %r21//r21 = j+1
+  ld [%r9 + %r21], %r11//r11 = tab[j+1]
+
+  if:
+    subcc %r10, %r11, %r0//tab[j]-tab[j+1]
+    bneg endif
+    st %r10, [%r9 + %r21]//tab[j+1] = tab[j]
+    st %r11, [%r9 + %r8]//tab[j] = tab[j+1]
+  endif: add %r28, 1, %r28
+  ret//pc <- r28+1
+
+tab: .word 1,7,3,8,2,6,4,9,10,5
+N: .word 10

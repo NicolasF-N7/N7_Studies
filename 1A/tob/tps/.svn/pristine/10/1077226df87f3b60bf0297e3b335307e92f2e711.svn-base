@@ -1,0 +1,24 @@
+import java.awt.Color;
+
+public class CercleTest{
+	public static void main(String[] args) {
+		Point A = new Point(1, 2);
+		Point B = new Point(2, 1);
+		Point C = new Point(4, 1);
+		Point D = new Point(8, 1);
+		Point E = new Point(8, 4);
+
+		// Construire les cercles
+		Cercle C1 = new Cercle(A, 2.5);
+		Cercle C2 = new Cercle(new Point(6, 1), 2);
+		Color clr= Color.cyan;
+		C2.setCouleur(clr);
+		
+		/* Test modification A et couleur*/
+		System.out.println(C2.getCouleur());
+		clr = Color.red;
+		System.out.println(C2.getCouleur());
+		System.out.println("Les deux couleurs doivent etre egales");
+		
+	}
+}

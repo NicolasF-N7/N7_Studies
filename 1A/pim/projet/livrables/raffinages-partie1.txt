@@ -1,0 +1,47 @@
+Raffinage
+
+Raffinage R0 : Comment "afficher le menu à l'utilisateur?"
+	Répéter
+		Demander à l'utilisateur quelle action effectuer 
+	Jusqu'a Choix utilisateur est quitter
+
+R1: Comment Demander à l'utilisateur quelle action effectuer ?
+	Saisir choix utilisateur
+	Selon choix réaliser l'opération
+
+R2: Comment réaliser l'opération ?
+	Cas choix est "créer un arbre minimal avec un seul noeud" => 
+          Initialiser Arbre Genealogique
+	Cas choix est "Ajouter un parent à un noeud donné" => 
+          Demander les paramètres de l'individus à ajouter
+          procedure ajouter du package Arbre_Genealogique
+        Cas choix est "Obtenir le nb d'ancetres connus d'un individus" => 
+          Demander quel noeuds choisir.
+          Calculer le nb d'ancetres
+          Afficher le nb d'ancetres
+	Cas choix est "Obtenir l'ensemble des ancetre situés à un certaine génération d'un noeud donné"
+          Demander quel noeuds choisir.
+          Demander quel génération afficher
+          Afficher les individus de génération choisie par rapport au noeud choisis
+        Cas choix est "Afficher l'arbre à partir d'un noeud donné"
+          Demander quel noeuds choisir.
+          Afficher l'arbre à partir de noeud
+        Cas choix est "Supprimer un noeud et ses ancetres".
+          Demander quel noeuds choisir.
+          Supprimer l'arbre à partire de ce noeud
+        Cas choix est "Obtenir l'ensemble des individus qui n'ont qu'un parent connu"
+          Parcourir l'arbre généalogique
+          Afficher au fur est a mesure les individus ayant un seul parent
+        Cas choix est "Obtenir l'ensemble des individus dont les deux parent sont connus"
+          Parcourir l'arbre généalogique
+          Afficher au fur est a mesure les individus ayant deux parents connus
+        Cas choix est "Obtenir l'ensemble des individus dont les deux parent sont inconnus"
+          Parcourir l'arbre généalogique
+          Afficher au fur est a mesure les individus ayant deux parents inconnus
+        Cas choix est "Afficher les ancetres d'un individus sur n générations"
+          Demander quel noeuds choisir.
+          Afficher les ancetres à partire de Noeud jusqu'a la génération n
+        Cas choix est "Verifier si deux individus ont au moins un ancetre homonyme"
+          Demander deux individus.
+          
+          

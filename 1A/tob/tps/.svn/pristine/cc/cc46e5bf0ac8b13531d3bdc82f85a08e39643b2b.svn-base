@@ -1,0 +1,4 @@
+7c7
+< public class ConfigurationException extends RuntimeException {
+---
+> public class ConfigurationException extends RuntimeException {//non verifiée

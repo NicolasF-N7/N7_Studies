@@ -1,0 +1,71 @@
+-- Specification du module liste-chainee qui défini des listes dynamiques qui seront utilisées dans le registre pour stocker les données d'une personne. 
+with Ada.Text_IO; use Ada.Text_IO;
+with Calendar; use Calendar;
+
+generic
+    type T_Element is private; 
+    
+package Liste_Chainee is
+    
+    type T_Liste is private;
+    
+    Unknown_Element_Exception: Exception;
+    
+        -- Initialiser une liste.
+	procedure Initialiser_Liste (Liste : out T_Liste) with
+                post => Est_Liste_Vide (Liste);
+        
+        -- Détruire une liste.
+	procedure Detruire_Liste (Liste : in out T_Liste) with
+	    pre => True,
+                post => Est_Liste_Vide (Liste);
+        
+        -- Renvoie si une liste est vide ou pas.
+        function Est_Liste_Vide (Liste : in T_Liste) return boolean;
+        
+        -- Savoir la taille de la liste.
+        function Taille_Liste (Liste : in T_Liste) return Integer;
+        
+        -- Savoir si un élément est présent dans une liste.  
+        function Present_Liste (Liste : in T_Liste; Element : in T_Element) return Boolean
+               ;-- pre => not Est_Liste_Vide (Liste);
+        
+    --Retourne l'element en tete de liste
+    function Tete_Liste(Liste: in T_Liste) return T_Element;
+    
+    --Retourne la liste privee de la tete
+    function Queue_Liste(Liste: in T_Liste) return T_Liste;
+    
+    --La liste L1 est transformee en L1L2
+    procedure Concat(L1: in out T_Liste; L2: in T_Liste);
+    
+    --Souleve Unknown_Element_Exception si element non present dans la liste
+    procedure Modifier_Liste(Liste: in T_Liste; Element :T_Element; New_Element: T_Element);
+            
+            
+	-- Ajouter un élément en tete de liste.
+        procedure Ajouter_Liste (Liste: in out T_Liste; Element : in T_Element) with
+	    pre => not Present_Liste (Liste, Element),
+                post => Present_Liste (Liste, Element);
+        
+        -- Supprimer un élément dans la liste.
+        procedure Supprimer_Liste (Liste : in out T_Liste; Element: in T_Element)  with
+	    pre => Present_Liste (Liste, Element),
+            post => not Present_Liste (Liste, Element);
+        
+        procedure Intersection (Liste1 : in T_Liste; Liste2 : in T_Liste; Liste : out T_Liste);
+        
+        function N_eme_Element (Liste : in T_Liste; n : in Integer) return T_Element;
+    generic
+        with procedure Appliquer_Sur_Element (Element : in T_Element);
+    procedure Appliquer_Sur_Tous (Liste : in T_Liste);
+    
+private
+    type T_Cellule;
+    type T_Liste is access T_Cellule;
+    type T_Cellule is
+        record
+            Valeur: T_Element;
+            Suivant: T_Liste;
+        end record;
+end Liste_Chainee;

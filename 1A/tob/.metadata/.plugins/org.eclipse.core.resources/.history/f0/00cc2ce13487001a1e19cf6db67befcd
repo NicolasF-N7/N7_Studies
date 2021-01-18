@@ -1,0 +1,14 @@
+package allumettes;
+
+public class Test {
+
+	public static void main(String[] args) {
+		String[] arguments = {"-confiant", "j1@inexistante", "j2@expert"};
+		Partie.main(arguments);
+		//Affichage "strategie non definie" OK
+		arguments = {"-confiant", "j1@naif", "j2@expert"};
+		Partie.main(arguments);
+		
+	}
+
+}

@@ -1,0 +1,102 @@
+--Specification du module registre. Il utilise un tableau de listes du module liste_chainee pour y insérer des données de type T_Donnée.
+--Ce module est réalisé avec la méthode du hachage.
+
+with Calendar; use Calendar;
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+with Liste_Chainee;
+
+generic
+    Capacite: Integer;--Le nombre de listes que contiendra le tableau / table de hashag
+    
+package Registre is
+    
+    --package Liste_Chainee_Entier is
+    --        new Liste_Chainee(Integer);
+    --use Liste_Chainee_Entier;
+    
+    type T_Sexe is (Homme, Femme);
+    
+    type T_Donnee is
+        record
+            Id : Integer;
+            Prenom: Ada.Strings.Unbounded.Unbounded_String;
+            Nom: Ada.Strings.Unbounded.Unbounded_String;
+            Date_Naissance: Time;
+            Sexe: T_Sexe;
+        end record;
+    
+    --Instanciation du package Liste_Chainee sur le type T_Donnee: Liste de T_Donnee representant les individus
+    package Liste_Donnee is 
+            new liste_chainee (T_Donnee);
+    use Liste_Donnee;
+    
+    type T_Tableau is array (1..Capacite) of T_Liste;
+    
+    type T_Registre is limited private; --Type registre.
+    
+    Unknown_ID_Exception: Exception;
+    
+    --Initialiser un registre.
+    procedure Initialiser_Registre (Registre : out T_Registre) with
+            Post => Est_Registre_Vide(Registre);
+    
+    --Savoir si un registre ne contient que des listes vides.
+    function Est_Registre_Vide (Registre : in T_Registre) return Boolean;
+    
+    -- Savoir si une donnée est présente dans un registre.
+    function Est_Present_Registre (Registre : in T_Registre; Donnee : in T_Donnee) return boolean;
+    
+    function Est_Present_Registre (Registre : in T_Registre; Id : in Integer) return boolean;
+    
+    --retourne une liste des ID des personnes de même nom, prenom.
+    function Homonymes (Registre : in T_Registre; Nom : in Unbounded_String; Prenom : in Unbounded_String) return Liste_Donnee.T_Liste;
+    
+    --Ajouter une donnée dans un registre en fonction du modulo capacite.
+    --Avec la contrainte Id appartient à [|1;n|] ou n est le nb d'individus du registre
+    procedure Ajouter_Registre (Registre : in out T_Registre; Donnee : in T_Donnee) with
+            pre => not(Est_Present_Registre (Registre, Donnee)) and Donnee.Id = Taille_Registre(Registre)+1,
+            post => Est_Present_Registre (Registre, Donnee);
+    
+    -- Connaitre la donnée a partir d'un id.
+    -- Souleve Unknown_ID_Exception si l'ID n'existe pas
+    function Obtenir_Donnee (Registre : in T_Registre; Id : in Integer) return T_Donnee;
+    
+    -- Modifier un element dans le registrer.
+    -- Souleve Unknown_ID_Exception si la donnee Old_Donnee n'existe pas
+    procedure Modifier_Registre (Registre : in out T_Registre; Old_Donnee : in T_Donnee; New_Donnee : in T_Donnee) with 
+            pre => Est_Present_Registre(Registre, Old_Donnee),
+            post => Est_Present_Registre(Registre, New_Donnee);
+    
+    -- Modifier un element dans le registrer.
+    -- Souleve Unknown_ID_Exception si l'ID n'existe pas
+    procedure Modifier_Registre (Registre : in out T_Registre; Id : in Integer; New_Donnee : in T_Donnee) with 
+            pre => Est_Present_Registre(Registre, Obtenir_Donnee(Registre, Id)),
+            post => Est_Present_Registre(Registre, New_Donnee);
+    
+    -- Supprimer une donnee dans un registre.
+    procedure Supprimer_Registre(Registre : in out T_Registre; Donnee : in T_Donnee) with 
+            pre => Est_Present_Registre (Registre, Obtenir_Donnee(Registre, Donnee.Id)),
+            post => not Est_Present_Registre (Registre, Obtenir_Donnee(Registre, Donnee.Id));
+    
+    -- Supprimer une donnee dans un registre.
+    procedure Supprimer_Registre(Registre : in out T_Registre; Id : in Integer) with 
+            pre => Est_Present_Registre (Registre, Obtenir_Donnee(Registre, Id)),
+            post => not Est_Present_Registre (Registre, Obtenir_Donnee(Registre, Id));
+    
+    -- Connaitre la taille d'un registre.
+    function Taille_Registre (Registre : in T_Registre) return Integer;
+    
+    --Detruire un registre (toutes les listes sont de tailles vides).
+    procedure Detruire_Registre (Registre : in out T_Registre) with
+            post => Est_Registre_Vide(Registre);
+ 
+private
+    
+    type T_Registre is 
+        record 
+            Tableau : T_Tableau;
+            Nb_Individus : Integer;
+        end record;
+    
+end Registre;

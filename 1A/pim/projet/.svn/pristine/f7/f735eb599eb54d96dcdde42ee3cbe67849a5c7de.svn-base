@@ -1,0 +1,56 @@
+package Arbre_Binaire is
+    
+    type T_AB is limited private;
+    
+    --Initialiser un arbre binaire.
+    procedure Initialiser (Arbre : out T_AB) with
+            Post => Est_Vide(Arbre);
+    
+    --Savoir si un arbre ne contient aucun élément.
+    function Est_Vide (Arbre : in T_AB) return Boolean;
+    
+    --Ajouter un descendant (cle) dans un arbre après la cle d'un parent.
+    procedure Ajouter (Arbre : in out T_AB; Cle_Descendant : in Integer; Cle_Parent in Integer; cote : in Boolean) with
+            --pre => (cote and Arbre.all.Sous_Arbre_Droit = Null) or (not cote and Arbre.all.Sous_Arbre_Droit = Null),
+            post => Est_Present(Arbre, Cle_Descendant);
+    
+    -- Savoir si un individu est présent dans un arbre donné.
+    function Est_Present (Arbre : in T_AB; Cle : in Integer) return Boolean; 
+    
+    --Obtenir l'identification à partir d'un arbre et d'un noeud (comme cela seul le noeud est utile dans les fonctions).
+    function Identification (Arbre : in T_AB; Cle : in Integer) return Integer with
+            pre => Est_Present(Arbre, Noeud);
+    
+    -- Connaitre la taille (le nombre d'individus) d'un arbre donné.
+    function Taille (Arbre : in T_AB) return Integer with
+    post => Taille'result >=0 and (Taille'result=0) = Est_Vide(Arbre);
+    
+    -- Supprimer un individu et tout ses ancêtres.
+    procedure Supprimer(Arbre : in out T_AB; Cle : in Integer) with
+            pre => Est_Present(Arbre, Noeud),
+            post => not Est_Present(Arbre, Noeud);
+    
+    --Detruire un arbre.
+    procedure Detruire (Arbre : in out T_AB) with
+            post => Est_Vide(Arbre);
+     
+    --Afficher un arbre.
+    generic 
+                with procedure Afficher_Element(Cle : in Integer);
+    procedure Afficher (AB : in T_AB);
+    
+    
+private 
+    	type T_Noeud;
+	type T_AB is access T_Noeud;
+	type T_Noeud is
+                record
+			cle : Integer;
+			Sous_Arbre_Gauche : T_AB;
+			Sous_Arbre_Droit : T_AB;
+			-- Invariant
+			--    Pour tout noeud N dans Sous_Arbre_Gauche, N.Cle < Cle
+			--    Pour tout noeud N dans Sous_Arbre_Droit,  N.Cle > Cle
+		end record;
+   
+end Arbre_Binaire;

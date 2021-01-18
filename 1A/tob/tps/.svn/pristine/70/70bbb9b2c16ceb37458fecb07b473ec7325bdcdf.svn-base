@@ -1,0 +1,29 @@
+Date de l'évaluation : jeudi 30 janvier 2020, 22:23:55 (UTC+0100)
+
+Compilation de Cercle.java : OK.
+    ATTENTION, la classe Cercle ne doit pas utiliser JUnit (il faut utiliser assert en non assertTrue, etc.)
+
+Types d'erreurs checkstyle : 0	(voir evaluation1/Cercle.checkstyle)
+
+Résultat de recherche de similitudes sur Cercle.java dans evaluation1/Cercle.sim
+
+JavaDoc automatique de Cercle : ok	(voir evaluation1/Cercle.javadoc)
+
+Test SujetCercleTest : OK (14 tests)	(voir evaluation1/SujetCercleTest.log)
+Test RobustesseCercleTest : OK (20 tests)	(voir evaluation1/RobustesseCercleTest.log)
+Test FormeCercleTest : OK (12 tests)	(voir evaluation1/FormeCercleTest.log)
+Test Forme2CercleTest : OK (9 tests)	(voir evaluation1/Forme2CercleTest.log)
+
+ComplementsCercleTest : modifiée... on l'utilise donc...
+Compilation de ComplementsCercleTest.java : OK.
+Test ComplementsCercleTest : Tests run: 1,  Failures: 1	(voir evaluation1/ComplementsCercleTest.log)
+    1) initializationError(ComplementsCercleTest)
+        Exception: No runnable methods
+
+
+Compilation de CercleTest.java : OK.
+Test CercleTest : Tests run: 1,  Failures: 1	(voir evaluation1/CercleTest.log)
+    1) initializationError(CercleTest)
+        Exception: No runnable methods
+
+CercleTest échoue sur Cercle : pas de test avec les mutants

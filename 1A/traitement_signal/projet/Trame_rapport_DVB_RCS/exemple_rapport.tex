@@ -1,0 +1,328 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Rapport du projet de Traitement du signal}}
+\author{Christopher James \& Nicolas Foin\\ }
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2019-2020 }
+
+\maketitle
+
+\newpage
+\tableofcontents
+\listoffigures
+
+\newpage
+\section{Introduction}
+L'objectif de ce projet était de simuler la transmission de deux messages par des utilisateurs différents sur un même canal de transmission. La solution retenue est la modulation en fréquence et le découpage temporel des messages. Dans ce but nous avons dû maitriser la modulation en amplitude et le filtrage de signaux.
+
+\section{Construction du signal MF-TDMA à décoder}
+La figure \ref{fig : MF_TDMA_recu} présente la trame MF-TDMA à étudier, implanter puis décoder.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{MF_TDMA_recu.png}
+    \caption{Construction du signal MF-TDMA à décoder \label{fig : MF_TDMA_recu}}
+ \end{figure}
+
+
+    \subsection{Paramètres}
+    La trame MF-TDMA est composée de $2$ porteuses, $f_{p_1}=0$ kHz et $f_{p_2}=46$ kHz, contenant chacune $5$ timeslots de durées $T=40$ ms. La fréquence d'échantillonnage est fixée à $128$ kHz. Les deux utilisateurs vont accéder au système en utilisant la trame de la manière suivante :
+        \begin{itemize}
+            \item L'utilisateur n° $1$ exploite le $2^{ème}$ timeslot de la porteuse n° $1$ ($f_{p_1}$).
+            \item L'utilisateur n° $2$ exploite le $5^{ème}$ timeslot de la porteuse n° $2$ ($f_{p_2}$).
+        \end{itemize}
+
+    Le canal de transmission considéré sera à bruit additif blanc et Gaussien (canal AWGN : Additive White Gaussian Noise). La puissance du bruit à ajouter devra être déduite du rapport signal sur bruit (SNR : Signal to Noise Ratio) souhaité donné en dB.
+
+    \subsection{Etude théorique}
+    Le signal MF-TDMA non bruité peut s'écrire de la manière suivante :
+        $$
+        x(t)=m_1(t) + m_2(t) \cos\left(2 \pi f_2 t + \phi_2\right)
+        $$
+        \subsubsection{Calcul de la densité spectrale de puissance} 
+	\begin{flushleft}
+		a) cas où $m_1$ et $m_2$ sont aléatoires, indépendantes et centrées.
+        $$ R_x(\tau)  = E(x(t)x(t - \tau)) $$
+		$$ R_x(\tau) = E(m_1(t) m_1(t-\tau)) + E( m_2(t) cos(2 \pi f_p2 t + \phi) m_2(t-\tau) cos(2 \pi f_p2 (t-\tau) + \phi ) ) $$
+		
+		or $m_1$ et $m_2$ sont indépendants et centrés donc les produits 	croisés sont d'espérance nulle		
+
+	$$ R_x(\tau) =  R_{m_1}(\tau) + \frac{1} {2} R_{m_2} (\tau) cos(2 \pi f_{p_2} \tau )$$
+	
+	Donc $$ S_{x}(f) = S_{m_1}(f) + \frac{1}{4} S_{m_2}(f) * (\delta (f - f_0) + \delta (f + f_0))	$$
+	\end{flushleft}
+	
+	
+	\begin{flushleft}
+		b) cas où $m_1$ et $m_2$ sont deterministes à energie finie.
+
+		$$ S_{x}(f) = \mid X(f) \mid ^2$$
+		$$ S_{x}(f) = \mid M_1(f) + M_2(f)* \frac{1}{2} (\delta(f- f_0) + \delta(f+f_0)) \mid ^2$$
+		$$ S_{x}(f) = \mid M_1(f) + \frac{1}{2} M_2 (f- f_0) + \frac{1}{2} M_2 (f+f_0) \mid ^2$$
+		$$ S_{x}(f) = S_{m_1}(f) + \frac{1}{4}S_{m_2}(f-f_0) + \frac{1}{4}S_{m_2}(f+f_0) + 
+		\mid M_1(f) \mid \mid M_2 (f-f_0)\mid + 
+		\mid M_1(f) \mid \mid M_2 (f+f_0)\mid $$
+		$$ + \mid M_2 (f-f_0) \mid \mid M_2 (f-f_0)\mid$$
+		Or m1 et m2 occupent la bande de fréquence [-b;b], donc M1 et M2 sont nulles en dehors des cet interval. Et quelque soit f on a f ou f-f0 qui est en dehors de cet interval, donc les termes croisés sont négligeables.
+Donc finalement :
+
+	$$ S_{x}(f) = S_{m_1}(f) + \frac{1}{4}  S_{m_2}(f-f_0) + \frac{1}{4} S_{m_2} (f+f_0)$$
+	\end{flushleft}	 
+	
+	
+\label{Calcul_DSP}		
+            
+        \subsubsection{Expression de la puissance du bruit à ajouter}
+           \begin{flushleft}
+           $$ SNR = 10 \log{\frac{P_s}{P_b}} $$
+           $$ P_b = P_s 10^{\frac{-SNR}{10}}$$
+           \end{flushleft}
+ \newpage
+    \subsection{Implantation}
+        \subsubsection{Modulation bande base}
+        
+            \begin{enumerate}
+                \item Calcul de $N_s$
+Nous savons que la durée maximale d?un slot est T=40ms. On connaît la durée d?un bit Ts=Ns*Te. En posant T=N*Ts avec N le nombre de bits d?un signal, on obtient T=N*Ns*Te et on détermine Ns=10.
+                	
+                \item Tracés des signaux $m_1(t)$ et $m_2(t)$
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{trace_m1.png}
+    \caption{Tracé de $m_1$ 
+    \label{fig : m1}}
+\end{figure}
+
+\newpage
+ 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{trace_m2.png}
+    \caption{Tracé de $m_2$ 
+    \label{fig : m2}}
+ \end{figure}
+ 
+                \item Estimation et tracé des densités spectrales de puissance des signaux $m_1(t)$ et $m_2(t)$. Concernant l'estimation on donnera notament l'estimateur utilisé.
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{dspm1.png}
+    \caption{Tracé de DSP de $m_1$ 
+    \label{fig : DSPm1}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{dspm2.png}
+    \caption{Tracé de DSP de $m_2$ 
+    \label{fig : DSPm2}}
+\end{figure}       
+L'estimateur utilisé est le périodogramme
+                
+            \end{enumerate}
+
+        \subsubsection{Construction du signal MF-TDMA}
+        
+            \begin{enumerate}
+                \item Tracé des signaux à envoyer sur porteuse pour chaque utilisateur.
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{x1.png}
+    \caption{Tracé de $x_1$ 
+    \label{fig : x1 }}
+\end{figure}  
+
+\newpage     
+ 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{x2.png}
+    \caption{Tracé de $x_2$ 
+    \label{fig : x2 }}
+\end{figure}  
+                
+                \item Tracé du signal MF-TDMA. Le tracé observé est-il conforme à ce qui est attendu ? Explications.
+                
+                
+\newpage 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{x.png}
+    \caption{Tracé de x 
+    \label{fig : x}}
+\end{figure}
+
+\newpage 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{xbruite.png}
+    \caption{Zoom sur le bruit de x 
+    \label{fig : xbruite }}
+\end{figure}  
+
+En zoomant sur la figure, on peut voir que le signal est bien bruité. En effet le signal x1 et x2 comportent de fortes irrégularités lorsqu ils ont été bruité comparés à leur signal sans bruitage. Cela est conforme à nos attentes. \\
+                         
+                
+                \item Estimation puis tracé de la densité spectrale de puissance du signal MF-TDMA. Le tracé observé est-il conforme à l'expression théorique obtenue précédemment ? Explications. 
+          
+\newpage      
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=15cm]{dspx.png}
+    \caption{Tracé de DSP de x
+    \label{fig : DSPx }}
+\end{figure}    
+            
+On retrouve bien la DSP de $x_1$ en 0 et celle de $x_2$ en $-f_0$ et $f_0$. De plus on constate que l'amplitude des DSP de x2 sont bien diminuées comme on l'attends au vu de l'expression téorique établie en \ref{Calcul_DSP} d'un facteur environ $\frac{1}{4}$.
+
+            \end{enumerate}
+
+\section{Mise en place du récepteur MF-TDMA}
+La figure \ref{fig : recepteur} présente le récepteur à implanter pour retrouver, à partir du signal MF-TDMA bruité, les messages binaires envoyés par les deux utilisateurs.
+ \begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{recepteur.png}
+    \caption{Récepteur MF-TDMA à implanter \label{fig : recepteur}}
+ \end{figure}
+
+    \subsection{Démultiplexage des porteuses}
+        Le démutiplexage des porteuses se fait par filtrage : à partir du signal MF-TDMA reçu, un filtre passe-bas permet de récupérer le signal porté par le cosinus à la fréquence $f_{p_1}$ (provenant de l'utilisateur $1$), tandis qu'un filtre passe-haut permet de récupérer le signal porté par le cosinus à la fréquence $f_{p_2}$ (provenant de l'utilisateur $2$).
+
+        \subsubsection{Synthèse du filtre passe-bas}
+            
+            \begin{enumerate}
+                \item Rappel de la réponse impulsionnelle idéale du filtre passe-bas à implanter (calcul effectué dans le TP$2$): \\
+                Nous voulons une fenetre en fréquence, donc la réponse impulsionnelle idéale est une sinus cardinal.
+                \item Explications implémentation: \\
+                On fixe un ordre de $30$ dans notre cas, et on calcule la fenetre à partir de la DFT du sinus cardinal tronqué entre $-ordre T_e$ et $ordre T_e$ et échantilloné avec un pas de $T_e$.
+                \item Tracé de la réponse impulsionnelle et de la réponse en fréquence du filtre implanté:
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{repImpPasseBas.png}
+    \caption{Réponse impulsionnelle du filtre passe bas \label{fig : RIPB}}
+\end{figure}
+
+\newpage
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{passeBas.png}
+    \caption{Réponse en fréquence du filtre passe bas \label{fig : FPB}}
+\end{figure}
+
+                
+                \item Tracé de la densité spectrale de puissance du signal MF-TDMA reçu et du module de la réponse en fréquences du filtre implanté. Le filtre implanté vous parait-il réaliser la fonction souhaitée ? Explications:
+                
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{dspPB.png}
+    \caption{DSP de x et Filtre passe bas \label{fig : dspPB}}
+\end{figure}
+                
+La fréquence de coupure a été choisi à 20 kHz en se basant sur la DSP de x. Le filtre remplit bien sa fonction car il conserve la partie centrale du spectre, c'est à dire le signal du message émis par l'utilisateur 1, tout en rejettant celui émis par l'utilisateur 2.
+
+            \end{enumerate}
+
+        \subsubsection{Synthèse du filtre passe-haut}
+            Bla bla bla ...
+            \begin{enumerate}
+                \item Calcul de la réponse impulsionnelle idéale du filtre passe-haut à implanter: \\
+$h_2(t) = \delta(t) - h_1(t) $   
+                
+                \item Explications implémentation: \\
+Concernant le dirac, nous avons implémenté un dirac en numérique. C'est à dire un tableau de points nul, sauf en $\frac{length(h_1)}{2}$ qui vaut 1.
+                \item Tracé de la réponse impulsionnelle et de la réponse en fréquence du filtre implanté:
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{RIPH.png}
+    \caption{Réponse impulsionnelle du filtre passe haut \label{fig : RIPH}}
+\end{figure}
+                
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{FPH.png}
+    \caption{Réponse en fréquence du filtre passe haut \label{fig : FPH}}
+\end{figure}
+                
+                \item Tracé de la densité spectrale de puissance du signal MF-TDMA reçu et du module de la réponse en fréquences du filtre implanté. Le filtre implanté vous parait-il réaliser la fonction souhaitée ? Explications:
+                
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{dspPH.png}
+    \caption{DSP de x et Filtre passe haut  \label{fig : dspPH}}
+\end{figure}     
+                
+Le filtre remplit bien sa fonction car il rejette la partie centrale du spectre, c'est à dire le signal du message émis par l'utilisateur 1, tout en conservant celui émis par l'utilisateur 2.
+                
+            \end{enumerate}
+
+        \subsubsection{Filtrage} \label{filtrage}
+            Tracés des signaux après filtrage:
+            
+            
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{xFPB.png}
+    \caption{Signal x filtré avec le passe bas  \label{fig : xFPB}}
+\end{figure}  
+
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{xFPH.png}
+    \caption{Signal x filtré avec le passe haut  \label{fig : xFPH}}
+\end{figure}  
+
+    \subsection{Retour en bande de base}
+
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{xbbFPB.png}
+    \caption{Signal x filtré avec le passe haut après retour en bande de base  \label{fig : xbbFPB}}
+\end{figure} 
+
+\newpage
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{xbbFPH.png}
+    \caption{Signal x filtré avec le passe bas après retour en bande de base  \label{fig : xbbFPH}}
+\end{figure} 
+
+    \subsection{Détection du slot utile}
+        Pour chaque utilisateur, afin de procèder à la détection du slot utile, on divise la trame après retour en bande da base en tranches de durée $T=40$ ms. Afin de détecter le slot utile, on utilise un détecteur d'énergie
+
+    \subsection{Démodulation bande de base}
+        Pour chaque utilisateur, à partir du message retrouvé dans le slot utile, on réalise une démodulation bande de base qui permet de retrouver les messages binaires envoyés. On utilise ensuite la fonction \emph{bin2str.m} fournie afin de retrouver les messages texte ... Bla bla bla bla bla bla...
+
+\section{Conclusion}
+Nous avons pu vérifier nos résultats expérimentaux à l'aide de l'étude théorique. Le choix de la fréquence de coupure pour les fitres estt cohérent puisque nous obtenons bien les deux messages voulu et non brouillés. Donc le multiplexage en fréquence et temporel est efficace pour l'utilisation d'une même canal de propagation par plusieurs usagers.
+
+\section{Références}
+$\phi$
+
+\end{document} 

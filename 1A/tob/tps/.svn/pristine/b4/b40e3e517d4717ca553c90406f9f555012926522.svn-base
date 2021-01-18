@@ -1,0 +1,136 @@
+File ./allumettes/ConfigurationException.java: 21 tokens, 16 lines
+File ./allumettes/Jeu.java: 27 tokens, 24 lines
+File ./allumettes/Arbitre.java: 369 tokens, 80 lines
+File ./allumettes/Strategie.java: 13 tokens, 7 lines
+File ./allumettes/StrategieTricheur.java: 95 tokens, 23 lines
+File ./allumettes/OperationInterditeException.java: 21 tokens, 10 lines
+File ./allumettes/PlateauProcuration.java: 77 tokens, 36 lines
+File ./allumettes/Partie.java: 638 tokens, 141 lines
+File ./allumettes/CoupInvalideException.java: 51 tokens, 28 lines
+File ./allumettes/Joueur.java: 73 tokens, 42 lines
+File ./allumettes/StrategieHumain.java: 99 tokens, 38 lines
+File ./allumettes/Plateau.java: 120 tokens, 35 lines
+File ./allumettes/StrategieNaive.java: 41 tokens, 21 lines
+File ./allumettes/StrategieInexistanteException.java: 27 tokens, 10 lines
+File ./allumettes/StrategieRapide.java: 41 tokens, 20 lines
+File ./allumettes/StrategieExpert.java: 66 tokens, 21 lines
+Total input: 16 files (16 new, 0 old), 1779 tokens
+
+./allumettes/Partie.java: line 60-68 [37]
+./allumettes/Partie.java: line 68-74
+< 			Arbitre arbitre = new Arbitre(joueurs[0], joueurs[1], confiant);
+< 			arbitre.arbitrer(jeu);//Lancement de la partie
+< 			
+< 
+< 		} //Probleme dans l'interprétation des arguments
+< 		catch (ConfigurationException e) {
+< 			System.out.println("Erreur : " + e.getMessage());
+< 			System.out.println();
+< 			afficherUsage();
+---
+> 			afficherUsage();
+> 			System.exit(1);
+> 		}//Strategie inexistante
+> 		catch (StrategieInexistanteException e) {
+> 			System.out.println("" + e.getMessage());
+> 			System.out.println();
+> 			afficherUsage();
+
+./allumettes/Partie.java: line 100-104 [26]
+./allumettes/Partie.java: line 104-109
+< 			throw new ConfigurationException("Mauvaise synthaxe des arguments. Veuillez respecter NomJoueur@Strategie");
+< 		}
+< 		
+< 		for (int i = 0; i < NB_JOUEURS; i++) {
+< 			tabJoueurs[i] = args[i + indexOffset].split("@");
+---
+> 			tabJoueurs[i] = args[i + indexOffset].split("@");
+> 		}
+> 		
+> 		//Separation des nom des joueur et strategies
+> 		for (int i = 0; i < NB_JOUEURS; i++) {
+> 			nomJoueurs[i] = tabJoueurs[i][0];
+
+./allumettes/Arbitre.java: line 55-55 [26]
+./allumettes/Arbitre.java: line 72-72
+< 				System.out.println("Au tour de " + (tourJoueurJ1 ? j1.getNom() : j2.getNom()) + ".");
+---
+> 			System.out.println("Partie abandonnée car " + (tourJoueurJ1 ? j1.getNom() : j2.getNom()) + " a triché !");
+
+./allumettes/Partie.java: line 36-38 [25]
+./allumettes/Partie.java: line 40-42
+< 					case "naif": strategies[i] = new StrategieNaive();
+< 						break;
+< 					case "rapide": strategies[i] = new StrategieRapide();
+---
+> 					case "expert": strategies[i] = new StrategieExpert();
+> 						break;
+> 					case "tricheur": strategies[i] = new StrategieTricheur();
+
+./allumettes/StrategieTricheur.java: line 1-9 [24]
+./allumettes/StrategieRapide.java: line 1-16
+< package allumettes;
+< 
+< public class StrategieTricheur implements Strategie {
+< 
+< 	public StrategieTricheur() {
+< 	}
+< 
+< 	@Override
+< 	public int nbAllumettesARetirer(Jeu jeu) {
+---
+> package allumettes;
+> 
+> public class StrategieRapide implements Strategie {
+> 
+> 	/**
+> 	 * Construire une strategie rapide
+> 	 */
+> 	public StrategieRapide() {
+> 		
+> 	}
+> 
+> 	/**
+> 	 * Obtenir le nombre d'allumettes à retirer selon la strategie rapide, c'est à dire la prise max (3) ou bien le nombre d'allumettes restantes
+> 	 */
+> 	@Override
+> 	public int nbAllumettesARetirer(Jeu jeu) {
+
+./allumettes/StrategieRapide.java: line 1-16 [24]
+./allumettes/StrategieExpert.java: line 1-10
+< package allumettes;
+< 
+< public class StrategieRapide implements Strategie {
+< 
+< 	/**
+< 	 * Construire une strategie rapide
+< 	 */
+< 	public StrategieRapide() {
+< 		
+< 	}
+< 
+< 	/**
+< 	 * Obtenir le nombre d'allumettes à retirer selon la strategie rapide, c'est à dire la prise max (3) ou bien le nombre d'allumettes restantes
+< 	 */
+< 	@Override
+< 	public int nbAllumettesARetirer(Jeu jeu) {
+---
+> package allumettes;
+> import java.util.HashSet;
+> 
+> public class StrategieExpert implements Strategie {
+> 
+> 	public StrategieExpert() {
+> 	}
+> 
+> 	@Override
+> 	public int nbAllumettesARetirer(Jeu jeu) {
+
+./allumettes/Partie.java: line 33-34 [24]
+./allumettes/Partie.java: line 52-53
+< 			Strategie strategies[] = new Strategie[NB_JOUEURS];
+< 			for (int i = 0; i < NB_JOUEURS; i++) {
+---
+> 			Joueur joueurs[] = new Joueur[NB_JOUEURS];
+> 			for (int i = 0; i < NB_JOUEURS; i++) {
+

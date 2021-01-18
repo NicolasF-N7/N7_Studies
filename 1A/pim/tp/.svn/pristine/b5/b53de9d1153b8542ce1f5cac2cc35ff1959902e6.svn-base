@@ -1,0 +1,44 @@
+% Validation de http://cregut.svn.enseeiht.fr/2019/1sn/pim/tps/nfoin/pr1
+% Run on 2019-10-13 21:31:01.209574
+
+# Respect des fichiers fournis
+
+* Fichier alea.adb non modifié... ok
+* Fichier alea.ads non modifié... ok
+* Fichier exemple_alea.adb non modifié... ok
+* Fichier multiplications.adb modifié... ok
+* Fichier LISEZ-MOI.txt modifié... ok
+* Running gnatclean... ok
+* Compilation de multiplications.adb... ok
+
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g multiplications.adb
+  | x86_64-linux-gnu-gcc-8 -c -gnatwa -gnata -g alea.adb
+  | x86_64-linux-gnu-gnatbind-8 -x multiplications.ali
+  | x86_64-linux-gnu-gnatlink-8 multiplications.ali -g
+
+* ./multiplications < "5 1 2 3 4 1 6 7 8 9 1 n"... ok
+
+  | Table Ã  rÃ©viser?(M 1)  5 *  7 ? 
+  | Mauvaise rÃ©ponse
+  | (M 2)  5 *  1 ? 
+  | Mauvaise rÃ©ponse
+  | (M 3)  5 *  4 ? 
+  | Mauvaise rÃ©ponse
+  | (M 4)  5 *  6 ? 
+  | Mauvaise rÃ©ponse
+  | (M 5)  5 *  5 ? 
+  | Mauvaise rÃ©ponse
+  | (M 6)  5 *  9 ? 
+  | Mauvaise rÃ©ponse
+  | (M 7)  5 *  1 ? 
+  | Mauvaise rÃ©ponse
+  | (M 8)  5 *  2 ? 
+  | Mauvaise rÃ©ponse
+  | (M 9)  5 *  2 ? 
+  | Mauvaise rÃ©ponse
+  | (M 10)  5 *  6 ? 
+  | Mauvaise rÃ©ponse
+  | Tout est faux! Volontaire ??
+  | On continue?(o/n)
+
+* Running gnatclean... ok

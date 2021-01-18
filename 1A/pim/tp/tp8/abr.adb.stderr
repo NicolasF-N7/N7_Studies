@@ -1,0 +1,2 @@
+abr.adb:2:09: warning: no entities of "Ada.Integer_Text_IO" are referenced
+abr.adb:2:30: warning: use clause for package "Integer_Text_IO" has no effect

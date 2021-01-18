@@ -1,0 +1,110 @@
+V "GNAT Lib v2019"
+M P W=b
+A -gnatA
+A -g
+A -gnata
+A -gnatwa
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U test_arbre_binaire%b	test_arbre_binaire.adb	d64aec60 NE OO SU IL
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_deallocation%s
+W arbre_binaire%s	arbre_binaire.adb	arbre_binaire.ali
+Z system%s		system.ads		system.ali
+Z system.assertions%s	s-assert.adb		s-assert.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.img_bool%s	s-imgboo.adb		s-imgboo.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-inteio.ads		20190518041256 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20190518041255 eff36322 ada.unchecked_deallocation%s
+D arbre_binaire.ads	20191213154742 7d9f4f75 arbre_binaire%s
+D arbre_binaire.adb	20191213154223 68e52085 arbre_binaire%b
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D system.ads		20190518041255 4635ec04 system%s
+D s-assert.ads		20190518041255 cd8d2c94 system.assertions%s
+D s-conca2.ads		20190518041255 02a0d7d0 system.concat_2%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-imgboo.ads		20190518041254 f5d971eb system.img_bool%s
+D s-imgint.ads		20190518041254 02dbe0c2 system.img_int%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+D test_arbre_binaire.adb  20191213155058 05217678 test_arbre_binaire%b
+G a e
+G c Z b b [test_arbre_binaire standard 4 11 none]
+G r i none [test_arbre_binaire standard 4 11 none] [arbre_binaire standard 7 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 32|2r6 2r23
+X 7 a-textio.ads
+57K13*Text_IO 727e16 32|2w10 2r27
+465U14*Put 32|17s13 19s13
+508U14*Put_Line 32|15s13 38s5 43s5 51s5 56s5 67s5 71s9
+X 11 arbre_binaire.ads
+5+10 T_Element 32|7r31
+7k9*Arbre_Binaire 61e18 32|1w6 7r17
+11P10 T_AB 32|10r37[6] 24r10[6]
+14U15 Initialiser_AB 32|32s5[6]
+17V14 Est_Vide_AB{boolean} 32|12s11[6] 66s19[6]
+22U15 Ajouter_AB 32|36s5[6] 40s5[6] 41s5[6] 42s5[6]
+27V14 Est_Present_AB{boolean} 32|33s19[6] 37s19[6] 46s19[6] 47s19[6] 48s19[6]
+. 61s23[6] 62s23[6] 63s23[6] 64s23[6] 65s23[6]
+30V14 Taille_AB{integer} 32|14s15[6]
+36V14 Get_sous_arbre_gauche{11P10[32|6]} 32|18s25[6]
+38V14 Get_sous_arbre_droit{11P10[32|6]} 32|20s25[6]
+40V14 Get_donnee{integer} 32|15s36[6]
+44U15 Supprimer_AB 32|55s5[6] 57s5[6] 58s5[6]
+49U15 Detruire_AB 32|70s5[6]
+X 32 test_arbre_binaire.adb
+4U11*test_arbre_binaire 4b11 73l5 73t23
+6K13 arbre_binaire_integer[11|7] 8r9
+10U15 Afficher_AB 10b15 10>27 18s13 20s13 22l9 22t20 52s5
+10p27 Arbre{11|11P10[6]} 12r23 14r25 15r47 18r47 20r46
+24p5 AB{11|11P10[6]} 32m20 32r20 33r34 36m16 36r16 37r34 40m16 40r16 41m16
+. 41r16 42m16 42r16 46r34 47r34 48r34 52r17 55m18 55r18 57m18 57r18 58m18
+. 58r18 61r38 62r38 63r38 64r38 65r38 66r31 70m17 70r17
+25i5 id1{integer} 36r23 37r37 40r20 41r20 57r21 62r41
+26i5 id2{integer} 40r25 42r20 46r37 63r41
+27i5 id3{integer} 41r25 47r37 64r41
+28i5 id4{integer} 42r25 48r37 55r21 61r41
+

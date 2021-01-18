@@ -1,0 +1,25 @@
+import java.awt.Color;
+
+public class CercleTest{
+	public static void main(String[] args) {
+		A = new Point(1, 2);
+		B = new Point(2, 1);
+		C = new Point(4, 1);
+		D = new Point(8, 1);
+		E = new Point(8, 4);
+
+		// Construire les cercles
+		C1 = new Cercle(A, 2.5);
+		C2 = new Cercle(new Point(6, 1), 2);
+		Color clr= new Color();
+		clr=Color.cyan;
+		C2.setCouleur();
+		
+		/* Test modification A et couleur*/
+		
+		
+		
+		System.out.print("Everything is OKKKKay !\n");
+		System.out.print(Cercle.PI);
+	}
+}

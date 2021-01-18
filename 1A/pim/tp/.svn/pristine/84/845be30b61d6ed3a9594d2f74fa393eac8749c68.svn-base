@@ -1,0 +1,35 @@
+generic
+    type T_Tableau is (<>);
+
+
+
+package Ensembles_Tableau is
+
+    type T_Ensemble is limited private;
+
+
+    --Initialise un nvx ensemble à l'ensemble vide
+    --
+    --Necessite: Vrai
+    --
+    --Assure: Ens est vide
+    procedure Initialiser(Ens: in T_Ensemble) with
+            Post => Ens.Nb_Elmt = 0;
+
+    procedure Detruire
+
+
+
+private
+
+    type T_Ensemble is
+        record
+            Elmt: T_Tableau;
+            Nb_Elmts: Integer;
+        end record;
+
+
+
+
+
+end Ensembles_Tableau;

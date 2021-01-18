@@ -1,0 +1,5 @@
+vecteurs_creux.adb:127:39: warning: formal parameter "V1" is not referenced
+vecteurs_creux.adb:127:43: warning: formal parameter "V2" is not referenced
+vecteurs_creux.adb:139:26: warning: formal parameter "V" is not referenced
+vecteurs_creux.adb:145:36: warning: formal parameter "V1" is not referenced
+vecteurs_creux.adb:145:40: warning: formal parameter "V2" is not referenced

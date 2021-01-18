@@ -1,0 +1,75 @@
+--Implantation du module liste_chainee.
+with Ada.unchecked_Deallocation;
+
+package body liste_chainee is
+
+procedure Free is 
+	new Ada.unchecked_Deallocation (T_Cellule, T_Liste);
+
+procedure Initialiser (Liste : out T_Liste) is
+begin
+    Liste := Null;
+end Initialiser;
+
+procedure Detruire (Liste : in out T_Liste) is 
+begin
+    if Liste /= Null then
+	Detruire (Liste.all.suivant);
+	Free(Liste);
+    else
+	null;
+    end if;
+end Detruire;
+
+function Est_Vide (Liste : in T_Liste) return boolean is
+begin
+    return Liste = Null;
+end Est_Vide;
+
+function Taille (Liste : in T_Liste) return Integer is 
+begin
+    if Est_Vide(Liste) then
+        return 0;
+    else
+        return Taille(Liste.all.suivant) + 1;
+    end if;
+end Taille;
+    
+function Present (Liste : in T_Liste; Element : in T_Element) return boolean is
+New_Lis : T_Liste := Liste;
+begin
+    while New_Lis /= Null and then New_Lis.all.Valeur /= Element loop
+	New_Lis := New_Lis.all.suivant;
+    end loop;
+    return not Est_Vide (New_Lis);
+end Present;
+
+procedure Ajouter (Liste : in out T_Liste; Element : in T_Element) is
+    New_Lis : T_Liste;    
+    begin
+        New_Lis := New T_Cellule;
+        New_Lis.all.suivant := Liste;
+        New_Lis.all.valeur := Element;
+        Liste := New_Lis;       
+end Ajouter;
+    
+procedure Supprimer (Liste : in out T_Liste; Element : in T_Element) is
+New_Lis : constant T_Liste := Liste;
+begin
+    if New_Lis.all.Valeur = Element then
+	Liste := Liste.all.suivant;
+    else
+        Supprimer (New_Lis.all.suivant, Element);
+    end if;
+end Supprimer;
+
+procedure Appliquer_Sur_Tous (Liste : in T_Liste) is
+New_Lis : T_Liste := Liste;
+begin
+    while New_Lis /= Null loop
+	Appliquer_Sur_Element (New_Lis.Valeur);
+	New_Lis := New_Lis.all.suivant;
+    end loop;
+end Appliquer_Sur_Tous;
+
+end liste_chainee;

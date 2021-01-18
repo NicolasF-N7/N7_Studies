@@ -1,0 +1,145 @@
+with Ada.Text_IO;use  Ada.Text_IO;
+with Calendar; use Calendar;
+with Liste_Chainee;
+
+
+package body Registre is
+
+    procedure Initialiser_Registre (Registre : out T_Registre) is
+        tmpListe: Liste_Donnee.T_Liste;
+    begin
+        for i in 1..Capacite loop
+            Initialiser_Liste(tmpListe);
+            Registre.Tableau(i) := tmpListe;
+        end loop;
+    end Initialiser_Registre;
+
+
+    function Est_Registre_Vide (Registre : in T_Registre) return Boolean is
+        Resultat: Boolean;
+    begin
+        Resultat:= True;
+        for i in 1..Capacite loop
+            if Est_Liste_Vide(Registre.Tableau(i)) then
+                Resultat := False;
+            end if;
+        end loop;
+        return Resultat;
+    end Est_Registre_Vide;
+
+
+    function Est_Present_Registre (Registre : in T_Registre; Donnee : in T_Donnee) return Boolean is
+    begin
+        return Present_Liste(Registre.Tableau(Donnee.Id mod Capacite), Donnee);
+    end Est_Present_Registre;
+
+
+    function Est_Present_Registre (Registre : in T_Registre; Id : in Integer) return boolean is
+    begin
+        return Present_Liste(Registre.Tableau(Id mod Capacite), Obtenir_Donnee(Registre, Id));
+    end Est_Present_Registre;
+
+
+    function Homonymes (Registre : in T_Registre; Nom : in Unbounded_String; Prenom : in Unbounded_String) return Liste_Donnee.T_Liste is
+
+        --Renvoie les T_Donnee des personnes homonymes à Nom Prenom dans la liste Liste
+        function Homonymes_Liste(Liste : in T_Liste; Nom : in String; Prenom : in String) return T_Liste is
+           Nvx_Homonyme_Liste: Liste_Donnee.T_Liste;
+        begin
+            if Est_Liste_Vide(Liste) then
+                return Liste;
+                --Si en tete de Liste est une personne Homonyme à prenom, nom
+            elsif Tete_Liste(Liste).Nom = Nom and Tete_Liste(Liste).Prenom = Prenom then
+                Initialiser_Liste(Nvx_Homonyme_Liste);
+                Ajouter_Liste(Nvx_Homonyme_Liste, Tete_Liste(Liste));
+                Concat(Nvx_Homonyme_Liste, Homonymes_Liste(Queue_Liste(Liste), Nom, Prenom));
+                return Nvx_Homonyme_Liste;
+            else
+                return Homonymes_Liste(Queue_Liste(Liste), Nom, Prenom);
+            end if;
+
+
+        end Homonymes_Liste;
+
+        H_Liste: Liste_Donnee.T_Liste;
+    begin
+        null;
+
+        return H_Liste;
+    end Homonymes;
+
+
+    procedure Ajouter_Registre (Registre : in out T_Registre; Donnee : in T_Donnee) is
+    begin
+        Ajouter_Liste(Registre.Tableau(Donnee.Id mod Capacite), Donnee);
+    end Ajouter_Registre;
+
+
+    function Obtenir_Donnee (Registre : in T_Registre; Id : in Integer) return T_Donnee is
+        Curseur: T_Liste;
+    begin
+        Curseur := Registre.Tableau(Id mod Capacite);
+        --Parcourt de la liste jusqu'a trouver la donnee avec le bon identifiant
+        while not(Est_Liste_Vide(Curseur)) and then Tete_Liste(Curseur).Id /= Id loop
+            Curseur := Queue_Liste(Curseur);
+        end loop;
+
+        --Si Id inconnu
+        if Est_Liste_Vide(Curseur) then
+            raise Unknown_ID_Exception;
+        else
+            return Tete_Liste(Curseur);
+        end if;
+    end Obtenir_Donnee;
+
+
+    procedure Modifier_Registre (Registre : in out T_Registre; Old_Donnee : in T_Donnee; New_Donnee : in T_Donnee) is
+        Liste: T_Liste;
+    begin
+        Liste := Registre.Tableau(Old_Donnee.Id mod Capacite);
+        Modifier_Liste(Liste, Old_Donnee, New_Donnee);
+    end Modifier_Registre;
+
+
+    procedure Modifier_Registre (Registre : in out T_Registre; Id : in Integer; New_Donnee : in T_Donnee) is
+        Liste: T_Liste;
+    begin
+        Liste := Registre.Tableau(Id mod Capacite);
+        Modifier_Liste(Liste, Obtenir_Donnee(Registre, Id), New_Donnee);
+    end Modifier_Registre;
+
+
+    procedure Supprimer_Registre(Registre : in out T_Registre; Donnee : in T_Donnee) is-- [ | ] --> [ | ] --> [ | ] --> [ |Null]
+        Liste: T_Liste;
+    begin
+        Liste := Registre.Tableau(Donnee.Id mod Capacite);
+        Supprimer_Liste(Liste, Donnee);
+    end Supprimer_Registre;
+
+    procedure Supprimer_Registre(Registre : in out T_Registre; Id : in Integer) is
+        Liste: T_Liste;
+    begin
+        Liste := Registre.Tableau(Id mod Capacite);
+        Supprimer_Liste(Liste, Obtenir_Donnee(Registre, Id));
+    end Supprimer_Registre;
+
+
+    function Taille_Registre (Registre : in T_Registre) return Integer is
+        Taille: Integer;
+    begin
+        Taille := 0;
+        for i in 1..Capacite loop
+            Taille := Taille + Taille_Liste(Registre.Tableau(i));
+        end loop;
+        return Taille;
+    end Taille_Registre;
+
+
+    procedure Detruire_Registre (Registre : in out T_Registre) is
+    begin
+        for i in 1..Capacite loop
+            Registre.Tableau(i) := Null;
+        end loop;
+    end Detruire_Registre;
+
+end Registre;

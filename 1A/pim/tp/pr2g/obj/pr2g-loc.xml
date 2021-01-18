@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project >
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/ensembles_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/ensembles_chainage.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/scenario_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/test_ensembles_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 17" line=" 74" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/ensembles_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 79" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/ensembles_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 63" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/ensembles_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 25" line=" 53" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/scenario_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/test_ensembles_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 29" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/scenario_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 11" line=" 5" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/scenario_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 32" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/scenario_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 11" line=" 5" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/scenario_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 86" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/ensembles_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2/nombre_moyen_tirages_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 35" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2/nombre_moyen_tirages_chainage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2/nombre_moyen_tirages_tableau.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 31" >
+      <vfs_project>/home/nfoin/1A/pim/tp/pr2g/pr2g.gpr</vfs_project>
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2g/src/main.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>/home/nfoin/1A/pim/tp/pr2/LISEZ-MOI.txt</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

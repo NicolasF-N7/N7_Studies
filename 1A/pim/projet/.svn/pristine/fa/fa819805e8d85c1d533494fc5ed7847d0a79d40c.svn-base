@@ -1,0 +1,93 @@
+with Ada.Text_IO;use  Ada.Text_IO;
+with Calendar; use Calendar;
+with Arbre_Binaire; use Arbre_Binaire;
+
+
+--On assure qu'un individu existe dans le registre SSI il existe dans l'arbre.
+package Arbre_Genealogique is
+    
+    Type T_Sexe is private;
+    
+    Type T_Parents is private;
+    
+    type T_Arbre_Genealogique is limited private;
+    
+    --Instenciation de arbre binaire par des entiers
+    package Arbre_Binaire_Entier is
+            new Arbre_Binaire(Integer);
+
+    --Initialise un arbre
+    --
+    --Necessite: Vrai
+    --
+    --Assure: A=Null;
+    procedure Initialiser(A: out T_Arbre_Genealogique) with
+            Pre => True,
+            Post => A=Null;
+    
+    
+    --Ajouter un noeud dans un arbre genealogique tel que Prenom ait pour fils Prenom_Fils
+    --
+    --Necessite: Le noeud correspondant à Nom_Fils , Prenom_Fils existe
+    --
+    --Assure: Le noeud correspondant à Nom, Prenom existe et est un parent de Prenom_Fils
+    procedure Ajouter(A: in out T_Arbre_Genealogique; Prenom: in String; Nom: in String; Sexe: in T_Sexe; Date_Naissance: in Time; Prenom_Fils: in String; Nom_Fils: in String) with
+            Pre => Registre'Existe(Prenom_Fils, Nom_Fils),
+            Post => Registre'Existe(Prenom, Nom);
+    
+    
+    --Renvoie True ssi Prenom possède 2 parents dans A
+    function Pere_Et_Mere_Connu(A: in out T_Arbre_Genealogique; Prenom: in String; Nom: in String) return Boolean with
+            Pre => Registre'Existe(Prenom, Nom),
+            Post => True;
+    
+    
+    --Renvoie l'identifiant du fil de Prenom
+    function Fils(A: in out T_Arbre_Genealogique; Prenom: in String; Nom: in String) return Integer with
+            Pre => Registre'Existe(Prenom, Nom),
+            Post => True;
+    
+    
+    --Renvoie les identifiants des parents du noeud
+    function Parents(A: in out T_Arbre_Genealogique; Prenom: in String; Nom: in String) return T_Parents with
+            Pre => Registre'Existe(Prenom, Nom),
+            Post => True;
+    
+    
+    --Supprime le noeud associe a Prenom, et tout ses ancetres.
+    --
+    --Necessite: Le noeud existe dans l'arbre
+    --
+    --Assure: Le noeuds n'existe plus dans l'arbre
+    procedure Supprimer(A: in out T_Arbre_Genealogique; Prenom: in String; Nom: in String) with
+            Pre => Registre'Existe(Prenom, Nom),
+            Post => not Registre'Existe(Prenom, Nom);
+    
+    
+    --Affiche dans la console l'arbre genealogique
+    --
+    --Necessite: Vrai
+    --
+    --Assure: Vrai
+    procedure Afficher(A: in out T_Arbre_Genealogique);
+    
+    
+    --Detruire: liberer l'espace memoire occupé par l'arbre
+    --
+    --Necessite: Vrai
+    --
+    --Assure: A est l'arbre nul
+    procedure Detruire(A: in out T_Arbre_Genealogique) with
+            Pre => True,
+            Post => A = Null;
+    
+
+private
+
+        Type T_Arbre_Genealogique is
+            record
+                Arbre : T_AB;
+                Registre : T_Registre;
+            end record;
+        
+end Arbre_Genealogique;

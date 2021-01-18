@@ -1,0 +1,12 @@
+project Abr_Gene is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Main use ("main.adb", "test.adb", "test_ag", "test_arbre_binaire.adb", "test_arbre_genealogique.adb");
+
+   package Compiler is
+      for Switches ("ada") use ("-g", "-gnata", "-gnatwa");
+   end Compiler;
+
+end Abr_Gene;
+

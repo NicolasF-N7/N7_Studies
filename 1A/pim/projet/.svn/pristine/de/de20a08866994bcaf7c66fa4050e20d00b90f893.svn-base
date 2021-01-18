@@ -1,0 +1,8 @@
+with Ada.Text_IO;use  Ada.Text_IO;
+with Calendar; use Calendar;
+with Arbre_Binaire; use Arbre_Binaire;
+
+package Registre is
+
+
+end Registre;

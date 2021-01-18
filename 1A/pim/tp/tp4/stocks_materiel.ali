@@ -1,0 +1,90 @@
+V "GNAT Lib v2019"
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IO
+RV SPARK_05
+
+U stocks_materiel%b	stocks_materiel.adb	5464a270 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U stocks_materiel%s	stocks_materiel.ads	16018c84 EE NE OO PK
+
+D ada.ads		20190518041255 76789da1 ada%s
+D a-except.ads		20190518041255 291912d5 ada.exceptions%s
+D a-inteio.ads		20190518041256 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20190518041254 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20190518041255 119b8fb3 ada.streams%s
+D a-tags.ads		20190518041256 491b781d ada.tags%s
+D a-textio.ads		20190518041256 aef4d56d ada.text_io%s
+D a-tiinio.ads		20190518041254 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20190518041255 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20190518041254 5ab55268 interfaces%s
+D i-cstrea.ads		20190518041254 e53d8b8e interfaces.c_streams%s
+D stocks_materiel.ads	20191009155412 16018c84 stocks_materiel%s
+D stocks_materiel.adb	20191009155440 1ada723d stocks_materiel%b
+D system.ads		20190518041255 4635ec04 system%s
+D s-crtl.ads		20190518041254 0ebbdb71 system.crtl%s
+D s-exctab.ads		20190518041255 54135002 system.exception_table%s
+D s-ficobl.ads		20190518041256 078245e4 system.file_control_block%s
+D s-parame.ads		20190518041256 48ec542b system.parameters%s
+D s-secsta.ads		20190518041256 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20190518041255 a7318a92 system.soft_links%s
+D s-stache.ads		20190518041256 a37c21ec system.stack_checking%s
+D s-stalib.ads		20190518041256 09bd3940 system.standard_library%s
+D s-stoele.ads		20190518041256 2dc34a04 system.storage_elements%s
+D s-traent.ads		20190518041254 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190518041255 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20190518041255 1b7d22d2 system.wch_con%s
+G a e
+G c Z s b [creer stocks_materiel 27 15 none]
+G c Z s b [nb_materiels stocks_materiel 42 14 none]
+G c Z s b [enregistrer stocks_materiel 61 15 none]
+G c Z s b [nb_materiels_hors_etat stocks_materiel 70 14 none]
+G c Z s s [t_materielIP stocks_materiel 73 10 none]
+G c Z s s [Tt_tabmaterielBIP stocks_materiel 81 5 none]
+G c Z s s [t_stockIP stocks_materiel 84 10 none]
+X 1 ada.ads
+16K9*Ada 20e8 13|1r6 1r32 2r6 2r32
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[8|46] 13|2w10 2r36
+X 7 a-textio.ads
+57K13*Text_IO 727e16 13|1w10 1r36
+X 12 stocks_materiel.ads
+5K9*Stocks_Materiel 73E10 90l5 90e20 13|7b14 52l5 52t20
+8i5*CAPACITE{integer} 43r69 67r43 81r37
+10E10*T_Nature 10e74 64r35 76r21 13|24r35
+10n23*UNITE_CENTRALE{10E10}
+10n39*DISQUE{10E10}
+10n47*ECRAN{10E10}
+10n54*CLAVIER{10E10}
+10n63*IMPRIMANTE{10E10}
+12R10*T_Materiel 73c10 79e19 81r50 13|27r14
+14A10*T_TabMateriel(12R10) 81c10 86r21
+16R10*T_Stock 27r34 42r38 62r35 70r49 84c10 88e19 13|9r34 15r38 22r35 38r49
+27U15*Creer 27<22 13|9b15 12l9 12t14
+27r22 Stock{16R10} 28r31 13|9b22 11m9
+42V14*Nb_Materiels{integer} 28s17 42>28 43r17 43r46 67s20 68s21 68s44 13|15b14
+. 18t8
+42r28 Stock{16R10} 13|15b28 17r16
+61U15*Enregistrer 62=13 63>13 64>13 65>13 13|21b15 36t8
+62r13 Stock{16R10} 67r34 68r35 68r58 13|22b13 34m9 34r25 35m9 35r22
+63i13 Numero_Serie{integer} 13|23b13 29r26
+64e13 Nature{10E10} 13|24b13 30r23
+65i13 Annee_Achat{integer} 13|25b13 31r28
+70V14*Nb_Materiels_Hors_Etat{integer} 70>38 13|38b14 48t8
+70r38 Stock{16R10} 13|38b38 42r22 43r16
+75i13*Num_Serie{integer} 13|29m13
+76e13*Nature{10E10} 13|30m13
+77i13*Annee_Achat{integer} 13|31m13
+78b13*Etat{boolean} 13|32m13 43r32
+86a13*TabMat{14A10} 13|35m15 43r22
+87i13*NbElmt{integer} 13|11m15 17r22 34m15 34r31 35r28 42r28
+X 13 stocks_materiel.adb
+27r9 Mat{12|12R10} 29m9 30m9 31m9 32m9 35r39
+39i9 Count{integer} 41m9 44m17 44r26 47r16
+42i13 i{integer} 43r29
+

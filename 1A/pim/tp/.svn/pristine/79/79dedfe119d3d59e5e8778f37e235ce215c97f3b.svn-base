@@ -1,0 +1,42 @@
+with Ada.Text_IO;       use Ada.Text_IO;
+with Ada.Float_Text_IO;       use Ada.Float_Text_IO;
+with Vecteurs_Creux;    use Vecteurs_Creux;
+
+-- Exemple d'utilisation des vecteurs creux.
+procedure Exemple_Vecteurs_Creux is
+
+	V : T_Vecteur_Creux;
+begin
+	Put_Line ("Début du scénario");
+        Initialiser(V);
+
+        Modifier(V, 5, 3.14);
+        Afficher(V);
+
+        Modifier(V, 6, 0.1);
+        Afficher(V);
+
+        Modifier(V, 14, 7.4);
+        Afficher(V);
+
+        Modifier(V, 8, 99.0);
+        Afficher(V);
+
+        Modifier(V, 2, -7.0);
+        Afficher(V);
+
+        Modifier(V, 6, 0.0);
+        Afficher(V);
+
+        Modifier(V, 2, 0.0);
+        Afficher(V);
+
+        Modifier(V, 14, 0.0);
+        Afficher(V);
+
+        Put(Composante_Recursif(V, 14));
+
+        --Put(Boolean'Image(Est_Nul(V)));
+        Detruire(V);
+	Put_Line ("Fin du scénario");
+end Exemple_Vecteurs_Creux;
